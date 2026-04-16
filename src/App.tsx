@@ -439,24 +439,24 @@ const PreLaunchTransparency = () => {
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
             <div>
-              <h2 className="text-4xl font-bold mb-6 tracking-tight">Reservation Details</h2>
-              <p className="text-brand-gray text-lg">We're in the demand validation phase. Your support helps us finalize the production run for the Canadian market.</p>
+              <h2 className="text-4xl font-bold mb-6 tracking-tight leading-tight">The Path to <span className="text-brand-primary">Priority Ownership</span></h2>
+              <p className="text-brand-gray text-lg leading-relaxed">By placing a fully refundable $25 deposit, you join an exclusive group of early adopters helping Astrateq finalize the first production batch for the Canadian market. It’s a risk-free way to validate your interest and secure the absolute best launch price.</p>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-8">
               {[
-                { title: "Pay $25 Today", desc: "This secure deposit locks in your Family Safety Bundle." },
-                { title: "100% Refundable", desc: "Refund available any time before your unit ships. No questions." },
-                { title: "Save $50 at Launch", desc: "Reservation holders get the exclusive pre-launch price (Est. $249 MSRP)." },
-                { title: "Priority Delivery", desc: "Shipments start in ~90 days based on batch order." }
+                { title: "Priority Queue Position", desc: "Secure your spot in Batch 01 (Est. Summer 2025). We fulfill in the order deposits are received." },
+                { title: "Exclusive Bundle Pricing", desc: "Unlock the Pre-Launch price of $199 CAD—a full $50 savings off the estimated $249 MSRP." },
+                { title: "Zero-Risk Flexibility", desc: "Your $25 is managed via Stripe. It is 100% refundable at any time, for any reason, before your unit ships." },
+                { title: "Engineering Transparency", desc: "Get bi-monthly behind-the-scenes updates on our optimization for Canadian winter road conditions." }
               ].map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-premium border border-brand-border flex items-center justify-center font-display font-bold text-brand-primary shrink-0">
-                    0{i+1}
+                <div key={i} className="flex gap-5">
+                  <div className="w-10 h-10 bg-brand-primary/5 rounded-full flex items-center justify-center text-brand-primary shrink-0">
+                    <CheckCircle2 size={20} />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">{step.title}</h4>
-                    <p className="text-brand-gray">{step.desc}</p>
+                    <p className="text-brand-gray text-sm leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -561,9 +561,9 @@ const PreLaunchTransparency = () => {
                     <CheckCircle2 size={40} />
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-3xl font-bold tracking-tight">Reservation Secured</h3>
+                    <h3 className="text-3xl font-bold tracking-tight">Priority Position Secured</h3>
                     <p className="text-brand-gray leading-relaxed max-w-sm mx-auto">
-                      Welcome to the batch order, Alex! We've sent a detailed confirmation and receipt to your email.
+                      Welcome to the Astrateq Inner Circle. We've sent a detailed confirmation and priority queue receipt to your email.
                     </p>
                   </div>
                   <div className="bg-brand-bg rounded-2xl p-6 text-left border border-brand-border">
