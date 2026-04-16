@@ -14,6 +14,7 @@ import {
   Plus,
   Globe,
   Clock,
+  Check,
   Menu,
   X,
   MessageCircle,
@@ -59,7 +60,7 @@ const Navbar = () => {
               <a href="#box" className="hover:text-brand-primary transition-colors">Safety Standards</a>
               <a href="#contact" className="hover:text-brand-primary transition-colors">Support</a>
             </nav>
-            <a href="#reserve" className="bg-brand-primary text-white text-[13px] font-bold uppercase tracking-wider px-7 py-3 rounded-full hover:scale-105 hover:bg-brand-primary/95 active:scale-95 transition-all shadow-lg shadow-brand-primary/20">Secure Batch 01</a>
+            <a href="#reserve" className="bg-brand-primary text-white text-[13px] font-bold uppercase tracking-wider px-7 py-3 rounded-full hover:shadow-xl hover:shadow-brand-primary/20 active:scale-95 transition-all shadow-lg">Reserve My Family's Spot</a>
           </div>
 
           <div className="md:hidden">
@@ -80,7 +81,7 @@ const Navbar = () => {
           >
             <div className="px-4 py-6 space-y-4">
               <a href="#contact" className="block text-lg font-medium text-gray-900">Contact</a>
-              <a href="#reserve" className="block w-full text-center bg-brand-cyan text-white py-4 rounded-xl font-bold">Reserve for $25</a>
+              <a href="#reserve" className="block w-full text-center bg-brand-primary text-white py-4 rounded-xl font-bold">Reserve My Family's Spot</a>
             </div>
           </motion.div>
         )}
@@ -91,86 +92,83 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 overflow-hidden">
+    <section className="pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-[#fbfbfd]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex-1 space-y-10"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-[#d30000] text-xs font-bold uppercase tracking-wider">
-              <span>🍁</span>
-              <span>Designed & Tested in Ontario</span>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 text-brand-gray/80 text-sm font-medium tracking-wide">
+                <div className="w-5 h-[1px] bg-brand-primary/30" />
+                <span>Designed & Tested in Canada</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-[64px] font-semibold leading-[1.1] tracking-tight text-brand-dark">
+                Quiet protection for the people who <span className="text-brand-primary">once protected you.</span>
+              </h1>
+              
+              <p className="text-xl md:text-[22px] text-brand-gray max-w-xl leading-relaxed font-normal">
+                A Canadian-engineered safety system designed to protect independence — not monitor it. Reserve today with a fully refundable $25 deposit.
+              </p>
             </div>
             
-            <h1 className="text-5xl md:text-[56px] font-bold leading-[1.05] tracking-tight">
-              The next standard in <span className="text-brand-primary">automotive integrity.</span>
-            </h1>
-            
-            <p className="text-[22px] text-brand-gray max-w-xl leading-[1.4]">
-              Reserve your Sentinel unit today. Canadian-engineered safety for the modern family. First batch reservations now open.
-            </p>
-            
-            <div className="space-y-4 pt-4">
-              <a href="#reserve" className="inline-flex items-center justify-center bg-brand-primary text-white text-lg font-bold px-10 py-5 rounded-full hover:scale-[1.02] hover:shadow-2xl hover:shadow-brand-primary/30 active:scale-[0.98] transition-all shadow-xl group">
-                Secure My Priority Spot — $25 (Fully Refundable)
-                <ChevronRight className="ml-3 group-hover:translate-x-1.5 transition-transform" size={20} />
-              </a>
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-primary text-white text-lg font-bold px-10 py-5 rounded-full hover:bg-brand-primary/95 hover:shadow-2xl hover:shadow-brand-primary/20 active:scale-[0.98] transition-all shadow-xl">
+                  Reserve My Family’s Spot — $25 Fully Refundable
+                </a>
+              </div>
               
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400 pl-2">
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-brand-gray font-medium pl-1">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck size={16} className="text-green-500" />
-                  <span>ISED Canada Compliant</span>
+                  <Check className="text-green-500" size={16} strokeWidth={3} />
+                  <span>Fully refundable</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Lock size={16} className="text-brand-cyan" />
-                  <span>100% Refundable Deposit</span>
+                  <Check className="text-green-500" size={16} strokeWidth={3} />
+                  <span>Designed & tested in Canada</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="text-green-500" size={16} strokeWidth={3} />
+                  <span>Limited first production release</span>
                 </div>
               </div>
             </div>
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex-1 relative"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="flex-1 relative w-full"
           >
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100">
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] bg-white aspect-[4/5] md:aspect-square">
               <img 
-                src="https://i.ibb.co/FqjR2nbr/gemini-3-1-flash-image-preview-nano-banana-2-b-Prompt-A-high-end-1.png" 
-                alt="Astrateq Sentinel X AI hardware" 
+                src="https://images.unsplash.com/photo-1621243804936-775306a8f2e3?q=80&w=1920&auto=format&fit=crop" 
+                alt="Confident senior driver enjoying the journey" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-8">
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-white text-sm font-medium tracking-wide uppercase">SENTINEL X: ACTIVE PROTECTION</span>
-                  </div>
+              
+              {/* Subtle Indication of Safety */}
+              <div className="absolute top-8 left-8">
+                <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/40 shadow-sm flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-brand-primary" />
+                  <span className="text-[10px] font-black uppercase tracking-widest text-brand-dark">Quiet Protection Active</span>
                 </div>
               </div>
+
+              {/* Emotional Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
             </div>
             
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="absolute -left-8 bottom-12 bg-white p-5 rounded-2xl shadow-premium border border-gray-100 hidden sm:block w-64"
-            >
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-brand-cyan/10 rounded-xl flex items-center justify-center text-brand-cyan">
-                  <Snowflake size={24} />
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Winter Ready</p>
-                  <p className="text-sm font-semibold text-brand-dark">Tested at -30°C in Alberta winters.</p>
-                </div>
-              </div>
-            </motion.div>
+            {/* Subtle Decorative Elements */}
+            <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px]" />
+            <div className="absolute -z-10 -top-10 -left-10 w-48 h-48 bg-brand-cyan/5 rounded-full blur-[60px]" />
           </motion.div>
         </div>
       </div>
@@ -207,13 +205,13 @@ const TrustBanner = () => {
              <ShieldCheck className="text-brand-dark" size={20} /> ISED CANADA COMPLIANT
            </div>
            <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
-             <Globe className="text-brand-dark" size={20} /> DESIGNED IN TORONTO
+             <Snowflake className="text-brand-dark" size={20} /> TESTED IN ALBERTA WINTERS
+           </div>
+           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase text-brand-primary/80">
+             <Lock size={20} /> 100% REFUNDABLE DEPOSIT
            </div>
            <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
-             <Lock className="text-brand-dark" size={20} /> AES-256 ENCRYPTION
-           </div>
-           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
-             <ShieldCheck className="text-brand-dark" size={20} /> CSA COMPLIANT STDS
+             <ShieldCheck className="text-brand-dark" size={20} /> CSA SAFETY STANDARDS
            </div>
         </div>
       </div>
@@ -499,33 +497,74 @@ const CompatibilityChecker = () => {
 
 const ComparisonSection = () => {
   const rows = [
-    { label: "Visual Clarity", generic: "1080p / 4K Grainy", astrateq: "Surgical 8K Precision", detail: "Industry-first 8K road-facing NPU" },
-    { label: "Subscription Fees", generic: "Monthly ($15-$30)", astrateq: "Zero (Lifetime)", detail: "No gatekeeping for safety features" },
-    { label: "Data Management", generic: "Cloud Based (Insecure)", astrateq: "100% Local Guard", detail: "Privacy-locked NPU hardware processing" },
-    { label: "Installation", generic: "Pro Help Required", astrateq: "Plug-and-Protect", detail: "Universal setup in under 5 minutes" },
-    { label: "Canadian Climate", generic: "Standard Plastic", astrateq: "Arctic-Spec Alloy", detail: "Thermal-shroud tested at -30°C to +45°C" },
-    { label: "Night Vision", generic: "Pixelated/Blind", astrateq: "8K HDR Low-Light", detail: "Active glare reduction for winter nights" },
+    { 
+      label: "Visual Intelligence", 
+      generic: "Buffered 1080p", 
+      astrateq: "Surgical 8K NPU", 
+      detail: "Industry-first 8K road-facing architecture designed to read Ontario plates at 120km/h.",
+      icon: Zap
+    },
+    { 
+      label: "Data Ownership", 
+      generic: "Cloud Subscriptions", 
+      astrateq: "Local Pure-Storage", 
+      detail: "Zero monthly fees. Your private family journeys are stored on device, never on a third-party server.",
+      icon: Lock
+    },
+    { 
+      label: "Winter Endurance", 
+      generic: "Standard Li-ion", 
+      astrateq: "Supercapacitor Build", 
+      detail: "Specifically built for Alberta's -30°C mornings. No battery swelling or frozen sensor lag.",
+      icon: Snowflake
+    },
+    { 
+      label: "Hardware Integrity", 
+      generic: "Generic Plastic", 
+      astrateq: "Arctic-Grade Alloy", 
+      detail: "Heat-dissipating magnesium shroud ensures the 8K sensor never throttles during humid GTA summers.",
+      icon: ShieldCheck
+    },
+    { 
+      label: "Safety Coaching", 
+      generic: "Standard Beeps", 
+      astrateq: "AI Audio-Guided", 
+      detail: "Gentle, non-intrusive voice cues calibrated for icy road patterns and long-haul fatigue.",
+      icon: MessageCircle
+    },
+    { 
+      label: "Integration", 
+      generic: "Professional Wiring", 
+      astrateq: "5-Min Stealth DIY", 
+      detail: "Universal no-trace mounting. Route the extra-long (4m) cable through your trim in minutes.",
+      icon: Plus
+    },
   ];
 
   return (
-    <section className="py-32 relative overflow-hidden" id="comparison">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#fbfbfd] to-white pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none -translate-y-1/2" />
+    <section className="py-32 relative overflow-hidden bg-white" id="comparison">
+      {/* Visual Background Flourish */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-primary/20 to-transparent" />
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-brand-primary/10 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[120px] translate-x-1/4 translate-y-1/4 pointer-events-none" />
       
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-6">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-primary text-white text-[11px] font-bold uppercase tracking-[0.25em] shadow-lg shadow-brand-primary/20"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-brand-primary to-brand-cyan text-white text-[11px] font-bold uppercase tracking-[0.3em] shadow-xl shadow-brand-primary/20"
           >
-            <ShieldCheck size={14} /> 8K SAFETY BENCHMARK
+            <Zap size={14} className="animate-pulse" /> 8K ENGINEERING BENCHMARK
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-brand-dark">
-            Safety, <span className="text-brand-primary">Recalibrated.</span>
+          
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-brand-dark leading-[1.1]">
+            Canadian Safety, <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-cyan to-brand-primary animate-gradient">Redefined for 2025.</span>
           </h2>
+          
           <p className="text-brand-gray text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            While generic dash cams struggle with 4K motion blur, the Sentinel X utilizes a <span className="font-bold text-brand-dark">dedicated 8K NPU architecture</span> to understand license plates and road hazards at a surgical level.
+            Standard dash cams are built for mass markets. We built the Sentinel X for the <span className="font-bold text-brand-dark italic">Canadian Reality</span>—extreme winters, zero subscriptions, and surgical 8K clarity.
           </p>
         </div>
 
@@ -533,48 +572,62 @@ const ComparisonSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[48px] border border-brand-border shadow-[0_48px_96px_-24px_rgba(0,0,0,0.12)] overflow-hidden"
+          className="bg-white/40 backdrop-blur-xl rounded-[48px] border border-white/60 shadow-[0_64px_128px_-32px_rgba(0,0,0,0.1)] overflow-hidden"
         >
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[850px]">
+            <table className="w-full text-left border-collapse min-w-[900px]">
               <thead>
-                <tr className="bg-brand-bg/40">
-                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/50 w-1/3">Engineering Specs</th>
-                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/50 w-1/3 text-center">Standard Market</th>
+                <tr className="bg-gray-50/50">
+                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/60 w-1/3">The Specification</th>
+                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/60 w-1/3 text-center">Mass Market</th>
                   <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-primary w-1/3 text-center relative bg-brand-primary/[0.04]">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-brand-primary text-white text-[10px] font-bold rounded-b-xl shadow-xl shadow-brand-primary/30 whitespace-nowrap tracking-wider">
-                      THE ASTRATEQ EDGE
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-2 bg-brand-primary text-white text-[9px] font-black rounded-b-xl shadow-lg shadow-brand-primary/20 whitespace-nowrap tracking-[0.2em]">
+                      THE ASTRATEQ STANDARD
                     </div>
-                    SENTINEL X (8K)
+                    SENTINEL X
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody className="divide-y divide-gray-100">
                 {rows.map((row, i) => (
                   <motion.tr 
                     key={i} 
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className="group hover:bg-gray-50/50 transition-colors"
+                    className="group hover:bg-white transition-all duration-300"
                   >
                     <td className="p-10">
-                      <div className="space-y-2">
-                        <p className="font-bold text-xl text-brand-dark group-hover:text-brand-primary transition-colors">{row.label}</p>
-                        <p className="text-xs text-brand-gray tracking-wide leading-relaxed font-medium">{row.detail}</p>
+                      <div className="flex gap-6 items-start">
+                        <div className="w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500 shrink-0">
+                          <row.icon size={22} />
+                        </div>
+                        <div className="space-y-2">
+                          <p className="font-bold text-xl text-brand-dark tracking-tight">{row.label}</p>
+                          <p className="text-xs text-brand-gray tracking-wide leading-relaxed font-medium max-w-[280px]">{row.detail}</p>
+                        </div>
                       </div>
                     </td>
                     <td className="p-10 text-center">
-                      <span className="inline-flex items-center px-5 py-2.5 rounded-2xl bg-gray-100 text-gray-500 font-bold text-xs uppercase tracking-wider">
-                        {row.generic}
-                      </span>
-                    </td>
-                    <td className="p-10 text-center relative bg-brand-primary/[0.04] group-hover:bg-brand-primary/[0.06] transition-colors">
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform duration-500">
-                          <CheckCircle2 size={28} />
+                      <div className="inline-flex flex-col items-center gap-2">
+                        <span className="text-sm font-bold text-gray-400/80 uppercase tracking-widest">{row.generic}</span>
+                        <div className="flex gap-1">
+                           {[1,2,3].map(d => <div key={d} className="w-1 h-1 rounded-full bg-gray-200" />)}
                         </div>
-                        <span className="font-extrabold text-brand-primary text-xl tracking-tight">{row.astrateq}</span>
+                      </div>
+                    </td>
+                    <td className="p-10 text-center relative bg-brand-primary/[0.04] group-hover:bg-brand-primary/[0.07] transition-all">
+                      <div className="flex flex-col items-center gap-4 relative z-10">
+                        <motion.div 
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          className="w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-brand-primary border border-brand-primary/10"
+                        >
+                          <CheckCircle2 size={28} />
+                        </motion.div>
+                        <div className="space-y-1">
+                          <span className="font-black text-brand-primary text-lg tracking-tight uppercase">{row.astrateq}</span>
+                          <div className="h-1 w-12 bg-brand-primary/20 rounded-full mx-auto" />
+                        </div>
                       </div>
                     </td>
                   </motion.tr>
@@ -583,19 +636,25 @@ const ComparisonSection = () => {
             </table>
           </div>
           
-          <div className="p-12 bg-brand-dark text-white flex flex-col md:flex-row items-center justify-between gap-10">
-            <div className="flex items-center gap-8">
-              <div className="w-16 h-16 bg-brand-primary/20 rounded-3xl flex items-center justify-center text-brand-cyan shadow-inner">
-                <Lock size={32} />
+          <div className="p-12 bg-brand-dark text-white relative overflow-hidden">
+            {/* Dark Mode Glow */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/20 blur-[80px] -translate-y-1/2 translate-x-1/2" />
+            
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+              <div className="flex items-center gap-10">
+                <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-3xl flex items-center justify-center text-white shadow-2xl relative group">
+                  <ShieldCheck size={40} className="group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 rounded-3xl animate-pulse ring-4 ring-brand-primary/20" />
+                </div>
+                <div className="space-y-2 text-center md:text-left">
+                  <h4 className="text-2xl font-bold tracking-tight">The $25 Risk-Free Priority Queue</h4>
+                  <p className="text-white/60 font-medium max-w-md">Secure Batch 01 Pricing ($199 vs $249 MSRP). 100% refundable via Stripe at any time.</p>
+                </div>
               </div>
-              <div className="space-y-2 text-center md:text-left">
-                <p className="text-2xl font-bold tracking-tight">Risk-Free Priority Queue</p>
-                <p className="text-white/50 font-medium">Fully refundable $25 deposit secures your Batch 01 unit & 8K License.</p>
-              </div>
+              <a href="#reserve" className="px-14 py-6 bg-white text-brand-dark rounded-full font-black text-lg hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,255,255,0.2)] transition-all flex items-center gap-4 group">
+                Reserve My 8K Sentinel <ChevronRight className="group-hover:translate-x-1.5 transition-transform" size={24} />
+              </a>
             </div>
-            <a href="#reserve" className="px-12 py-5 bg-brand-primary text-white rounded-full font-bold hover:scale-105 hover:bg-brand-primary/90 transition-all flex items-center gap-3 shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] whitespace-nowrap">
-              Secure My 8K Sentinel <ArrowUp className="rotate-45" size={20} />
-            </a>
           </div>
         </motion.div>
       </div>
@@ -1537,7 +1596,7 @@ export default function App() {
       
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
         <a href="#reserve" className="flex items-center justify-center w-full bg-brand-primary text-white py-5 rounded-full font-bold shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:bg-brand-primary/95 active:scale-95 transition-all">
-           Secure Batch 01 Spot — $25
+           Reserve My Family's Spot — $25
         </a>
       </div>
     </div>
