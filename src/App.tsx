@@ -411,14 +411,26 @@ const PreLaunchTransparency = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    // Check if user returned from Stripe after a successful payment
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setIsSubmitted(true);
+      // Clean up the URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const email = e.target.elements[0]?.value;
     setIsLoading(true);
-    // Simulate API/Stripe call
+    
+    // Professional delay to show "Validation" before redirecting to Stripe
     setTimeout(() => {
-      setIsLoading(false);
-      setIsSubmitted(true);
-    }, 2000);
+      const stripeUrl = `https://buy.stripe.com/test_7sYfZigABbdo2aTe1V3ks00?prefilled_email=${encodeURIComponent(email || '')}`;
+      window.location.href = stripeUrl;
+    }, 1200);
   };
 
   return (
