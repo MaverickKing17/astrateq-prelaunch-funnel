@@ -257,9 +257,10 @@ const Testimonials = () => {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-apple-card bg-brand-bg border border-brand-border hover:shadow-premium transition-shadow"
+              transition={{ delay: i * 0.1, type: "spring", stiffness: 300 }}
+              className="p-8 rounded-apple-card bg-brand-bg border border-brand-border hover:shadow-premium transition-shadow cursor-default"
             >
               <div className="flex items-center gap-1 mb-6">
                 {[...Array(5)].map((_, i) => <Zap key={i} size={14} className="fill-brand-primary text-brand-primary" />)}
@@ -284,10 +285,24 @@ const Testimonials = () => {
   );
 };
 const FeatureCard = ({ icon: Icon, title, description, badge }: any) => (
-  <div className="group bg-white p-10 rounded-apple-card shadow-premium hover:shadow-2xl transition-all border border-brand-border flex flex-col h-full">
-    <div className="w-14 h-14 bg-brand-bg rounded-xl flex items-center justify-center text-brand-dark mb-8 group-hover:scale-110 transition-transform">
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className="group bg-white p-10 rounded-apple-card shadow-premium hover:shadow-2xl transition-all border border-brand-border flex flex-col h-full"
+  >
+    <motion.div 
+      initial={{ scale: 0.8 }}
+      whileInView={{ scale: 1 }}
+      whileHover={{ 
+        rotate: [0, -10, 10, 0],
+        scale: 1.1,
+        transition: { duration: 0.4 }
+      }}
+      className="w-14 h-14 bg-brand-bg rounded-xl flex items-center justify-center text-brand-dark mb-8"
+    >
       <Icon size={28} />
-    </div>
+    </motion.div>
     {badge && (
       <span className="self-start px-3 py-1 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">
         {badge}
@@ -295,7 +310,7 @@ const FeatureCard = ({ icon: Icon, title, description, badge }: any) => (
     )}
     <h3 className="text-2xl font-bold mb-4 tracking-tight">{title}</h3>
     <p className="text-brand-gray leading-relaxed flex-grow">{description}</p>
-  </div>
+  </motion.div>
 );
 
 const ValuationZone = () => {
@@ -536,6 +551,63 @@ const FAQItem = ({ question, answer }: any) => {
   );
 }
 
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    // Set target date to 48 hours from now for demo purposes, 
+    // or a fixed date like Q3 2025.
+    const targetDate = new Date();
+    targetDate.setHours(targetDate.getHours() + 47);
+    targetDate.setMinutes(targetDate.getMinutes() + 52);
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const TimerUnit = ({ value, label }: { value: number, label: string }) => (
+    <div className="flex flex-col items-center">
+      <div className="bg-brand-dark text-white w-12 h-14 md:w-16 md:h-20 rounded-xl flex items-center justify-center text-xl md:text-3xl font-bold shadow-2xl relative overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+        <motion.span 
+          key={value}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="relative z-10"
+        >
+          {String(value).padStart(2, '0')}
+        </motion.span>
+      </div>
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gray mt-2">{label}</span>
+    </div>
+  );
+
+  return (
+    <div className="flex gap-2 md:gap-4 justify-center md:justify-start pt-2">
+      <TimerUnit value={timeLeft.days} label="Days" />
+      <TimerUnit value={timeLeft.hours} label="Hrs" />
+      <TimerUnit value={timeLeft.minutes} label="Min" />
+      <TimerUnit value={timeLeft.seconds} label="Sec" />
+    </div>
+  );
+};
+
 const PreLaunchTransparency = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -569,7 +641,12 @@ const PreLaunchTransparency = () => {
           <div className="space-y-12">
             <div>
               <h2 className="text-4xl font-bold mb-6 tracking-tight leading-tight">The Path to <span className="text-brand-primary">Priority Ownership</span></h2>
-              <p className="text-brand-gray text-lg leading-relaxed">By placing a fully refundable $25 deposit, you join an exclusive group of early adopters helping Astrateq finalize the first production batch for the Canadian market. It’s a risk-free way to validate your interest and secure the absolute best launch price.</p>
+              <p className="text-brand-gray text-lg leading-relaxed mb-8">By placing a fully refundable $25 deposit, you join an exclusive group of early adopters helping Astrateq finalize the first production batch for the Canadian market. It’s a risk-free way to validate your interest and secure the absolute best launch price.</p>
+              
+              <div className="space-y-4">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-primary">Early Bird Offer Expiring In:</p>
+                <CountdownTimer />
+              </div>
             </div>
             
             <div className="space-y-8">
@@ -1205,16 +1282,16 @@ export default function App() {
             
             <div className="flex-1 grid grid-cols-2 gap-4">
                <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 transition-transform hover:-translate-y-2">
-                  <img src="https://picsum.photos/seed/dash-front/600/600" alt="Dashcam Front" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://i.ibb.co/FqjR2nbr/gemini-3-1-flash-image-preview-nano-banana-2-b-Prompt-A-high-end-1.png" alt="Sentinel X AI Unit Close-up" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                </div>
                <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 mt-8 transition-transform hover:-translate-y-2">
-                  <img src="https://picsum.photos/seed/dash-side/600/600" alt="Dashcam Side" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://i.ibb.co/Qj8CH51g/seedream-5-0-lite-a-Prompt-A-photoreali.jpg" alt="Sentinel X Packaging" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                </div>
                <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 -mt-8 transition-transform hover:-translate-y-2">
-                  <img src="https://picsum.photos/seed/dash-app/600/600" alt="App interface" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://i.ibb.co/W4pj7w1y/gpt-image-1-5-high-fidelity-b-Prompt-A-high-end.png" alt="Sensor Lens Detail" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                </div>
                <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 transition-transform hover:-translate-y-2">
-                  <img src="https://picsum.photos/seed/car-bundle/600/600" alt="Bundle" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://i.ibb.co/Zzvc5wfT/gemini-3-1-flash-image-preview-nano-banana-2-a-Create-a-pristine-u.png" alt="Astra-Guard Bundle" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                </div>
             </div>
           </div>
