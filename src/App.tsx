@@ -367,48 +367,68 @@ const CompatibilityChecker = () => {
   };
 
   return (
-    <section className="py-24 bg-white" id="compatibility">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-bg rounded-[32px] p-8 md:p-16 border border-brand-border shadow-premium relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px] -mr-32 -mt-32" />
+    <section className="py-24 bg-white relative overflow-hidden" id="compatibility">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-brand-cyan/10 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/40 backdrop-blur-xl rounded-[40px] p-8 md:p-16 border border-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] relative overflow-hidden group"
+        >
+          {/* Internal Gradient Glow */}
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-primary/20 rounded-full blur-[80px] group-hover:bg-brand-primary/30 transition-colors" />
           
           <div className="relative z-10">
             <div className="text-center mb-12 space-y-4">
-              <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Car className="text-brand-primary" size={32} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Vehicle Compatibility</h2>
-              <p className="text-brand-gray max-w-lg mx-auto">
-                The Sentinel X is a universal AI safety companion. Use the tool below to verify integration with your specific primary vehicle.
+              <motion.div 
+                whileHover={{ rotate: 15, scale: 1.1 }}
+                className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-brand-primary/20"
+              >
+                <Car className="text-white" size={36} />
+              </motion.div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-dark via-brand-primary to-brand-dark">
+                Vehicle Compatibility
+              </h2>
+              <p className="text-brand-gray max-w-lg mx-auto text-lg leading-relaxed">
+                The Sentinel X is a universal AI safety companion. Verify integration with your specific primary vehicle in seconds.
               </p>
             </div>
 
-            <form onSubmit={handleCheck} className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gray ml-1">Make</label>
-                <select 
-                  value={make} 
-                  onChange={(e) => setMake(e.target.value)}
-                  className="w-full h-12 bg-white border border-brand-border rounded-xl px-4 text-sm focus:ring-1 focus:ring-brand-primary outline-none appearance-none cursor-pointer"
-                  required
-                >
-                  <option value="">Select Make</option>
-                  {makes.sort().map(m => <option key={m} value={m}>{m}</option>)}
-                </select>
+            <form onSubmit={handleCheck} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+              <div className="space-y-3">
+                <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-primary ml-1">Make</label>
+                <div className="relative">
+                  <select 
+                    value={make} 
+                    onChange={(e) => setMake(e.target.value)}
+                    className="w-full h-14 bg-white/80 border border-brand-border rounded-2xl px-5 text-sm font-medium focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none appearance-none cursor-pointer transition-all hover:bg-white"
+                    required
+                  >
+                    <option value="">Select Make</option>
+                    {makes.sort().map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-gray">
+                    <ChevronRight size={16} className="rotate-90" />
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gray ml-1">Model</label>
+              <div className="space-y-3">
+                <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-primary ml-1">Model</label>
                 <input 
                   type="text" 
                   placeholder="e.g. RAV4"
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
-                  className="w-full h-12 bg-white border border-brand-border rounded-xl px-4 text-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                  className="w-full h-14 bg-white/80 border border-brand-border rounded-2xl px-5 text-sm font-medium focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none transition-all hover:bg-white placeholder:text-gray-300"
                   required
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gray ml-1">Year</label>
+              <div className="space-y-3">
+                <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-primary ml-1">Year</label>
                 <input 
                   type="number" 
                   placeholder="YYYY"
@@ -416,7 +436,7 @@ const CompatibilityChecker = () => {
                   max="2026"
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
-                  className="w-full h-12 bg-white border border-brand-border rounded-xl px-4 text-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                  className="w-full h-14 bg-white/80 border border-brand-border rounded-2xl px-5 text-sm font-medium focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none transition-all hover:bg-white placeholder:text-gray-300"
                   required
                 />
               </div>
@@ -424,13 +444,13 @@ const CompatibilityChecker = () => {
                 <button 
                   type="submit"
                   disabled={result === 'checking'}
-                  className="w-full h-12 bg-brand-primary text-white rounded-xl font-bold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 group shadow-premium"
+                  className="w-full h-14 bg-brand-primary text-white rounded-2xl font-bold text-sm hover:translate-y-[-2px] hover:shadow-xl hover:shadow-brand-primary/20 active:translate-y-0 transition-all flex items-center justify-center gap-3 group disabled:opacity-70"
                 >
                   {result === 'checking' ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
                     <>
-                      Verify Fit <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      Verify Compatibility <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </button>
@@ -440,35 +460,38 @@ const CompatibilityChecker = () => {
             <AnimatePresence mode="wait">
               {result === 'compatible' && (
                 <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white/80 backdrop-blur-sm border border-green-200 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6"
+                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-[28px] p-8 flex flex-col md:flex-row items-center gap-8 shadow-sm"
                 >
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 shrink-0">
-                    <CheckCircle2 size={24} />
+                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-green-600 shrink-0 shadow-sm border border-green-100">
+                    <CheckCircle2 size={32} />
                   </div>
-                  <div className="text-center md:text-left space-y-1">
-                    <h4 className="font-bold text-brand-dark">Perfect Fit Found: {year} {make} {model}</h4>
-                    <p className="text-sm text-brand-gray">
-                      Sentinel X integrates with your vehicle's standard 12V/USB power architecture. Our universal adhesive mount is optimized for your windshield's incline.
+                  <div className="text-center md:text-left space-y-2">
+                    <h4 className="text-xl font-bold text-brand-dark">Perfect Fit Found: {year} {make} {model}</h4>
+                    <p className="text-brand-gray leading-relaxed">
+                      Sentinel X integrates with your vehicle's architecture. Our universal adhesive mount is optimized for your windshield's incline.
                     </p>
                   </div>
                   <div className="md:ml-auto">
-                    <a href="#reserve" className="inline-block bg-brand-primary text-white px-6 py-2.5 rounded-full text-xs font-bold hover:scale-105 transition-transform whitespace-nowrap">
-                      Claim Batch 01 Spot
+                    <a href="#reserve" className="inline-flex items-center gap-2 bg-brand-primary text-white px-8 py-3.5 rounded-full text-sm font-bold hover:scale-105 transition-transform whitespace-nowrap shadow-lg shadow-brand-primary/10">
+                      Reserve Batch 01 <ChevronRight size={16} />
                     </a>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
             
-            <div className="mt-8 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-              <span className="text-[10px] font-bold tracking-widest uppercase">Universal OBD-II Support</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase">USB-C Power Standard</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase">No-Trace Mounting</span>
+            <div className="mt-12 flex flex-wrap justify-center gap-10 opacity-50">
+              {["Universal OBD-II", "USB-C Standard", "No-Trace Mounting"].map((feat, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
+                  <span className="text-[11px] font-bold tracking-widest uppercase text-brand-dark">{feat}</span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -499,17 +522,19 @@ const ComparisonSection = () => {
               <tr className="border-b border-brand-border bg-brand-bg">
                 <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-gray">Feature</th>
                 <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-gray">Generic Dash Cam</th>
-                <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-primary">Astrateq</th>
+                <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-primary bg-brand-primary/[0.03]">Astrateq</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
-                <tr key={i} className="border-b border-brand-border last:border-0 hover:bg-brand-bg transition-colors">
+                <tr key={i} className="border-b border-brand-border last:border-0 hover:bg-brand-bg transition-colors group">
                   <td className="p-8 font-medium text-brand-dark">{row.label}</td>
                   <td className="p-8 text-brand-gray">{row.generic}</td>
-                  <td className="p-8 text-brand-primary font-bold flex items-center gap-2">
-                    <CheckCircle2 size={18} />
-                    {row.astrateq}
+                  <td className="p-8 text-brand-primary font-bold bg-brand-primary/[0.03] group-hover:bg-brand-primary/[0.06] transition-colors">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 size={18} />
+                      {row.astrateq}
+                    </div>
                   </td>
                 </tr>
               ))}
