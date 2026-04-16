@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, ReactNode, FormEvent } from 'react';
 import { 
   ShieldCheck, 
   Zap, 
@@ -25,7 +25,8 @@ import {
   FileText,
   Info,
   Truck,
-  Heart
+  Heart,
+  Car
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -328,6 +329,130 @@ const ValuationZone = () => {
             title="Winter-Tested"
             description="Optimized for Alberta/Ontario conditions. Glare reduction for low-sun winter driving."
           />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CompatibilityChecker = () => {
+  const [make, setMake] = useState('');
+  const [model, setModel] = useState('');
+  const [year, setYear] = useState('');
+  const [result, setResult] = useState<'none' | 'checking' | 'compatible'>('none');
+
+  const makes = ["Toyota", "Honda", "Ford", "Chevrolet", "Tesla", "BMW", "Audi", "Mercedes-Benz", "Hyundai", "Kia", "Subaru", "Volkswagen", "Lexus", "Mazda", "Volvo", "Dodge", "Ram", "Jeep", "Nissan"];
+  
+  const handleCheck = (e: FormEvent) => {
+    e.preventDefault();
+    setResult('checking');
+    setTimeout(() => {
+      setResult('compatible');
+    }, 1500);
+  };
+
+  return (
+    <section className="py-24 bg-white" id="compatibility">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-brand-bg rounded-[32px] p-8 md:p-16 border border-brand-border shadow-premium relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px] -mr-32 -mt-32" />
+          
+          <div className="relative z-10">
+            <div className="text-center mb-12 space-y-4">
+              <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Car className="text-brand-primary" size={32} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Vehicle Compatibility</h2>
+              <p className="text-brand-gray max-w-lg mx-auto">
+                The Sentinel X is a universal AI safety companion. Use the tool below to verify integration with your specific primary vehicle.
+              </p>
+            </div>
+
+            <form onSubmit={handleCheck} className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gray ml-1">Make</label>
+                <select 
+                  value={make} 
+                  onChange={(e) => setMake(e.target.value)}
+                  className="w-full h-12 bg-white border border-brand-border rounded-xl px-4 text-sm focus:ring-1 focus:ring-brand-primary outline-none appearance-none cursor-pointer"
+                  required
+                >
+                  <option value="">Select Make</option>
+                  {makes.sort().map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gray ml-1">Model</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. RAV4"
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
+                  className="w-full h-12 bg-white border border-brand-border rounded-xl px-4 text-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gray ml-1">Year</label>
+                <input 
+                  type="number" 
+                  placeholder="YYYY"
+                  min="1990"
+                  max="2026"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                  className="w-full h-12 bg-white border border-brand-border rounded-xl px-4 text-sm focus:ring-1 focus:ring-brand-primary outline-none"
+                  required
+                />
+              </div>
+              <div className="flex items-end">
+                <button 
+                  type="submit"
+                  disabled={result === 'checking'}
+                  className="w-full h-12 bg-brand-primary text-white rounded-xl font-bold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 group shadow-premium"
+                >
+                  {result === 'checking' ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Verify Fit <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+
+            <AnimatePresence mode="wait">
+              {result === 'compatible' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white/80 backdrop-blur-sm border border-green-200 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6"
+                >
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 shrink-0">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <div className="text-center md:text-left space-y-1">
+                    <h4 className="font-bold text-brand-dark">Perfect Fit Found: {year} {make} {model}</h4>
+                    <p className="text-sm text-brand-gray">
+                      Sentinel X integrates with your vehicle's standard 12V/USB power architecture. Our universal adhesive mount is optimized for your windshield's incline.
+                    </p>
+                  </div>
+                  <div className="md:ml-auto">
+                    <a href="#reserve" className="inline-block bg-brand-primary text-white px-6 py-2.5 rounded-full text-xs font-bold hover:scale-105 transition-transform whitespace-nowrap">
+                      Claim Batch 01 Spot
+                    </a>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            <div className="mt-8 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+              <span className="text-[10px] font-bold tracking-widest uppercase">Universal OBD-II Support</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">USB-C Power Standard</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">No-Trace Mounting</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1051,6 +1176,7 @@ export default function App() {
       <TrustBanner />
       <EmotionalNarrative />
       <ValuationZone />
+      <CompatibilityChecker />
       <ComparisonSection />
       <Testimonials />
       <section className="py-24" id="box">
