@@ -499,48 +499,106 @@ const CompatibilityChecker = () => {
 
 const ComparisonSection = () => {
   const rows = [
-    { label: "Subscription Fees", generic: "Monthly ($15-$30)", astrateq: "Zero" },
-    { label: "Cloud Storage", generic: "Required", astrateq: "Local Only" },
-    { label: "Setup Difficulty", generic: "Professional Needed", astrateq: "Plug-and-Play" },
-    { label: "Design Focus", generic: "Generic/Mass Market", astrateq: "Built for Canada" },
-    { label: "Aging Driver UX", generic: "Complex App-First", astrateq: "Audio/Awareness-First" },
+    { label: "Subscription Fees", generic: "Monthly ($15-$30)", astrateq: "Zero", detail: "Lifetime AI updates included" },
+    { label: "Data Management", generic: "Cloud Based", astrateq: "100% Local", detail: "Privacy-first NPU processing" },
+    { label: "Installation", generic: "Professional Required", astrateq: "DIY Ready", detail: "Universal 5-minute setup" },
+    { label: "Canadian Climate", generic: "Mass Market", astrateq: "Pure Winter", detail: "Tested at -30°C across Canada" },
+    { label: "Hazard Alerts", generic: "Standard Visual", astrateq: "AI Audio-Guided", detail: "Calibrated for icy road cues" },
   ];
 
   return (
-    <section className="py-24 bg-brand-bg rounded-apple-card mx-4 sm:mx-8 mb-24 overflow-hidden relative border border-brand-border" id="comparison">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-primary/5 blur-[100px] pointer-events-none" />
+    <section className="py-32 relative overflow-hidden" id="comparison">
+      {/* Dynamic Background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[#fbfbfd]" />
+      <div className="absolute -top-24 right-0 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-cyan/5 rounded-full blur-[100px] pointer-events-none" />
       
-      <div className="max-w-5xl mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Not Just Another Dash Cam</h2>
-          <p className="text-brand-gray">A purpose-built safety tool, not a tech toy.</p>
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-20 space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-[0.2em]"
+          >
+            <ShieldCheck size={14} /> Competitive Analysis
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-brand-dark">
+            Safety, <span className="text-brand-primary">Recalibrated.</span>
+          </h2>
+          <p className="text-brand-gray text-lg max-w-2xl mx-auto leading-relaxed">
+            Standard dash cams watch the road. Astrateq <span className="font-semibold text-brand-dark">understands</span> it. We've built the Sentinel X to outperform generic alternatives in the toughest Canadian conditions.
+          </p>
         </div>
 
-        <div className="overflow-x-auto bg-white rounded-3xl border border-brand-border shadow-premium">
-          <table className="w-full text-left border-collapse min-w-[600px]">
-            <thead>
-              <tr className="border-b border-brand-border bg-brand-bg">
-                <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-gray">Feature</th>
-                <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-gray">Generic Dash Cam</th>
-                <th className="p-8 text-sm font-bold uppercase tracking-widest text-brand-primary bg-brand-primary/[0.03]">Astrateq</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, i) => (
-                <tr key={i} className="border-b border-brand-border last:border-0 hover:bg-brand-bg transition-colors group">
-                  <td className="p-8 font-medium text-brand-dark">{row.label}</td>
-                  <td className="p-8 text-brand-gray">{row.generic}</td>
-                  <td className="p-8 text-brand-primary font-bold bg-brand-primary/[0.03] group-hover:bg-brand-primary/[0.06] transition-colors">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 size={18} />
-                      {row.astrateq}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/70 backdrop-blur-2xl rounded-[48px] border border-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden"
+        >
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[800px]">
+              <thead>
+                <tr>
+                  <th className="p-10 text-xs font-bold uppercase tracking-[0.25em] text-brand-gray/60 w-1/3">Engineering Specs</th>
+                  <th className="p-10 text-xs font-bold uppercase tracking-[0.25em] text-brand-gray/60 w-1/3 text-center">Standard Market</th>
+                  <th className="p-10 text-xs font-bold uppercase tracking-[0.25em] text-brand-primary w-1/3 text-center relative">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-primary text-white rounded-b-xl shadow-lg shadow-brand-primary/20 whitespace-nowrap">
+                      THE ASTRATEQ EDGE
                     </div>
-                  </td>
+                    SENTINEL X
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {rows.map((row, i) => (
+                  <motion.tr 
+                    key={i} 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="group"
+                  >
+                    <td className="p-10">
+                      <div className="space-y-1">
+                        <p className="font-bold text-lg text-brand-dark group-hover:text-brand-primary transition-colors">{row.label}</p>
+                        <p className="text-xs text-brand-gray italic">{row.detail}</p>
+                      </div>
+                    </td>
+                    <td className="p-10 text-center">
+                      <span className="inline-flex items-center px-4 py-2 rounded-xl bg-gray-50 text-gray-400 font-medium text-sm">
+                        {row.generic}
+                      </span>
+                    </td>
+                    <td className="p-10 text-center relative bg-brand-primary/[0.02]">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-inner">
+                          <CheckCircle2 size={24} />
+                        </div>
+                        <span className="font-bold text-brand-primary text-lg">{row.astrateq}</span>
+                      </div>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="p-10 bg-brand-dark text-white flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex items-center gap-6">
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-brand-cyan">
+                <Lock size={28} />
+              </div>
+              <div className="space-y-1 text-center md:text-left">
+                <p className="font-bold truncate">Risk-Free Priority Reservation</p>
+                <p className="text-sm text-white/60">Fully refundable $25 deposit secures Batch 01 Pricing.</p>
+              </div>
+            </div>
+            <a href="#reserve" className="px-10 py-5 bg-white text-brand-dark rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-3 shadow-xl">
+              Reserve My Unit <ArrowUp className="rotate-45" size={18} />
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -550,14 +608,14 @@ const FAQItem = ({ question, answer }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className="border-b border-brand-border">
+    <div className={`rounded-2xl transition-all duration-300 ${isOpen ? 'bg-white shadow-xl scale-[1.02] border-brand-primary/20' : 'bg-white/50 border-brand-border hover:bg-white'} border p-2 mb-4`}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left py-6 flex justify-between items-center group"
+        className="w-full text-left p-6 flex justify-between items-center group"
       >
-        <span className="text-lg font-bold text-brand-dark group-hover:text-brand-primary transition-colors">{question}</span>
-        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
-          <Plus size={20} className="text-brand-gray" />
+        <span className={`text-lg font-bold transition-colors ${isOpen ? 'text-brand-primary' : 'text-brand-dark'} group-hover:text-brand-primary`}>{question}</span>
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-brand-primary text-white rotate-45' : 'bg-brand-primary/10 text-brand-primary'}`}>
+          <Plus size={18} />
         </div>
       </button>
       <AnimatePresence>
@@ -568,7 +626,7 @@ const FAQItem = ({ question, answer }: any) => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-brand-gray leading-relaxed max-w-2xl">{answer}</p>
+            <p className="px-6 pb-6 text-brand-gray leading-relaxed">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -1325,30 +1383,49 @@ export default function App() {
 
       <PreLaunchTransparency />
       
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center tracking-tight">Frequently Asked Questions</h2>
-          <div className="space-y-2">
+      <section className="py-24 bg-brand-bg relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent" />
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Got Questions?</h2>
+            <p className="text-brand-gray text-lg">Everything you need to know about the Astrateq Sentinel X.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-x-8 gap-y-2 max-w-6xl mx-auto">
             <FAQItem 
               question="Is the $25 really refundable?"
-              answer="Yes, 100%. If you change your mind for any reason before we ship, just email our support team and you'll see a refund in 3-5 business days. No hoops to jump through."
+              answer="Yes, 100%. If you change your mind for any reason before we ship, just email our support team and you'll see a refund in 3-5 business days."
             />
             <FAQItem 
-              question="When will I receive my Astrateq unit?"
-              answer="Currently, we are finalize our first production roadmap. You will receive regular status updates via email about the batch progress and estimated fulfillment timelines."
+              question="When will I receive my unit?"
+              answer="Currently, we are finalizing our production roadmap. You will receive regular status updates about batch progress and shipping timelines."
             />
             <FAQItem 
-              question="Do I need a monthly subscription?"
-              answer="No. Unlike generic dash cams that charge monthly for 'premium cloud features', Astrateq processes everything locally. You own your data and your device with no hidden fees."
+              question="Is there a monthly fee?"
+              answer="No. Astrateq processes everything locally. You own your data and your device with zero hidden monthly subscription fees."
             />
             <FAQItem 
-              question="Does it record audio inside the car?"
-              answer="Privacy is our core pillar. The Astra-Guard does NOT record cabin audio or video by default. It is strictly a road-facing awareness tool designed for safety, not surveillance."
+              question="Does it record cabin audio?"
+              answer="Privacy is our core pillar. The Sentinel X does NOT record cabin audio or video by default. It is strictly road-facing."
             />
             <FAQItem 
-              question="Will it survive a Canadian winter?"
-              answer="We've tested our mount and processor at Alberta temperatures (-30°C). Our static adhesive is specifically designed to stay bonded during extreme temperature fluctuations."
+              question="Alberta winter safe?"
+              answer="Tested at -30°C. Our specific static adhesive is designed to stay bonded during extreme temperature fluctuations."
             />
+            <FAQItem 
+              question="Can I install it myself?"
+              answer="Yes. It takes less than 5 minutes. Use our universal mount, route the cable through your trim, and plug into power."
+            />
+          </div>
+
+          <div className="mt-16 text-center">
+             <div className="inline-flex flex-col items-center p-8 bg-white rounded-3xl border border-brand-border shadow-premium">
+                <p className="text-brand-dark font-bold mb-4 font-display">Still have questions?</p>
+                <div className="flex gap-4">
+                  <button className="px-6 py-2 bg-brand-primary text-white rounded-full text-sm font-bold hover:scale-105 transition-transform shadow-lg shadow-brand-primary/20">Chat with us</button>
+                  <button className="px-6 py-2 border border-brand-border text-brand-dark rounded-full text-sm font-bold hover:bg-brand-bg transition-colors">Contact Support</button>
+                </div>
+             </div>
           </div>
         </div>
       </section>
