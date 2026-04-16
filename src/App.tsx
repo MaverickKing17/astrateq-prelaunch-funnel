@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   ShieldCheck, 
   Zap, 
@@ -20,7 +20,8 @@ import {
   Facebook,
   Twitter,
   Instagram,
-  Youtube
+  Youtube,
+  ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -660,6 +661,47 @@ const Footer = () => {
   );
 };
 
+const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 400) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          onClick={scrollToTop}
+          className="fixed bottom-44 md:bottom-24 right-6 z-[60] w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-brand-primary/90 hover:scale-110 active:scale-95 transition-all outline-none ring-4 ring-brand-primary/20"
+          title="Back to Top"
+        >
+          <ArrowUp size={24} strokeWidth={3} />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([]);
@@ -870,6 +912,7 @@ export default function App() {
       
       <Footer />
       <ChatWidget />
+      <ScrollToTop />
       
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
         <a href="#reserve" className="flex items-center justify-center w-full bg-brand-primary text-white py-4 rounded-apple-btn font-bold shadow-2xl hover:bg-brand-primary/90 transition-colors">
