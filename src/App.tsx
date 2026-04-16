@@ -485,10 +485,20 @@ const PreLaunchTransparency = () => {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-8"
                 >
-                  <div className="bg-red-50 border border-red-100 p-3 rounded-lg flex justify-between items-center mb-6">
-                    <span className="text-[13px] text-[#991b1b] font-bold">82% of Early Bird spots claimed</span>
-                    <div className="w-24 h-1.5 bg-red-100 rounded-full overflow-hidden">
-                      <div className="w-[82%] h-full bg-[#ef4444]" />
+                  <div className="space-y-4">
+                    <div className="bg-red-50 border border-red-100 p-3 rounded-lg flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-[13px] text-[#991b1b] font-bold">82% of Batch 01 spots claimed</span>
+                      </div>
+                      <div className="w-24 h-1.5 bg-red-100 rounded-full overflow-hidden">
+                        <div className="w-[82%] h-full bg-[#ef4444]" />
+                      </div>
+                    </div>
+                    
+                    <div className="bg-brand-primary/5 border border-brand-primary/10 p-3 rounded-lg flex items-center justify-between">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-brand-primary">Early Bird Bonus</span>
+                      <span className="text-[11px] text-brand-dark font-medium italic">Lifetime Premium App Access Included</span>
                     </div>
                   </div>
 
@@ -499,11 +509,13 @@ const PreLaunchTransparency = () => {
                     </div>
                     <div className="flex items-center gap-2 text-[13px] text-[#008000] font-semibold">
                       <CheckCircle2 size={14} />
-                      <span>Fully refundable deposit</span>
+                      <span>Priority Rank #842</span>
+                      <span className="text-brand-gray font-normal opacity-40">|</span>
+                      <span>Secure Refundable Deposit</span>
                     </div>
                   </div>
                   
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-4 relative">
                     <div className="form-group">
                       <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Email Address</label>
                       <input 
@@ -531,13 +543,26 @@ const PreLaunchTransparency = () => {
                           Processing...
                         </>
                       ) : (
-                        "Secure My Priority Spot"
+                        "Secure My Priority Rank"
                       )}
                     </button>
+                    
+                    <p className="text-center text-[10px] text-brand-gray mt-4 font-medium uppercase tracking-widest">
+                      Next production batch prices will increase by $50
+                    </p>
                   </form>
                   
-                  <div className="pt-6 border-t border-brand-border">
-                    <div className="flex items-center justify-between mb-4">
+                  <div className="pt-6 border-t border-brand-border space-y-4">
+                    <div className="bg-gray-50 p-3 rounded-lg flex items-center gap-3">
+                      <div className="flex -space-x-1.5 font-bold">
+                        <div className="w-6 h-6 rounded-full bg-brand-primary/10 border border-white flex items-center justify-center text-[8px] text-brand-primary">JM</div>
+                        <div className="w-6 h-6 rounded-full bg-brand-primary/10 border border-white flex items-center justify-center text-[8px] text-brand-primary">SA</div>
+                        <div className="w-6 h-6 rounded-full bg-brand-primary/10 border border-white flex items-center justify-center text-[8px] text-brand-primary">KL</div>
+                      </div>
+                      <p className="text-[11px] text-brand-dark font-semibold">3 reservations placed in the last hour from <span className="text-brand-primary">Vancouver, BC</span></p>
+                    </div>
+
+                    <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold text-brand-gray uppercase tracking-widest">Transaction Security</span>
                       <div className="flex items-center gap-4 grayscale opacity-60">
                          <div className="font-bold text-[10px] border border-brand-dark px-1.5 py-0.5 rounded italic">STRIPE</div>
@@ -545,9 +570,6 @@ const PreLaunchTransparency = () => {
                          <div className="text-[10px] font-bold flex items-center gap-1"><Lock size={12} /> SSL</div>
                       </div>
                     </div>
-                    <p className="text-[11px] text-brand-gray leading-normal">
-                      Reservations are processed via Stripe for 100% security. You retain full control: refunds are available 24/7 via our support portal until your order ships.
-                    </p>
                   </div>
                 </motion.div>
               ) : (
