@@ -407,6 +407,19 @@ const FAQItem = ({ question, answer }: any) => {
 }
 
 const PreLaunchTransparency = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Simulate API/Stripe call
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+    }, 2000);
+  };
+
   return (
     <section className="py-24 bg-[#fbfbfd]" id="reserve">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -449,59 +462,126 @@ const PreLaunchTransparency = () => {
             </div>
           </div>
           
-          <div className="bg-white p-10 rounded-apple-card shadow-premium border border-brand-border space-y-8 relative overflow-hidden">
-            <div className="bg-red-50 border border-red-100 p-3 rounded-lg flex justify-between items-center mb-6">
-              <span className="text-[13px] text-[#991b1b] font-bold">82% of Early Bird spots claimed</span>
-              <div className="w-24 h-1.5 bg-red-100 rounded-full overflow-hidden">
-                <div className="w-[82%] h-full bg-[#ef4444]" />
-              </div>
-            </div>
+          <div className="bg-white p-10 rounded-apple-card shadow-premium border border-brand-border space-y-8 relative overflow-hidden min-h-[580px] flex flex-col justify-center">
+            <AnimatePresence mode="wait">
+              {!isSubmitted ? (
+                <motion.div
+                  key="form"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-8"
+                >
+                  <div className="bg-red-50 border border-red-100 p-3 rounded-lg flex justify-between items-center mb-6">
+                    <span className="text-[13px] text-[#991b1b] font-bold">82% of Early Bird spots claimed</span>
+                    <div className="w-24 h-1.5 bg-red-100 rounded-full overflow-hidden">
+                      <div className="w-[82%] h-full bg-[#ef4444]" />
+                    </div>
+                  </div>
 
-            <div>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-[40px] font-bold leading-none">$25.00</span>
-                <span className="text-base font-medium text-brand-gray uppercase">CAD</span>
-              </div>
-              <div className="flex items-center gap-2 text-[13px] text-[#008000] font-semibold">
-                <CheckCircle2 size={14} />
-                <span>Fully refundable deposit</span>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="form-group">
-                <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Email Address</label>
-                <input 
-                  type="email" 
-                  placeholder="name@email.com"
-                  className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-dark bg-white focus:ring-1 focus:ring-brand-primary outline-none"
-                />
-              </div>
-              <div className="form-group">
-                <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Reservation Type</label>
-                <div className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-gray bg-gray-50/50">
-                  Sentinel X (Early Bird Bundle)
-                </div>
-              </div>
-            </div>
-            
-            <button className="w-full bg-brand-primary text-white py-5 rounded-apple-btn font-bold text-lg hover:opacity-90 active:scale-[0.99] transition-all shadow-premium">
-              Secure My Priority Spot
-            </button>
-            
-            <div className="pt-6 border-t border-brand-border">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-bold text-brand-gray uppercase tracking-widest">Transaction Security</span>
-                <div className="flex items-center gap-4 grayscale opacity-60">
-                   <div className="font-bold text-[10px] border border-brand-dark px-1.5 py-0.5 rounded italic">STRIPE</div>
-                   <div className="text-[10px] font-bold flex items-center gap-1"><ShieldCheck size={12} /> PCI-DSS</div>
-                   <div className="text-[10px] font-bold flex items-center gap-1"><Lock size={12} /> SSL</div>
-                </div>
-              </div>
-              <p className="text-[11px] text-brand-gray leading-normal">
-                Reservations are processed via Stripe for 100% security. You retain full control: refunds are available 24/7 via our support portal until your order ships.
-              </p>
-            </div>
+                  <div>
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <span className="text-[40px] font-bold leading-none">$25.00</span>
+                      <span className="text-base font-medium text-brand-gray uppercase">CAD</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[13px] text-[#008000] font-semibold">
+                      <CheckCircle2 size={14} />
+                      <span>Fully refundable deposit</span>
+                    </div>
+                  </div>
+                  
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="form-group">
+                      <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Email Address</label>
+                      <input 
+                        type="email" 
+                        required
+                        placeholder="name@email.com"
+                        className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-dark bg-white focus:ring-1 focus:ring-brand-primary outline-none"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Reservation Type</label>
+                      <div className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-gray bg-gray-50/50">
+                        Sentinel X (Early Bird Bundle)
+                      </div>
+                    </div>
+
+                    <button 
+                      type="submit"
+                      disabled={isLoading}
+                      className="w-full bg-brand-primary text-white py-5 rounded-apple-btn font-bold text-lg hover:opacity-90 active:scale-[0.99] transition-all shadow-premium disabled:opacity-70 flex items-center justify-center gap-3"
+                    >
+                      {isLoading ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Processing...
+                        </>
+                      ) : (
+                        "Secure My Priority Spot"
+                      )}
+                    </button>
+                  </form>
+                  
+                  <div className="pt-6 border-t border-brand-border">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[10px] font-bold text-brand-gray uppercase tracking-widest">Transaction Security</span>
+                      <div className="flex items-center gap-4 grayscale opacity-60">
+                         <div className="font-bold text-[10px] border border-brand-dark px-1.5 py-0.5 rounded italic">STRIPE</div>
+                         <div className="text-[10px] font-bold flex items-center gap-1"><ShieldCheck size={12} /> PCI-DSS</div>
+                         <div className="text-[10px] font-bold flex items-center gap-1"><Lock size={12} /> SSL</div>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-brand-gray leading-normal">
+                      Reservations are processed via Stripe for 100% security. You retain full control: refunds are available 24/7 via our support portal until your order ships.
+                    </p>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center space-y-8"
+                >
+                  <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 size={40} />
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-3xl font-bold tracking-tight">Reservation Secured</h3>
+                    <p className="text-brand-gray leading-relaxed max-w-sm mx-auto">
+                      Welcome to the batch order, Alex! We've sent a detailed confirmation and receipt to your email.
+                    </p>
+                  </div>
+                  <div className="bg-brand-bg rounded-2xl p-6 text-left border border-brand-border">
+                    <div className="flex items-center gap-4 mb-4">
+                      <Clock size={20} className="text-brand-primary" />
+                      <span className="text-sm font-bold uppercase tracking-widest text-brand-dark">What's Next?</span>
+                    </div>
+                    <ul className="space-y-3 text-sm text-brand-gray">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 shrink-0" />
+                        Priority production queue position locked.
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 shrink-0" />
+                        Behind-the-scenes engineering updates monthly.
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 shrink-0" />
+                        Shipping address request in Spring 2025.
+                      </li>
+                    </ul>
+                  </div>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="text-sm font-bold text-brand-primary hover:underline"
+                  >
+                    Register another vehicle
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
@@ -569,7 +649,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brand-gray font-medium">
-          <p>© 2026 SafeGuard Sentinel. All rights reserved.</p>
+          <p>© 2026 Astrateq Gadgets. All rights reserved.</p>
           <div className="flex gap-6">
             <span className="flex items-center gap-1"><ShieldCheck size={12} /> Secure Stripe Payments</span>
             <span className="flex items-center gap-1"><Globe size={12} /> Canadian Founded</span>
