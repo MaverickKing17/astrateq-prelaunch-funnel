@@ -140,8 +140,8 @@ const Hero = () => {
           >
             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100">
               <img 
-                src="https://picsum.photos/seed/dashcam-main/1200/800" 
-                alt="Astrateq Astra-Guard AI Dashcam" 
+                src="https://i.ibb.co/FqjR2nbr/gemini-3-1-flash-image-preview-nano-banana-2-b-Prompt-A-high-end-1.png" 
+                alt="Astrateq Sentinel X AI hardware" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -149,7 +149,7 @@ const Hero = () => {
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-white text-sm font-medium tracking-wide">ASTRA-GUARD: AI ACTIVE</span>
+                    <span className="text-white text-sm font-medium tracking-wide uppercase">SENTINEL X: ACTIVE PROTECTION</span>
                   </div>
                 </div>
               </div>
@@ -608,14 +608,14 @@ const FAQItem = ({ question, answer }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className={`rounded-2xl transition-all duration-300 ${isOpen ? 'bg-white shadow-xl scale-[1.02] border-brand-primary/20' : 'bg-white/50 border-brand-border hover:bg-white'} border p-2 mb-4`}>
+    <div className="border-b border-brand-border">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left p-6 flex justify-between items-center group"
+        className="w-full text-left py-6 flex justify-between items-center group"
       >
-        <span className={`text-lg font-bold transition-colors ${isOpen ? 'text-brand-primary' : 'text-brand-dark'} group-hover:text-brand-primary`}>{question}</span>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-brand-primary text-white rotate-45' : 'bg-brand-primary/10 text-brand-primary'}`}>
-          <Plus size={18} />
+        <span className="text-lg font-bold text-brand-dark group-hover:text-brand-primary transition-colors">{question}</span>
+        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+          <Plus size={20} className="text-brand-gray" />
         </div>
       </button>
       <AnimatePresence>
@@ -626,7 +626,7 @@ const FAQItem = ({ question, answer }: any) => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <p className="px-6 pb-6 text-brand-gray leading-relaxed">{answer}</p>
+            <p className="pb-6 text-brand-gray leading-relaxed max-w-2xl">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -1383,49 +1383,30 @@ export default function App() {
 
       <PreLaunchTransparency />
       
-      <section className="py-24 bg-brand-bg relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Got Questions?</h2>
-            <p className="text-brand-gray text-lg">Everything you need to know about the Astrateq Sentinel X.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-x-8 gap-y-2 max-w-6xl mx-auto">
+      <section className="py-24">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center tracking-tight">Frequently Asked Questions</h2>
+          <div className="space-y-2">
             <FAQItem 
               question="Is the $25 really refundable?"
-              answer="Yes, 100%. If you change your mind for any reason before we ship, just email our support team and you'll see a refund in 3-5 business days."
+              answer="Yes, 100%. If you change your mind for any reason before we ship, just email our support team and you'll see a refund in 3-5 business days. No hoops to jump through."
             />
             <FAQItem 
-              question="When will I receive my unit?"
-              answer="Currently, we are finalizing our production roadmap. You will receive regular status updates about batch progress and shipping timelines."
+              question="When will I receive my Astrateq unit?"
+              answer="Currently, we are finalize our first production roadmap. You will receive regular status updates via email about the batch progress and estimated fulfillment timelines."
             />
             <FAQItem 
-              question="Is there a monthly fee?"
-              answer="No. Astrateq processes everything locally. You own your data and your device with zero hidden monthly subscription fees."
+              question="Do I need a monthly subscription?"
+              answer="No. Unlike generic dash cams that charge monthly for 'premium cloud features', Astrateq processes everything locally. You own your data and your device with no hidden fees."
             />
             <FAQItem 
-              question="Does it record cabin audio?"
-              answer="Privacy is our core pillar. The Sentinel X does NOT record cabin audio or video by default. It is strictly road-facing."
+              question="Does it record audio inside the car?"
+              answer="Privacy is our core pillar. The Astra-Guard does NOT record cabin audio or video by default. It is strictly a road-facing awareness tool designed for safety, not surveillance."
             />
             <FAQItem 
-              question="Alberta winter safe?"
-              answer="Tested at -30°C. Our specific static adhesive is designed to stay bonded during extreme temperature fluctuations."
+              question="Will it survive a Canadian winter?"
+              answer="We've tested our mount and processor at Alberta temperatures (-30°C). Our static adhesive is specifically designed to stay bonded during extreme temperature fluctuations."
             />
-            <FAQItem 
-              question="Can I install it myself?"
-              answer="Yes. It takes less than 5 minutes. Use our universal mount, route the cable through your trim, and plug into power."
-            />
-          </div>
-
-          <div className="mt-16 text-center">
-             <div className="inline-flex flex-col items-center p-8 bg-white rounded-3xl border border-brand-border shadow-premium">
-                <p className="text-brand-dark font-bold mb-4 font-display">Still have questions?</p>
-                <div className="flex gap-4">
-                  <button className="px-6 py-2 bg-brand-primary text-white rounded-full text-sm font-bold hover:scale-105 transition-transform shadow-lg shadow-brand-primary/20">Chat with us</button>
-                  <button className="px-6 py-2 border border-brand-border text-brand-dark rounded-full text-sm font-bold hover:bg-brand-bg transition-colors">Contact Support</button>
-                </div>
-             </div>
           </div>
         </div>
       </section>
