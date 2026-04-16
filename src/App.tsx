@@ -15,7 +15,8 @@ import {
   Globe,
   Clock,
   Menu,
-  X
+  X,
+  MessageCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -397,7 +398,7 @@ const PreLaunchTransparency = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-20 border-t border-gray-100">
+    <footer className="py-20 border-t border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
           <div className="space-y-4 max-w-xs">
@@ -445,6 +446,132 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+  );
+};
+
+const ChatWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = { role: 'user' as const, content: input };
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map(m => ({ role: m.role, content: m.content }))
+        }),
+      });
+
+      const data = await response.json();
+      if (data.message) {
+        setMessages(prev => [...prev, { role: 'assistant', content: data.message }]);
+      } else {
+        throw new Error('Invalid response');
+      }
+    } catch (error) {
+      console.error('Chat Error:', error);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to support right now. Please try again later." }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed bottom-24 md:bottom-6 right-6 z-[60]">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="mb-4 w-[350px] bg-white rounded-3xl shadow-2xl border border-brand-border overflow-hidden flex flex-col h-[500px]"
+          >
+            <div className="bg-brand-primary p-6 text-white">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="font-bold text-lg">Support Agent</h3>
+                  <div className="flex items-center gap-2 text-xs opacity-80">
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                    Online
+                  </div>
+                </div>
+                <button onClick={() => setIsOpen(false)} className="hover:opacity-70">
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.length === 0 && (
+                <div className="text-center py-8">
+                  <div className="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mx-auto mb-4 text-brand-primary">
+                    <MessageCircle size={24} />
+                  </div>
+                  <p className="text-sm text-brand-gray font-medium">Hi! Have any questions about the Sentinel X bundle?</p>
+                </div>
+              )}
+              {messages.map((m, i) => (
+                <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                    m.role === 'user' 
+                      ? 'bg-brand-primary text-white rounded-tr-none' 
+                      : 'bg-brand-bg text-brand-dark rounded-tl-none'
+                  }`}>
+                    {m.content}
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-brand-bg p-3 rounded-2xl rounded-tl-none flex gap-1">
+                    <div className="w-1 h-1 bg-brand-gray rounded-full animate-bounce" />
+                    <div className="w-1 h-1 bg-brand-gray rounded-full animate-bounce delay-100" />
+                    <div className="w-1 h-1 bg-brand-gray rounded-full animate-bounce delay-200" />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="p-4 border-t border-brand-border bg-brand-bg flex gap-2">
+              <input 
+                type="text" 
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                placeholder="Type your message..."
+                className="flex-1 bg-white border border-brand-border rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-primary"
+              />
+              <button 
+                onClick={handleSend}
+                disabled={isLoading}
+                className="w-10 h-10 bg-brand-primary text-white rounded-xl flex items-center justify-center hover:opacity-90 active:scale-95 disabled:opacity-50"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-14 h-14 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all group"
+      >
+        <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+      </button>
+    </div>
   );
 };
 
@@ -530,6 +657,7 @@ export default function App() {
       </section>
       
       <Footer />
+      <ChatWidget />
       
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
         <a href="#reserve" className="flex items-center justify-center w-full bg-brand-primary text-white py-4 rounded-apple-btn font-bold shadow-2xl hover:bg-brand-primary/90 transition-colors">
