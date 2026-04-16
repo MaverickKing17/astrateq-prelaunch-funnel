@@ -198,21 +198,64 @@ const EmotionalNarrative = () => {
 
 const TrustBanner = () => {
   return (
-    <div className="bg-brand-bg/50 border-y border-brand-border py-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
-             <ShieldCheck className="text-brand-dark" size={20} /> ISED CANADA COMPLIANT
-           </div>
-           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
-             <Snowflake className="text-brand-dark" size={20} /> TESTED IN ALBERTA WINTERS
-           </div>
-           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase text-brand-primary/80">
-             <Lock size={20} /> 100% REFUNDABLE DEPOSIT
-           </div>
-           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
-             <ShieldCheck className="text-brand-dark" size={20} /> CSA SAFETY STANDARDS
-           </div>
+    <div className="bg-white border-y border-gray-100 py-10 overflow-hidden relative">
+      {/* Subtle Background Glows */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-24 bg-brand-primary/5 blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-24 bg-brand-cyan/5 blur-[80px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-wrap justify-center lg:justify-between items-center gap-y-10 gap-x-12">
+          <motion.div 
+            whileHover={{ y: -2 }}
+            className="flex items-center gap-4 group cursor-default"
+          >
+            <div className="p-3 rounded-2xl bg-blue-50 text-brand-primary transition-all group-hover:bg-brand-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-primary/20">
+              <ShieldCheck size={24} strokeWidth={2.5} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-primary/60 mb-0.5">Government Approved</span>
+              <span className="font-display font-bold text-base text-brand-dark tracking-tight">ISED Canada Compliant</span>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ y: -2 }}
+            className="flex items-center gap-4 group cursor-default"
+          >
+            <div className="p-3 rounded-2xl bg-cyan-50 text-brand-cyan transition-all group-hover:bg-brand-cyan group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-cyan/20">
+              <Snowflake size={24} strokeWidth={2.5} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-cyan/60 mb-0.5">Reliability Platform</span>
+              <span className="font-display font-bold text-base text-brand-dark tracking-tight">Alberta Winter Tested</span>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ y: -2 }}
+            className="flex items-center gap-4 group cursor-default"
+          >
+            <div className="p-3 rounded-2xl bg-brand-bg text-brand-primary transition-all group-hover:bg-brand-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-primary/20">
+              <Lock size={24} strokeWidth={2.5} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-primary/60 mb-0.5">Financial Safety</span>
+              <span className="font-display font-bold text-base text-brand-dark tracking-tight">100% Refundable Deposit</span>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ y: -2 }}
+            className="flex items-center gap-4 group cursor-default"
+          >
+            <div className="p-3 rounded-2xl bg-brand-dark/5 text-brand-dark transition-all group-hover:bg-brand-dark group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-dark/20">
+              <ShieldCheck size={24} strokeWidth={2.5} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-dark/40 mb-0.5">Safety Verified</span>
+              <span className="font-display font-bold text-base text-brand-dark tracking-tight">CSA Design Standards</span>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
