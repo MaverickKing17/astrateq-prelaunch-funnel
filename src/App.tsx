@@ -509,7 +509,6 @@ const ComparisonSection = () => {
 
   return (
     <section className="py-32 relative overflow-hidden" id="comparison">
-      {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#fbfbfd] to-white pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none -translate-y-1/2" />
       
@@ -599,6 +598,114 @@ const ComparisonSection = () => {
             </a>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const DirectDuelSection = () => {
+  const duels = [
+    {
+      title: "Visual Intelligence",
+      icon: Zap,
+      generic: {
+        label: "Standard 4K/1080p",
+        desc: "Loses details in motion blur. Grainy at night.",
+        status: "Reactive"
+      },
+      sentinel: {
+        label: "Surgical 8K NPU",
+        desc: "Dedicated AI architecture reads plates in active motion.",
+        status: "Proactive"
+      }
+    },
+    {
+      title: "Thermal Reliability",
+      icon: Snowflake,
+      generic: {
+        label: "Market Grade Plastic",
+        desc: "Failed mounts and sensor lag in deep Canadian winter.",
+        status: "Fragile"
+      },
+      sentinel: {
+        label: "Arctic-Spec Alloy",
+        desc: "Bessemer-shroud tested to hold focus at -30°C.",
+        status: "Resilient"
+      }
+    },
+    {
+      title: "Data Sovereignty",
+      icon: Lock,
+      generic: {
+        label: "Cloud-First Portals",
+        desc: "Requires monthly fees. Your private clips stored on servers.",
+        status: "Exposed"
+      },
+      sentinel: {
+        label: "100% Local Guard",
+        desc: "Zero fees. Military-grade encryption stays on device.",
+        status: "Fortified"
+      }
+    }
+  ];
+
+  return (
+    <section className="py-32 bg-brand-bg relative overflow-hidden" id="duel">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-20 space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Direct <span className="text-brand-primary">Duel.</span></h2>
+          <p className="text-brand-gray text-lg max-w-2xl mx-auto">When seconds matter, the engineering gap becomes a safety boundary. See how Sentinel X stacks up against the mass market.</p>
+        </div>
+
+        <div className="space-y-8">
+          {duels.map((duel, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="grid lg:grid-cols-[1fr_auto_1fr] items-center gap-8 lg:gap-0"
+            >
+              {/* Generic Card */}
+              <div className="bg-white/50 border border-brand-border p-10 rounded-3xl lg:rounded-r-none relative group opacity-60 hover:opacity-100 transition-opacity">
+                 <div className="absolute top-0 left-0 px-4 py-1 bg-gray-200 text-gray-500 text-[10px] font-bold uppercase rounded-br-xl">Standard market</div>
+                 <div className="space-y-4">
+                   <h4 className="text-2xl font-bold text-gray-400">{duel.generic.label}</h4>
+                   <p className="text-brand-gray text-sm leading-relaxed">{duel.generic.desc}</p>
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold uppercase tracking-widest italic">{duel.generic.status}</div>
+                 </div>
+              </div>
+
+              {/* VS Divider */}
+              <div className="flex flex-col items-center justify-center z-20">
+                <div className="w-16 h-16 bg-white border-2 border-brand-primary/20 rounded-full flex items-center justify-center shadow-xl mb-4 group">
+                  <duel.icon size={28} className="text-brand-primary group-hover:rotate-12 transition-transform" />
+                </div>
+                <div className="h-full w-px bg-gradient-to-b from-transparent via-brand-border to-transparent hidden lg:block" />
+              </div>
+
+              {/* Sentinel Card */}
+              <div className="bg-white p-10 rounded-3xl lg:rounded-l-none border-2 border-brand-primary shadow-2xl relative overflow-hidden group">
+                 <div className="absolute top-0 right-0 px-4 py-1 bg-brand-primary text-white text-[10px] font-bold uppercase rounded-bl-xl shadow-lg">Sentinel X Edge</div>
+                 <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-brand-primary/5 rounded-full blur-[40px]" />
+                 
+                 <div className="space-y-4 relative z-10">
+                   <h4 className="text-2xl font-bold text-brand-dark group-hover:text-brand-primary transition-colors">{duel.sentinel.label}</h4>
+                   <p className="text-brand-dark font-medium text-sm leading-relaxed">{duel.sentinel.desc}</p>
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-widest">{duel.sentinel.status}</div>
+                 </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-20 text-center">
+           <a href="#reserve" className="inline-flex items-center gap-3 bg-brand-dark text-white px-12 py-5 rounded-full font-bold hover:scale-105 transition-all shadow-2xl group">
+             I've Seen Enough — Secure My Spot <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+           </a>
+        </div>
       </div>
     </section>
   );
@@ -1338,6 +1445,7 @@ export default function App() {
       <ValuationZone />
       <CompatibilityChecker />
       <ComparisonSection />
+      <DirectDuelSection />
       <Testimonials />
       <section className="py-24" id="box">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1345,8 +1453,8 @@ export default function App() {
           <div className="flex flex-col md:flex-row gap-20 items-center">
             <div className="flex-1 space-y-6">
               {[
-                { title: "Astra-Guard AI Unit", desc: "4K Road-facing sensor with local AI processor." },
-                { title: "Easy-Mount System", desc: "Strong suction + static adhesive for Canadian winters." },
+                { title: "Sentinel X 8K Unit", desc: "Surgical 8K Road-facing sensor with local AI NPU." },
+                { title: "Arctic-Spec Mount", desc: "Bessemer-alloy suction + static adhesive for Canadian winters." },
                 { title: "128GB High-Endurance Card", desc: "Pre-installed and optimized for 24/7 loop cycles." },
                 { title: "Universal Power Cable", desc: "Extra-long (4m) designed for seamless, hidden routing." }
               ].map((item, i) => (
