@@ -1389,23 +1389,35 @@ export default function App() {
           <div className="space-y-2">
             <FAQItem 
               question="Is the $25 really refundable?"
-              answer="Yes, 100%. If you change your mind for any reason before we ship, just email our support team and you'll see a refund in 3-5 business days. No hoops to jump through."
+              answer="Yes, 100%. If you change your mind for any reason before we ship, just email our support team and you'll see a refund via Stripe in 3-5 business days. No questions asked."
             />
             <FAQItem 
-              question="When will I receive my Astrateq unit?"
-              answer="Currently, we are finalize our first production roadmap. You will receive regular status updates via email about the batch progress and estimated fulfillment timelines."
+              question="What happens after I place my $25 deposit?"
+              answer="You'll immediately be assigned a priority queue number for Batch 01. You'll receive bi-monthly 'Insider Logs' covering our final engineering optimizations and be the first to receive the official order link at the exclusive $199 launch price."
             />
             <FAQItem 
-              question="Do I need a monthly subscription?"
-              answer="No. Unlike generic dash cams that charge monthly for 'premium cloud features', Astrateq processes everything locally. You own your data and your device with no hidden fees."
+              question="Does the $25 count towards the final price?"
+              answer="Yes. Your $25 deposit is applied directly to the $199 early-bird price. When Batch 01 is ready to ship, you'll only pay the remaining $174 (plus tax/shipping)."
+            />
+            <FAQItem 
+              question="How is this different from a standard dash cam?"
+              answer="Most dash cams are reactive—they provide evidence after a crash. Sentinel X is proactive. Using our Canadian-optimized AI models, it detects road hazards, icy patches, and distracted driving patterns to warn you before an incident occurs."
+            />
+            <FAQItem 
+              question="Does it require a monthly subscription?"
+              answer="No. We believe safety shouldn't be a subscription service. All AI processing happens locally on the Sentinel's NPU, so you get life-saving alerts with zero hidden monthly fees."
+            />
+            <FAQItem 
+              question="Will it survive a Canadian winter (and summer)?"
+              answer="Absolutely. We've tested the Sentinel X at -30°C in Alberta and +40°C in Ontario. Our industrial-grade battery-less design uses supercapacitors to ensure the unit never fails or swells due to extreme temperature fluctuations."
+            />
+            <FAQItem 
+              question="Can I install it myself?"
+              answer="Yes. We designed it for universal, 5-minute installation. It uses a no-trace static adhesive for the windshield and plugs into your car's USB port or 12V 'cigarette' outlet. No professional automotive electrician required."
             />
             <FAQItem 
               question="Does it record audio inside the car?"
-              answer="Privacy is our core pillar. The Astra-Guard does NOT record cabin audio or video by default. It is strictly a road-facing awareness tool designed for safety, not surveillance."
-            />
-            <FAQItem 
-              question="Will it survive a Canadian winter?"
-              answer="We've tested our mount and processor at Alberta temperatures (-30°C). Our static adhesive is specifically designed to stay bonded during extreme temperature fluctuations."
+              answer="Privacy is our core pillar. The Sentinel X does NOT record cabin audio or video by default. It is strictly a road-facing awareness tool designed for safety, not surveillance."
             />
           </div>
         </div>
