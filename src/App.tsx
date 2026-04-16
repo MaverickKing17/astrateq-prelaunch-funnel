@@ -774,19 +774,25 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-24 border-t border-brand-border bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="py-24 border-t border-white/5 bg-brand-dark relative overflow-hidden">
+      {/* Decorative background pulse */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="space-y-6 max-w-sm">
             <div className="flex items-center gap-2 mb-6">
-              <img 
-                src="https://i.ibb.co/NdYZ7r7Z/Gemini-Generated-Image-pta8i9pta8i9pta8.png" 
-                alt="SafeGuard Sentinel" 
-                className="h-12 w-auto" 
-                referrerPolicy="no-referrer" 
-              />
+              <div className="bg-white p-2 rounded-xl">
+                <img 
+                  src="https://i.ibb.co/NdYZ7r7Z/Gemini-Generated-Image-pta8i9pta8i9pta8.png" 
+                  alt="SafeGuard Sentinel" 
+                  className="h-10 w-auto" 
+                  referrerPolicy="no-referrer" 
+                />
+              </div>
             </div>
-            <p className="text-[15px] text-brand-gray leading-relaxed font-medium">
+            <p className="text-[15px] text-white/60 leading-relaxed font-medium">
               Revolutionizing road safety through advanced, on-device AI. Designed and tested in Toronto to withstand the unique challenges of Canadian road conditions.
             </p>
             <div className="flex gap-4 pt-4">
@@ -796,7 +802,7 @@ const Footer = () => {
                 { icon: <Instagram size={18} />, label: "Instagram" },
                 { icon: <Youtube size={18} />, label: "YouTube" }
               ].map((social, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-brand-primary hover:text-white hover:border-brand-primary hover:-translate-y-1 transition-all shadow-premium">
                   {social.icon}
                 </a>
               ))}
@@ -805,52 +811,58 @@ const Footer = () => {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-16 md:gap-24">
             <div className="space-y-6">
-              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-brand-dark flex items-center gap-2 text-brand-primary">
-                <div className="w-1 h-4 bg-brand-primary rounded-full" />
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-white flex items-center gap-2">
+                <div className="w-1 h-4 bg-brand-primary rounded-full shadow-[0_0_10px_rgba(0,113,227,0.5)]" />
                 Legal
               </h5>
               <ul className="space-y-3 text-sm font-medium">
-                <li><button onClick={() => setModalContent(legalContent.privacy)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><FileText size={14} /> Privacy Policy</button></li>
-                <li><button onClick={() => setModalContent(legalContent.terms)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><Info size={14} /> Terms of Service</button></li>
-                <li><button onClick={() => setModalContent(legalContent.refund)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><Heart size={14} /> Refund Policy</button></li>
+                <li><button onClick={() => setModalContent(legalContent.privacy)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><FileText size={14} className="group-hover:scale-110 transition-transform" /> Privacy Policy</button></li>
+                <li><button onClick={() => setModalContent(legalContent.terms)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><Info size={14} className="group-hover:scale-110 transition-transform" /> Terms of Service</button></li>
+                <li><button onClick={() => setModalContent(legalContent.refund)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><Heart size={14} className="group-hover:scale-110 transition-transform" /> Refund Policy</button></li>
               </ul>
             </div>
             
             <div className="space-y-6">
-              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-purple-600 flex items-center gap-2 text-purple-600">
-                <div className="w-1 h-4 bg-purple-500 rounded-full" />
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-white flex items-center gap-2">
+                <div className="w-1 h-4 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
                 Support
               </h5>
               <ul className="space-y-3 text-sm font-medium">
-                <li><button onClick={() => setModalContent(legalContent.contact)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><MessageCircle size={14} /> Contact Us</button></li>
-                <li><button onClick={() => setModalContent(legalContent.shipping)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><Truck size={14} /> Shipping FAQ</button></li>
+                <li><button onClick={() => setModalContent(legalContent.contact)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><MessageCircle size={14} className="group-hover:scale-110 transition-transform" /> Contact Us</button></li>
+                <li><button onClick={() => setModalContent(legalContent.shipping)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><Truck size={14} className="group-hover:scale-110 transition-transform" /> Shipping FAQ</button></li>
               </ul>
             </div>
 
             <div className="space-y-6 col-span-2 sm:col-span-1">
-              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-green-600 flex items-center gap-2">
-                <div className="w-1 h-4 bg-green-500 rounded-full" />
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-white flex items-center gap-2">
+                <div className="w-1 h-4 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
                 Status
               </h5>
-              <div className="bg-green-50/50 border border-green-100 p-4 rounded-2xl">
-                <div className="flex items-center gap-2 text-sm text-green-700 font-bold mb-1">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl shadow-2xl relative group overflow-hidden">
+                <div className="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center gap-3 text-sm text-green-400 font-bold mb-2">
+                  <div className="relative">
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping absolute inset-0" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500 relative" />
+                  </div>
                   <span>Pre-Launch Live</span>
                 </div>
-                <p className="text-[11px] text-green-600 font-medium">Accepting Batch 01 priority reservations.</p>
+                <p className="text-[11px] text-white/50 font-medium leading-relaxed">
+                  Now accepting priority reservations for the inaugural Batch 01 production run.
+                </p>
               </div>
             </div>
           </div>
         </div>
         
-        <div className="pt-12 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[13px] text-brand-gray font-semibold tracking-tight">
-            © 2026 Astrateq Gadgets. All rights reserved.
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[13px] text-white/40 font-medium">
+            © 2026 Astrateq Gadgets. Built with integrity in Toronto.
           </p>
-          <div className="flex items-center gap-8 text-[10px] font-bold text-brand-gray uppercase tracking-widest grayscale opacity-50">
-            <span className="flex items-center gap-1.5"><ShieldCheck size={14} /> Stripe Verified</span>
-            <span className="flex items-center gap-1.5"><Globe size={14} /> ISED Canada</span>
-            <span className="flex items-center gap-1.5"><Lock size={14} /> PIPEDA Compliant</span>
+          <div className="flex items-center gap-8 text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
+            <span className="flex items-center gap-2 hover:text-white/60 transition-colors"><ShieldCheck size={14} className="text-brand-primary" /> Stripe Verified</span>
+            <span className="flex items-center gap-2 hover:text-white/60 transition-colors"><Globe size={14} className="text-brand-primary" /> ISED Canada</span>
+            <span className="flex items-center gap-2 hover:text-white/60 transition-colors"><Lock size={14} className="text-brand-primary" /> PIPEDA Compliant</span>
           </div>
         </div>
       </div>
