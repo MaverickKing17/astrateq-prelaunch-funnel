@@ -59,7 +59,7 @@ const Navbar = () => {
               <a href="#box" className="hover:text-brand-primary transition-colors">Safety Standards</a>
               <a href="#contact" className="hover:text-brand-primary transition-colors">Support</a>
             </nav>
-            <a href="#reserve" className="bg-brand-primary text-white text-sm font-semibold px-6 py-2.5 rounded-apple-btn hover:opacity-90 active:scale-95 transition-all shadow-premium">Reserve Now</a>
+            <a href="#reserve" className="bg-brand-primary text-white text-[13px] font-bold uppercase tracking-wider px-7 py-3 rounded-full hover:scale-105 hover:bg-brand-primary/95 active:scale-95 transition-all shadow-lg shadow-brand-primary/20">Secure Batch 01</a>
           </div>
 
           <div className="md:hidden">
@@ -114,9 +114,9 @@ const Hero = () => {
             </p>
             
             <div className="space-y-4 pt-4">
-              <a href="#reserve" className="inline-flex items-center justify-center bg-brand-primary text-white text-base font-semibold px-8 py-4 rounded-apple-btn hover:opacity-90 active:scale-[0.98] transition-all shadow-premium group">
+              <a href="#reserve" className="inline-flex items-center justify-center bg-brand-primary text-white text-lg font-bold px-10 py-5 rounded-full hover:scale-[1.02] hover:shadow-2xl hover:shadow-brand-primary/30 active:scale-[0.98] transition-all shadow-xl group">
                 Secure My Priority Spot — $25 (Fully Refundable)
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                <ChevronRight className="ml-3 group-hover:translate-x-1.5 transition-transform" size={20} />
               </a>
               
               <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400 pl-2">
@@ -474,8 +474,8 @@ const CompatibilityChecker = () => {
                     </p>
                   </div>
                   <div className="md:ml-auto">
-                    <a href="#reserve" className="inline-flex items-center gap-2 bg-brand-primary text-white px-8 py-3.5 rounded-full text-sm font-bold hover:scale-105 transition-transform whitespace-nowrap shadow-lg shadow-brand-primary/10">
-                      Reserve Batch 01 <ChevronRight size={16} />
+                    <a href="#reserve" className="inline-flex items-center gap-2 bg-brand-primary text-white px-8 py-4 rounded-full text-sm font-bold hover:scale-105 hover:shadow-xl hover:shadow-brand-primary/25 transition-all whitespace-nowrap shadow-lg">
+                      Secure My Unit Now <ChevronRight size={16} />
                     </a>
                   </div>
                 </motion.div>
@@ -499,83 +499,83 @@ const CompatibilityChecker = () => {
 
 const ComparisonSection = () => {
   const rows = [
-    { label: "Subscription Fees", generic: "Monthly ($15-$30)", astrateq: "Zero", detail: "Lifetime AI updates included" },
-    { label: "Data Management", generic: "Cloud Based", astrateq: "100% Local", detail: "Privacy-first NPU processing" },
-    { label: "Installation", generic: "Professional Required", astrateq: "DIY Ready", detail: "Universal 5-minute setup" },
-    { label: "Canadian Climate", generic: "Mass Market", astrateq: "Pure Winter", detail: "Tested at -30°C across Canada" },
-    { label: "Hazard Alerts", generic: "Standard Visual", astrateq: "AI Audio-Guided", detail: "Calibrated for icy road cues" },
+    { label: "Visual Clarity", generic: "1080p / 4K Grainy", astrateq: "Surgical 8K Precision", detail: "Industry-first 8K road-facing NPU" },
+    { label: "Subscription Fees", generic: "Monthly ($15-$30)", astrateq: "Zero (Lifetime)", detail: "No gatekeeping for safety features" },
+    { label: "Data Management", generic: "Cloud Based (Insecure)", astrateq: "100% Local Guard", detail: "Privacy-locked NPU hardware processing" },
+    { label: "Installation", generic: "Pro Help Required", astrateq: "Plug-and-Protect", detail: "Universal setup in under 5 minutes" },
+    { label: "Canadian Climate", generic: "Standard Plastic", astrateq: "Arctic-Spec Alloy", detail: "Thermal-shroud tested at -30°C to +45°C" },
+    { label: "Night Vision", generic: "Pixelated/Blind", astrateq: "8K HDR Low-Light", detail: "Active glare reduction for winter nights" },
   ];
 
   return (
     <section className="py-32 relative overflow-hidden" id="comparison">
-      {/* Dynamic Background */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[#fbfbfd]" />
-      <div className="absolute -top-24 right-0 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-cyan/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#fbfbfd] to-white pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none -translate-y-1/2" />
       
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-6">
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-[0.2em]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-primary text-white text-[11px] font-bold uppercase tracking-[0.25em] shadow-lg shadow-brand-primary/20"
           >
-            <ShieldCheck size={14} /> Competitive Analysis
+            <ShieldCheck size={14} /> 8K SAFETY BENCHMARK
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-brand-dark">
             Safety, <span className="text-brand-primary">Recalibrated.</span>
           </h2>
-          <p className="text-brand-gray text-lg max-w-2xl mx-auto leading-relaxed">
-            Standard dash cams watch the road. Astrateq <span className="font-semibold text-brand-dark">understands</span> it. We've built the Sentinel X to outperform generic alternatives in the toughest Canadian conditions.
+          <p className="text-brand-gray text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            While generic dash cams struggle with 4K motion blur, the Sentinel X utilizes a <span className="font-bold text-brand-dark">dedicated 8K NPU architecture</span> to understand license plates and road hazards at a surgical level.
           </p>
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/70 backdrop-blur-2xl rounded-[48px] border border-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden"
+          className="bg-white rounded-[48px] border border-brand-border shadow-[0_48px_96px_-24px_rgba(0,0,0,0.12)] overflow-hidden"
         >
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[800px]">
+            <table className="w-full text-left border-collapse min-w-[850px]">
               <thead>
-                <tr>
-                  <th className="p-10 text-xs font-bold uppercase tracking-[0.25em] text-brand-gray/60 w-1/3">Engineering Specs</th>
-                  <th className="p-10 text-xs font-bold uppercase tracking-[0.25em] text-brand-gray/60 w-1/3 text-center">Standard Market</th>
-                  <th className="p-10 text-xs font-bold uppercase tracking-[0.25em] text-brand-primary w-1/3 text-center relative">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-primary text-white rounded-b-xl shadow-lg shadow-brand-primary/20 whitespace-nowrap">
+                <tr className="bg-brand-bg/40">
+                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/50 w-1/3">Engineering Specs</th>
+                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/50 w-1/3 text-center">Standard Market</th>
+                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-primary w-1/3 text-center relative bg-brand-primary/[0.04]">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-brand-primary text-white text-[10px] font-bold rounded-b-xl shadow-xl shadow-brand-primary/30 whitespace-nowrap tracking-wider">
                       THE ASTRATEQ EDGE
                     </div>
-                    SENTINEL X
+                    SENTINEL X (8K)
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-gray-50">
                 {rows.map((row, i) => (
                   <motion.tr 
                     key={i} 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="group"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="group hover:bg-gray-50/50 transition-colors"
                   >
                     <td className="p-10">
-                      <div className="space-y-1">
-                        <p className="font-bold text-lg text-brand-dark group-hover:text-brand-primary transition-colors">{row.label}</p>
-                        <p className="text-xs text-brand-gray italic">{row.detail}</p>
+                      <div className="space-y-2">
+                        <p className="font-bold text-xl text-brand-dark group-hover:text-brand-primary transition-colors">{row.label}</p>
+                        <p className="text-xs text-brand-gray tracking-wide leading-relaxed font-medium">{row.detail}</p>
                       </div>
                     </td>
                     <td className="p-10 text-center">
-                      <span className="inline-flex items-center px-4 py-2 rounded-xl bg-gray-50 text-gray-400 font-medium text-sm">
+                      <span className="inline-flex items-center px-5 py-2.5 rounded-2xl bg-gray-100 text-gray-500 font-bold text-xs uppercase tracking-wider">
                         {row.generic}
                       </span>
                     </td>
-                    <td className="p-10 text-center relative bg-brand-primary/[0.02]">
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-inner">
-                          <CheckCircle2 size={24} />
+                    <td className="p-10 text-center relative bg-brand-primary/[0.04] group-hover:bg-brand-primary/[0.06] transition-colors">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform duration-500">
+                          <CheckCircle2 size={28} />
                         </div>
-                        <span className="font-bold text-brand-primary text-lg">{row.astrateq}</span>
+                        <span className="font-extrabold text-brand-primary text-xl tracking-tight">{row.astrateq}</span>
                       </div>
                     </td>
                   </motion.tr>
@@ -584,18 +584,18 @@ const ComparisonSection = () => {
             </table>
           </div>
           
-          <div className="p-10 bg-brand-dark text-white flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-6">
-              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-brand-cyan">
-                <Lock size={28} />
+          <div className="p-12 bg-brand-dark text-white flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="flex items-center gap-8">
+              <div className="w-16 h-16 bg-brand-primary/20 rounded-3xl flex items-center justify-center text-brand-cyan shadow-inner">
+                <Lock size={32} />
               </div>
-              <div className="space-y-1 text-center md:text-left">
-                <p className="font-bold truncate">Risk-Free Priority Reservation</p>
-                <p className="text-sm text-white/60">Fully refundable $25 deposit secures Batch 01 Pricing.</p>
+              <div className="space-y-2 text-center md:text-left">
+                <p className="text-2xl font-bold tracking-tight">Risk-Free Priority Queue</p>
+                <p className="text-white/50 font-medium">Fully refundable $25 deposit secures your Batch 01 unit & 8K License.</p>
               </div>
             </div>
-            <a href="#reserve" className="px-10 py-5 bg-white text-brand-dark rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-3 shadow-xl">
-              Reserve My Unit <ArrowUp className="rotate-45" size={18} />
+            <a href="#reserve" className="px-12 py-5 bg-brand-primary text-white rounded-full font-bold hover:scale-105 hover:bg-brand-primary/90 transition-all flex items-center gap-3 shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] whitespace-nowrap">
+              Secure My 8K Sentinel <ArrowUp className="rotate-45" size={20} />
             </a>
           </div>
         </motion.div>
@@ -1428,8 +1428,8 @@ export default function App() {
       <ScrollToTop />
       
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
-        <a href="#reserve" className="flex items-center justify-center w-full bg-brand-primary text-white py-4 rounded-apple-btn font-bold shadow-2xl hover:bg-brand-primary/90 transition-colors">
-           Reserve Your Spot — $25
+        <a href="#reserve" className="flex items-center justify-center w-full bg-brand-primary text-white py-5 rounded-full font-bold shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:bg-brand-primary/95 active:scale-95 transition-all">
+           Secure Batch 01 Spot — $25
         </a>
       </div>
     </div>
