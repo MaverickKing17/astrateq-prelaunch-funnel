@@ -30,10 +30,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-brand-dark rounded flex items-center justify-center text-white font-bold text-[14px]">
-              S
-            </div>
-            <span className="font-display font-semibold text-xl tracking-tight">SafeGuard <span className="text-brand-gray font-normal">Sentinel</span></span>
+            <img 
+              src="https://i.ibb.co/NdYZ7r7Z/Gemini-Generated-Image-pta8i9pta8i9pta8.png" 
+              alt="SafeGuard Sentinel" 
+              className="h-10 w-auto" 
+              referrerPolicy="no-referrer" 
+            />
           </div>
           
           <div className="hidden md:flex items-center gap-8">
@@ -186,6 +188,91 @@ const EmotionalNarrative = () => {
   );
 };
 
+const TrustBanner = () => {
+  return (
+    <div className="bg-brand-bg/50 border-y border-brand-border py-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
+             <ShieldCheck className="text-brand-dark" size={20} /> ISED CANADA COMPLIANT
+           </div>
+           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
+             <Globe className="text-brand-dark" size={20} /> DESIGNED IN TORONTO
+           </div>
+           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
+             <Lock className="text-brand-dark" size={20} /> AES-256 ENCRYPTION
+           </div>
+           <div className="flex items-center gap-2 font-display font-bold text-sm tracking-widest uppercase">
+             <ShieldCheck className="text-brand-dark" size={20} /> CSA COMPLIANT STDS
+           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Testimonials = () => {
+  const reviews = [
+    {
+      name: "Sarah M.",
+      location: "Calgary, AB",
+      quote: "Setting this up for my elderly father was the best thing I did this year. He feels independent, and I feel relieved knowing he has that extra set of 'eyes' on the road.",
+      verified: true
+    },
+    {
+      name: "David L.",
+      location: "Oakville, ON",
+      quote: "I've tried generic dash cams, but they're too complicated. Sentinel is different. It's subtle, privacy-focused, and actually speaks to you when it matters.",
+      verified: true
+    },
+    {
+      name: "Marcus T.",
+      location: "Vancouver, BC",
+      quote: "The winter-focus is what sold me. Those dark, rainy Pacific Northwest nights are treacherous. Astra-Guard's glare reduction is a game changer.",
+      verified: true
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-white" id="testimonials">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl font-bold tracking-tight">The Peace of Mind Proof</h2>
+          <p className="text-brand-gray text-lg max-w-2xl mx-auto">Joined by 840+ Canadian families committed to a safer 2025.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          {reviews.map((rev, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-8 rounded-apple-card bg-brand-bg border border-brand-border hover:shadow-premium transition-shadow"
+            >
+              <div className="flex items-center gap-1 mb-6">
+                {[...Array(5)].map((_, i) => <Zap key={i} size={14} className="fill-brand-primary text-brand-primary" />)}
+              </div>
+              <p className="text-brand-dark font-medium leading-[1.6] mb-8 italic">"{rev.quote}"</p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="font-bold text-sm">{rev.name}</h4>
+                  <p className="text-xs text-brand-gray">{rev.location}</p>
+                </div>
+                {rev.verified && (
+                  <div className="flex items-center gap-1 text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full uppercase tracking-widest">
+                    <CheckCircle2 size={10} /> Verified Tester
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 const FeatureCard = ({ icon: Icon, title, description, badge }: any) => (
   <div className="group bg-white p-10 rounded-apple-card shadow-premium hover:shadow-2xl transition-all border border-brand-border flex flex-col h-full">
     <div className="w-14 h-14 bg-brand-bg rounded-xl flex items-center justify-center text-brand-dark mb-8 group-hover:scale-110 transition-transform">
@@ -317,13 +404,13 @@ const FAQItem = ({ question, answer }: any) => {
 
 const PreLaunchTransparency = () => {
   return (
-    <section className="py-24 bg-brand-cyan/5" id="reserve">
+    <section className="py-24 bg-[#fbfbfd]" id="reserve">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
             <div>
-              <h2 className="text-4xl font-bold mb-6 italic">Reservation Details</h2>
-              <p className="text-gray-500 text-lg">We're in the demand validation phase. Your support helps us finalize the production run for the Canadian market.</p>
+              <h2 className="text-4xl font-bold mb-6 tracking-tight">Reservation Details</h2>
+              <p className="text-brand-gray text-lg">We're in the demand validation phase. Your support helps us finalize the production run for the Canadian market.</p>
             </div>
             
             <div className="space-y-6">
@@ -334,15 +421,27 @@ const PreLaunchTransparency = () => {
                 { title: "Priority Delivery", desc: "Shipments start in ~90 days based on batch order." }
               ].map((step, i) => (
                 <div key={i} className="flex gap-4">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-premium flex items-center justify-center font-display font-bold text-brand-cyan shrink-0">
+                  <div className="w-12 h-12 bg-white rounded-xl shadow-premium border border-brand-border flex items-center justify-center font-display font-bold text-brand-primary shrink-0">
                     0{i+1}
                   </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">{step.title}</h4>
-                    <p className="text-gray-500">{step.desc}</p>
+                    <p className="text-brand-gray">{step.desc}</p>
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="bg-white p-8 rounded-apple-card border border-brand-border flex items-center gap-6">
+               <div className="flex -space-x-3">
+                 {[1, 2, 3, 4].map(i => (
+                   <img key={i} src={`https://i.pravatar.cc/100?u=${i}`} className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar" referrerPolicy="no-referrer" />
+                 ))}
+               </div>
+               <div>
+                 <p className="text-sm font-bold text-brand-dark">Joining 840+ Canadians</p>
+                 <p className="text-xs text-brand-gray">Priority Batch 1 is fulfilling rapidly.</p>
+               </div>
             </div>
           </div>
           
@@ -368,14 +467,16 @@ const PreLaunchTransparency = () => {
             <div className="space-y-4">
               <div className="form-group">
                 <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Email Address</label>
-                <div className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-gray bg-white">
-                  alex.walker@gmail.com
-                </div>
+                <input 
+                  type="email" 
+                  placeholder="name@email.com"
+                  className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-dark bg-white focus:ring-1 focus:ring-brand-primary outline-none"
+                />
               </div>
               <div className="form-group">
                 <label className="block text-xs font-bold text-brand-gray uppercase tracking-widest mb-2">Reservation Type</label>
-                <div className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-gray bg-white">
-                  Sentinel X (Standard Edition)
+                <div className="w-full h-12 border border-brand-border rounded-lg px-4 flex items-center text-brand-gray bg-gray-50/50">
+                  Sentinel X (Early Bird Bundle)
                 </div>
               </div>
             </div>
@@ -384,9 +485,17 @@ const PreLaunchTransparency = () => {
               Secure My Priority Spot
             </button>
             
-            <div className="text-center">
-              <p className="text-xs text-brand-gray leading-relaxed max-w-xs mx-auto">
-                Your deposit is secured by Stripe. By continuing, you agree to join our priority production queue.
+            <div className="pt-6 border-t border-brand-border">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] font-bold text-brand-gray uppercase tracking-widest">Transaction Security</span>
+                <div className="flex items-center gap-4 grayscale opacity-60">
+                   <div className="font-bold text-[10px] border border-brand-dark px-1.5 py-0.5 rounded italic">STRIPE</div>
+                   <div className="text-[10px] font-bold flex items-center gap-1"><ShieldCheck size={12} /> PCI-DSS</div>
+                   <div className="text-[10px] font-bold flex items-center gap-1"><Lock size={12} /> SSL</div>
+                </div>
+              </div>
+              <p className="text-[11px] text-brand-gray leading-normal">
+                Reservations are processed via Stripe for 100% security. You retain full control: refunds are available 24/7 via our support portal until your order ships.
               </p>
             </div>
           </div>
@@ -403,8 +512,12 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
           <div className="space-y-4 max-w-xs">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-brand-dark rounded flex items-center justify-center text-white font-bold text-[14px]">S</div>
-              <span className="font-display font-semibold text-lg tracking-tight">SafeGuard <span className="text-brand-gray font-normal">Sentinel</span></span>
+              <img 
+                src="https://i.ibb.co/NdYZ7r7Z/Gemini-Generated-Image-pta8i9pta8i9pta8.png" 
+                alt="SafeGuard Sentinel" 
+                className="h-10 w-auto" 
+                referrerPolicy="no-referrer" 
+              />
             </div>
             <p className="text-sm text-brand-gray leading-relaxed">
               Designed in Toronto. Built for the world's most beautiful, and most challenging, driving conditions.
@@ -580,10 +693,11 @@ export default function App() {
     <div className="min-h-screen selection:bg-brand-cyan/20">
       <Navbar />
       <Hero />
+      <TrustBanner />
       <EmotionalNarrative />
       <ValuationZone />
       <ComparisonSection />
-      
+      <Testimonials />
       <section className="py-24" id="box">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-12 tracking-tight text-center md:text-left">What's in the Box?</h2>
