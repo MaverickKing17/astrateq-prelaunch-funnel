@@ -16,7 +16,11 @@ import {
   Clock,
   Menu,
   X,
-  MessageCircle
+  MessageCircle,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -522,6 +526,20 @@ const Footer = () => {
             <p className="text-sm text-brand-gray leading-relaxed">
               Designed in Toronto. Built for the world's most beautiful, and most challenging, driving conditions.
             </p>
+            <div className="flex gap-4 pt-4">
+              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
+                <Facebook size={16} />
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
+                <Twitter size={16} />
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
+                <Instagram size={16} />
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
+                <Youtube size={16} />
+              </a>
+            </div>
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
