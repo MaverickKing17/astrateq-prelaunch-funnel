@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { 
   ShieldCheck, 
   Zap, 
@@ -21,7 +21,11 @@ import {
   Twitter,
   Instagram,
   Youtube,
-  ArrowUp
+  ArrowUp,
+  FileText,
+  Info,
+  Truck,
+  Heart
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -105,7 +109,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-[22px] text-brand-gray max-w-xl leading-[1.4]">
-              Reserve your Sentinel unit today. Canadian-engineered safety for the modern family. Ships Spring 2025.
+              Reserve your Sentinel unit today. Canadian-engineered safety for the modern family. First batch reservations now open.
             </p>
             
             <div className="space-y-4 pt-4">
@@ -445,7 +449,7 @@ const PreLaunchTransparency = () => {
             
             <div className="space-y-8">
               {[
-                { title: "Priority Queue Position", desc: "Secure your spot in Batch 01 (Est. Summer 2025). We fulfill in the order deposits are received." },
+                { title: "Priority Queue Position", desc: "Secure your spot in Batch 01. We fulfill in the order deposits are received." },
                 { title: "Exclusive Bundle Pricing", desc: "Unlock the Pre-Launch price of $199 CAD—a full $50 savings off the estimated $249 MSRP." },
                 { title: "Zero-Risk Flexibility", desc: "Your $25 is managed via Stripe. It is 100% refundable at any time, for any reason, before your unit ships." },
                 { title: "Engineering Transparency", desc: "Get bi-monthly behind-the-scenes updates on our optimization for Canadian winter road conditions." }
@@ -604,7 +608,7 @@ const PreLaunchTransparency = () => {
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 shrink-0" />
-                        Shipping address request in Spring 2025.
+                        Shipping address request once production commences.
                       </li>
                     </ul>
                   </div>
@@ -624,73 +628,238 @@ const PreLaunchTransparency = () => {
   );
 };
 
-const Footer = () => {
+const LegalModal = ({ isOpen, onClose, content }: { isOpen: boolean, onClose: () => void, content: { title: string, body: ReactNode } }) => {
   return (
-    <footer className="py-20 border-t border-brand-border">
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-brand-dark/40 backdrop-blur-sm"
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-3xl shadow-2xl p-8 md:p-12 animate-in fade-in zoom-in duration-300"
+          >
+            <button 
+              onClick={onClose}
+              className="absolute top-6 right-6 p-2 rounded-full hover:bg-brand-bg transition-colors"
+            >
+              <X size={20} className="text-brand-gray" />
+            </button>
+            
+            <div className="space-y-8">
+              <div className="pb-6 border-b border-brand-border">
+                <h2 className="text-3xl font-bold tracking-tight text-brand-dark">{content.title}</h2>
+              </div>
+              
+              <div className="prose prose-slate max-w-none text-brand-gray leading-relaxed space-y-6">
+                {content.body}
+              </div>
+              
+              <div className="pt-8 flex justify-end">
+                <button 
+                  onClick={onClose}
+                  className="bg-brand-primary text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const Footer = () => {
+  const [modalContent, setModalContent] = useState<{ title: string, body: ReactNode } | null>(null);
+
+  const legalContent = {
+    privacy: {
+      title: "Privacy & Data Architecture",
+      body: (
+        <>
+          <p className="font-bold text-brand-dark">Built for Personal Privacy, Designed for Canadian Sovereignty.</p>
+          <p>At Astrateq, we believe your driving data is yours and yours alone. Our AI automotive safety systems are engineered with a "Privacy First" architecture that aligns with ISED Canada standards and PIPEDA requirements.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">1. On-Device AI Processing (Edge Computing)</h4>
+          <p>Unlike traditional dash cams, the SafeGuard Sentinel processes 99.8% of visual data locally on the internal NPU (Neural Processing Unit). We do not stream your cabin or road footage to the cloud for training. Your journeys remain private and unlisted.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">2. AES-256 Military Grade Encryption</h4>
+          <p>Any data that you choose to sync with the Astrateq companion app is encrypted using AES-256 bit protocols—the same standard used by Canadian financial institutions.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">3. Canadian Data Residency</h4>
+          <p>All cloud-based user profiles and reservation data are stored on secure, encrypted servers physically located within Canadian borders, ensuring they are subject to Canadian privacy law protections.</p>
+        </>
+      )
+    },
+    terms: {
+      title: "Terms of Reservation",
+      body: (
+        <>
+          <p>This reservation deposit constitutes an agreement between the depositor's household and Astrateq Gadgets Inc.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">1. Priority Fulfillment</h4>
+          <p>By placing a $25 deposit, you are assigned a Priority Rank in Batch 01. We fulfill pre-launch orders in strict chronological order based on the timestamp of the Stripe transaction.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">2. Pricing Guarantee</h4>
+          <p>Your deposit locks in your Early Bird discount of $50 off the MSRP. This price is guaranteed for original reservation holders and is non-transferable.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">3. Product Evolution</h4>
+          <p>As we finalize engineering for Canadian winter road conditions (Gravel spray resistance, -40°C battery optimization), final product specs may evolve slightly to ensure maximum safety and reliability on Northern roads.</p>
+        </>
+      )
+    },
+    refund: {
+      title: "100% Refundable Policy",
+      body: (
+        <>
+          <p className="font-bold text-brand-dark">Complete Flexibility. Zero Friction.</p>
+          <p>We understand that vehicle safety is a major decision. That’s why your $25 deposit is 100% refundable at any time, for any reason, right until the moment your Sentinel X leaves our fulfillment center.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-lg">Process:</h4>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Request a refund via our chat widget or email support@astrateq.com.</li>
+            <li>Refunds are processed back to the original Stripe payment method.</li>
+            <li>Processing time is typically 3-5 business days depending on your Canadian financial institution.</li>
+          </ul>
+        </>
+      )
+    },
+    contact: {
+      title: "Contact Astrateq Support",
+      body: (
+        <>
+          <p>Our team is based in Toronto, Ontario. We pride ourselves on providing high-touch assistance during our pre-launch phase.</p>
+          
+          <div className="bg-brand-bg p-6 rounded-2xl border border-brand-border space-y-4">
+            <div>
+              <p className="font-bold text-brand-dark uppercase tracking-widest text-[10px]">General Inquiries</p>
+              <p className="font-semibold">support@astrateq.com</p>
+            </div>
+            <div>
+              <p className="font-bold text-brand-dark uppercase tracking-widest text-[10px]">Ontario Operations Hub</p>
+              <p className="font-semibold">Bay St, Toronto, ON M5H 2Y4, Canada</p>
+            </div>
+            <div>
+              <p className="font-bold text-brand-dark uppercase tracking-widest text-[10px]">Hours of Operation</p>
+              <p className="font-semibold">Monday – Friday: 9:00 AM – 6:00 PM EST</p>
+            </div>
+          </div>
+        </>
+      )
+    },
+    shipping: {
+      title: "Shipping & Logistics FAQ",
+      body: (
+        <>
+          <h4 className="text-brand-dark font-bold text-xl mb-2">When will I receive my Sentinel?</h4>
+          <p>Batch 01 production is scheduled to begin following final quality assurance for Canadian safety certifications (including cold-start testing in Northern Ontario). Shipping will commence in strict queue order once production is finalized.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-xl mb-2">Where do you ship?</h4>
+          <p>We ship Canada-wide, from Victoria, BC to St. John's, NL. We offer flat-rate expedited shipping for all Batch 01 reservation holders to ensure timely arrival once fulfillments begin.</p>
+          
+          <h4 className="text-brand-dark font-bold mt-6 text-xl mb-2">Winter-Ready Delivery</h4>
+          <p>Our units are packaged with insulated, moisture-wicking materials to ensure the high-sensitivity AI sensors arrive in perfect calibration, regardless of the temperature during transit in the Canadian winter.</p>
+        </>
+      )
+    }
+  };
+
+  return (
+    <footer className="py-24 border-t border-brand-border bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
-          <div className="space-y-4 max-w-xs">
-            <div className="flex items-center gap-2">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          <div className="space-y-6 max-w-sm">
+            <div className="flex items-center gap-2 mb-6">
               <img 
                 src="https://i.ibb.co/NdYZ7r7Z/Gemini-Generated-Image-pta8i9pta8i9pta8.png" 
                 alt="SafeGuard Sentinel" 
-                className="h-10 w-auto" 
+                className="h-12 w-auto" 
                 referrerPolicy="no-referrer" 
               />
             </div>
-            <p className="text-sm text-brand-gray leading-relaxed">
-              Designed in Toronto. Built for the world's most beautiful, and most challenging, driving conditions.
+            <p className="text-[15px] text-brand-gray leading-relaxed font-medium">
+              Revolutionizing road safety through advanced, on-device AI. Designed and tested in Toronto to withstand the unique challenges of Canadian road conditions.
             </p>
             <div className="flex gap-4 pt-4">
-              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
-                <Facebook size={16} />
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
-                <Twitter size={16} />
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
-                <Instagram size={16} />
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white transition-all shadow-sm">
-                <Youtube size={16} />
-              </a>
+              {[
+                { icon: <Facebook size={18} />, label: "Facebook" },
+                { icon: <Twitter size={18} />, label: "Twitter" },
+                { icon: <Instagram size={18} />, label: "Instagram" },
+                { icon: <Youtube size={18} />, label: "YouTube" }
+              ].map((social, i) => (
+                <a key={i} href="#" className="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
-            <div className="space-y-4">
-              <h5 className="font-bold text-sm uppercase tracking-widest text-brand-gray">Legal</h5>
-              <ul className="space-y-2 text-sm text-brand-gray">
-                <li><a href="#privacy" className="hover:text-brand-primary">Privacy Policy</a></li>
-                <li><a href="#terms" className="hover:text-brand-primary">Terms of Service</a></li>
-                <li><a href="#refund" className="hover:text-brand-primary">Refund Policy</a></li>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-16 md:gap-24">
+            <div className="space-y-6">
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-brand-dark flex items-center gap-2 text-brand-primary">
+                <div className="w-1 h-4 bg-brand-primary rounded-full" />
+                Legal
+              </h5>
+              <ul className="space-y-3 text-sm font-medium">
+                <li><button onClick={() => setModalContent(legalContent.privacy)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><FileText size={14} /> Privacy Policy</button></li>
+                <li><button onClick={() => setModalContent(legalContent.terms)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><Info size={14} /> Terms of Service</button></li>
+                <li><button onClick={() => setModalContent(legalContent.refund)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><Heart size={14} /> Refund Policy</button></li>
               </ul>
             </div>
-            <div className="space-y-4">
-              <h5 className="font-bold text-sm uppercase tracking-widest text-brand-gray">Support</h5>
-              <ul className="space-y-2 text-sm text-brand-gray">
-                <li><a href="#contact" className="hover:text-brand-primary">Contact Us</a></li>
-                <li><a href="#shipping" className="hover:text-brand-primary">Shipping FAQ</a></li>
+            
+            <div className="space-y-6">
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-purple-600 flex items-center gap-2 text-purple-600">
+                <div className="w-1 h-4 bg-purple-500 rounded-full" />
+                Support
+              </h5>
+              <ul className="space-y-3 text-sm font-medium">
+                <li><button onClick={() => setModalContent(legalContent.contact)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><MessageCircle size={14} /> Contact Us</button></li>
+                <li><button onClick={() => setModalContent(legalContent.shipping)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors"><Truck size={14} /> Shipping FAQ</button></li>
               </ul>
             </div>
-            <div className="space-y-4 col-span-2 sm:col-span-1">
-              <h5 className="font-bold text-sm uppercase tracking-widest text-brand-gray">Status</h5>
-              <div className="flex items-center gap-2 text-sm text-green-600 font-medium">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                <span>Pre-Launch Live</span>
+
+            <div className="space-y-6 col-span-2 sm:col-span-1">
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-green-600 flex items-center gap-2">
+                <div className="w-1 h-4 bg-green-500 rounded-full" />
+                Status
+              </h5>
+              <div className="bg-green-50/50 border border-green-100 p-4 rounded-2xl">
+                <div className="flex items-center gap-2 text-sm text-green-700 font-bold mb-1">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span>Pre-Launch Live</span>
+                </div>
+                <p className="text-[11px] text-green-600 font-medium">Accepting Batch 01 priority reservations.</p>
               </div>
             </div>
           </div>
         </div>
         
-        <div className="pt-8 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brand-gray font-medium">
-          <p>© 2026 Astrateq Gadgets. All rights reserved.</p>
-          <div className="flex gap-6">
-            <span className="flex items-center gap-1"><ShieldCheck size={12} /> Secure Stripe Payments</span>
-            <span className="flex items-center gap-1"><Globe size={12} /> Canadian Founded</span>
+        <div className="pt-12 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[13px] text-brand-gray font-semibold tracking-tight">
+            © 2026 Astrateq Gadgets. All rights reserved.
+          </p>
+          <div className="flex items-center gap-8 text-[10px] font-bold text-brand-gray uppercase tracking-widest grayscale opacity-50">
+            <span className="flex items-center gap-1.5"><ShieldCheck size={14} /> Stripe Verified</span>
+            <span className="flex items-center gap-1.5"><Globe size={14} /> ISED Canada</span>
+            <span className="flex items-center gap-1.5"><Lock size={14} /> PIPEDA Compliant</span>
           </div>
         </div>
       </div>
+
+      <LegalModal 
+        isOpen={!!modalContent} 
+        onClose={() => setModalContent(null)} 
+        content={modalContent || { title: "", body: null }} 
+      />
     </footer>
   );
 };
@@ -926,7 +1095,7 @@ export default function App() {
             />
             <FAQItem 
               question="When will I receive my Astrateq unit?"
-              answer="Currently, we are estimating a 90-day lead time as we finalize our first production run. You will receive monthly status updates via email about the batch progress."
+              answer="Currently, we are finalize our first production roadmap. You will receive regular status updates via email about the batch progress and estimated fulfillment timelines."
             />
             <FAQItem 
               question="Do I need a monthly subscription?"
