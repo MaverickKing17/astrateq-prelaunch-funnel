@@ -35,7 +35,8 @@ import {
   Star,
   Crown,
   Shield,
-  Gem
+  Gem,
+  Calendar
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -134,7 +135,6 @@ const Hero = () => {
   useEffect(() => {
     const hasSeenTooltip = localStorage.getItem('astrateq_onboarding_seen');
     if (!hasSeenTooltip) {
-      // Small delay for better UX
       const timer = setTimeout(() => setShowTooltip(true), 1500);
       return () => clearTimeout(timer);
     }
@@ -146,32 +146,40 @@ const Hero = () => {
   };
 
   return (
-    <section className="pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-[#fbfbfd]">
+    <section className="pt-32 pb-16 md:pt-52 md:pb-28 overflow-hidden bg-white/50 backdrop-blur-3xl">
+      {/* Structural Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[400px] bg-brand-primary/[0.03] blur-[150px] -z-10 rounded-full" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex-1 space-y-10"
+            transition={{ duration: 1, ease: "circOut" }}
+            className="flex-1 space-y-12"
           >
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 text-brand-gray/80 text-sm font-medium tracking-wide">
-                <div className="w-5 h-[1px] bg-brand-primary/30" />
-                <span>Designed & Tested in Canada</span>
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-3">
+                <div className="inline-flex items-center gap-2 bg-brand-primary text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg shadow-brand-primary/20">
+                  <Star size={12} fill="currentColor" /> Founder Batch 01
+                </div>
+                <div className="text-brand-gray/60 text-[10px] font-black uppercase tracking-[0.3em] hidden sm:block">
+                  Limited Reservation Open
+                </div>
               </div>
               
-              <h1 className="text-5xl md:text-[64px] font-semibold leading-[1.1] tracking-tight text-brand-dark">
-                Quiet protection for the people who <span className="text-brand-primary">once protected you.</span>
+              <h1 className="text-6xl md:text-[88px] font-display font-bold leading-[0.9] tracking-tighter text-brand-dark">
+                Quiet protection for <br />
+                <span className="text-brand-primary italic">Absolute Independence.</span>
               </h1>
               
-              <p className="text-xl md:text-[22px] text-brand-gray max-w-xl leading-relaxed font-normal">
-                A Canadian-engineered safety system designed to protect independence — not monitor it. Reserve today with a fully refundable $25 deposit.
+              <p className="text-xl md:text-2xl text-brand-gray max-w-[580px] leading-relaxed font-light">
+                Claim your <span className="text-brand-dark font-medium underline decoration-brand-primary/30 decoration-4 underline-offset-8">Batch 01 Guardian Bundle</span> today for $25. Stack $2,380+ in real value before the Founder Batch closes.
               </p>
             </div>
             
-            <div className="space-y-6">
-              <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="space-y-8">
+              <div className="flex flex-col sm:flex-row items-center gap-6">
                 <div className="relative w-full sm:w-auto">
                   <AnimatePresence>
                     {showTooltip && (
@@ -179,95 +187,105 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute bottom-full left-0 mb-5 z-20 w-80 p-6 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-blue-50"
+                        className="absolute bottom-full left-0 mb-6 z-20 w-[340px] p-8 bg-brand-dark text-white rounded-[2rem] shadow-[0_40px_100px_rgba(0,0,0,0.3)] border border-white/10"
                       >
-                        <div className="space-y-3">
+                        <div className="space-y-5">
                           <div className="flex justify-between items-start">
                             <div className="flex items-center gap-2">
-                              <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" />
-                              <span className="text-brand-primary text-[10px] font-black uppercase tracking-widest leading-none">Onboarding</span>
+                              <Sparkles size={16} className="text-brand-primary" />
+                              <span className="text-brand-primary text-[10px] font-black uppercase tracking-widest leading-none">Smart Valuation</span>
                             </div>
-                            <button 
-                              onClick={closeTooltip}
-                              className="text-brand-gray/40 hover:text-brand-dark transition-colors"
-                            >
-                              <X size={16} />
+                            <button onClick={closeTooltip} className="text-white/20 hover:text-white transition-colors">
+                              <X size={20} />
                             </button>
                           </div>
                           
-                          <div className="space-y-1.5">
-                            <h4 className="font-display font-bold text-brand-dark text-base tracking-tight italic">"The quiet peace of mind..."</h4>
-                            <p className="text-xs text-brand-gray leading-relaxed">
-                              Protecting your family's independence with Canadian-engineered intelligence. Our reservation system ensures you're first in line for Batch 01—with <span className="text-brand-primary font-bold">100% refundable safety</span>.
+                          <div className="space-y-2">
+                            <h4 className="font-display font-medium text-white text-lg">Why $2,380 in Value?</h4>
+                            <p className="text-xs text-white/60 leading-relaxed">
+                              Founders lock in <span className="text-white font-bold">Lifetime AI Neural Updates ($1,200)</span>, a 3-YR Arctic Warranty, and the Stealth Install Kit for free. Your $25 deposit secures the entire $849 stack for only $699.
                             </p>
                           </div>
 
                           <button 
                             onClick={closeTooltip}
-                            className="w-full py-2 bg-gray-50 hover:bg-brand-primary/5 text-brand-primary text-[11px] font-bold uppercase tracking-widest rounded-lg transition-colors border border-brand-primary/10"
+                            className="w-full py-3 bg-brand-primary text-white text-[11px] font-bold uppercase tracking-widest rounded-xl hover:bg-brand-primary/90 transition-all shadow-lg shadow-brand-primary/30"
                           >
-                            Got it, thank you
+                            Claim The Bundle
                           </button>
                         </div>
-                        
-                        {/* Tooltip Arrow */}
-                        <div className="absolute top-full left-12 w-4 h-4 bg-white border-r border-b border-blue-50 rotate-45 -translate-y-2" />
+                        <div className="absolute top-full left-14 w-4 h-4 bg-brand-dark border-r border-b border-white/10 rotate-45 -translate-y-2" />
                       </motion.div>
                     )}
                   </AnimatePresence>
 
-                  <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-primary text-white text-lg font-bold px-10 py-5 rounded-full hover:bg-brand-primary/95 hover:shadow-2xl hover:shadow-brand-primary/20 active:scale-[0.98] transition-all shadow-xl">
-                    Reserve My Family’s Spot — $25 Fully Refundable
+                  <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-dark text-white text-xl font-bold px-12 py-7 rounded-full hover:bg-brand-primary hover:shadow-[0_25px_60px_-10px_rgba(37,99,235,0.5)] active:scale-[0.98] transition-all shadow-2xl relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <span className="relative z-10 flex items-center gap-4">Reserve My Founder Bundle <ChevronRight size={24} /></span>
                   </a>
                 </div>
               </div>
               
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-brand-gray font-medium pl-1">
-                <div className="flex items-center gap-2">
-                  <Check className="text-green-500" size={16} strokeWidth={3} />
-                  <span>Fully refundable</span>
+              <div className="flex flex-wrap items-center gap-x-10 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em] text-brand-dark/40 pl-1">
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                  <span>100% Refundable Deposit</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="text-green-500" size={16} strokeWidth={3} />
-                  <span>Designed & tested in Canada</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-primary shadow-[0_0_10px_rgba(0,113,227,0.5)]" />
+                  <span>Verified Batch 01 Pricing</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="text-green-500" size={16} strokeWidth={3} />
-                  <span>Limited first production release</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-cyan shadow-[0_0_10px_rgba(0,255,255,0.5)]" />
+                  <span>Canadian Arctic Verified</span>
                 </div>
               </div>
             </div>
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="flex-1 relative w-full"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "circOut", delay: 0.2 }}
+            className="flex-1 relative w-full lg:max-w-[550px]"
           >
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] bg-white aspect-[4/5] md:aspect-square">
+            <div className="relative rounded-[3.5rem] overflow-hidden shadow-[0_60px_120px_-30px_rgba(0,0,0,0.25)] bg-white aspect-[4/5] md:aspect-square group lg:rotate-3 hover:rotate-0 transition-transform duration-1000">
               <img 
-                src="https://images.unsplash.com/photo-1621243804936-775306a8f2e3?q=80&w=1920&auto=format&fit=crop" 
-                alt="Confident senior driver enjoying the journey" 
-                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1544027993-37dbfe43542a?q=80&w=2000&auto=format&fit=crop" 
+                alt="Contented senior woman safely driving" 
+                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[2000ms]"
                 referrerPolicy="no-referrer"
               />
               
-              {/* Subtle Indication of Safety */}
-              <div className="absolute top-8 left-8">
-                <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/40 shadow-sm flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-brand-primary" />
-                  <span className="text-[10px] font-black uppercase tracking-widest text-brand-dark">Quiet Protection Active</span>
+              {/* Product Insight Overlay */}
+              <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl space-y-3">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-3 h-3 rounded-full bg-brand-primary animate-pulse" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">Surgical 8K Active</span>
+                    </div>
+                    <Gem size={16} className="text-brand-cyan" />
+                  </div>
+                  <h4 className="text-white font-display font-medium text-lg leading-tight uppercase tracking-tight italic">"Protecting independence, not monitoring it."</h4>
                 </div>
               </div>
 
-              {/* Emotional Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              {/* Founder Badge */}
+              <div className="absolute top-10 right-10">
+                <div className="w-24 h-24 bg-white/10 backdrop-blur-2xl rounded-full border border-white/30 flex items-center justify-center p-2 group-hover:rotate-12 transition-transform duration-700">
+                   <div className="w-full h-full border-2 border-dashed border-white/40 rounded-full flex flex-col items-center justify-center text-center">
+                      <span className="text-[8px] font-black uppercase tracking-tighter text-white/60 leading-none">Collector</span>
+                      <span className="text-3xl font-display font-black text-white leading-none">01</span>
+                      <span className="text-[8px] font-black uppercase tracking-widest text-white/60 leading-none">Batch</span>
+                   </div>
+                </div>
+              </div>
             </div>
             
-            {/* Subtle Decorative Elements */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px]" />
-            <div className="absolute -z-10 -top-10 -left-10 w-48 h-48 bg-brand-cyan/5 rounded-full blur-[60px]" />
+            {/* Background Aesthetics */}
+            <div className="absolute -z-10 -bottom-16 -right-16 w-80 h-80 bg-brand-primary/10 rounded-full blur-[100px]" />
+            <div className="absolute -z-10 -top-16 -left-16 w-64 h-64 bg-brand-cyan/5 rounded-full blur-[80px]" />
           </motion.div>
         </div>
       </div>
@@ -1895,6 +1913,98 @@ const ChatWidget = () => {
   );
 };
 
+const WarrantySection = () => {
+  return (
+    <section className="py-32 bg-brand-bg relative overflow-hidden" id="warranty">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 bg-brand-primary/10 text-brand-primary px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em]">
+              <ShieldCheck size={14} /> Arctic Warrior Assurance
+            </div>
+            <h2 className="text-5xl md:text-7xl font-display font-medium tracking-tight text-brand-dark leading-none">
+              A Guarantee Built for the <span className="text-brand-primary">North.</span>
+            </h2>
+            <p className="text-brand-gray text-lg md:text-xl leading-relaxed font-light">
+              We don't just sell hardware; we provide long-term reliability. Our 3-Year Arctic Warrior Warranty is a testament to the surgical engineering and rugged endurance we've built into every Sentinel X unit.
+            </p>
+            
+            <div className="space-y-6 pt-4">
+              {[
+                { title: "3-Year Full Coverage", desc: "Complete hardware protection from the day of activation.", icon: Calendar },
+                { title: "Thermal Resilience Guard", desc: "Guaranteed performance from -40°C to +85°C internal temps.", icon: Snowflake },
+                { title: "Rapid Replacement", desc: "If it fails due to manufacturing, we ship a new unit in 48 hours.", icon: Zap }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-6 p-6 bg-white rounded-apple-card border border-brand-border/50 shadow-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center text-brand-primary shrink-0">
+                    <item.icon size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg text-brand-dark">{item.title}</h4>
+                    <p className="text-brand-gray text-base leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="bg-white rounded-[3rem] p-12 border-2 border-brand-primary/10 shadow-2xl relative z-10">
+              <div className="space-y-8">
+                <div className="flex justify-between items-start">
+                  <div className="space-y-2">
+                    <h3 className="text-3xl font-display font-medium">Warranty Terms</h3>
+                    <p className="text-brand-gray text-sm">Valid for all Founder Batch reservations.</p>
+                  </div>
+                  <div className="w-16 h-16 bg-brand-primary/5 rounded-2xl flex items-center justify-center text-brand-primary">
+                    <FileText size={32} />
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <h5 className="text-xs font-black uppercase tracking-widest text-brand-dark mb-3">Coverage Scope</h5>
+                    <ul className="space-y-3">
+                      {["Internal AI processing hardware failure", "Lens calibration & sensor degradation", "Arctic adhesive & suction integrity", "Supercapacitor cycle health"].map((li, i) => (
+                        <li key={i} className="flex gap-3 text-sm text-brand-gray font-medium">
+                          <Check size={16} className="text-brand-primary shrink-0" /> {li}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-6 bg-blue-50/30 rounded-2xl border border-brand-primary/5">
+                    <h5 className="text-xs font-black uppercase tracking-widest text-brand-dark mb-3">The Conditions</h5>
+                    <p className="text-sm text-brand-gray leading-relaxed font-medium">
+                      Coverage remains active for the original purchaser. Excludes intentional abuse or unauthorized hardware tampering. Does not cover "acts of god" or collisions (though the Sentinel X will provide the footage for your insurance claim).
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-4 flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] text-brand-primary">
+                  <ShieldCheck size={16} /> Verified Astra-Guard Protection
+                </div>
+              </div>
+            </div>
+            {/* Background Glow */}
+            <div className="absolute -inset-10 bg-brand-primary/5 rounded-full blur-[100px] -z-10" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function App() {
   return (
     <div className="min-h-screen selection:bg-brand-cyan/20">
@@ -1991,6 +2101,7 @@ export default function App() {
         </div>
       </section>
       
+      <WarrantySection />
       <Footer />
       <ChatWidget />
       <ScrollToTop />
