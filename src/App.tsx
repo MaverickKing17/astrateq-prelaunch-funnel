@@ -2042,17 +2042,17 @@ export default function App() {
             </div>
             
             <div className="flex-1 grid grid-cols-2 gap-4">
-               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 transition-transform hover:-translate-y-2">
-                  <img src="https://i.ibb.co/FqjR2nbr/gemini-3-1-flash-image-preview-nano-banana-2-b-Prompt-A-high-end-1.png" alt="Sentinel X AI Unit Close-up" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl group">
+                  <img src="https://i.ibb.co/FqjR2nbr/gemini-3-1-flash-image-preview-nano-banana-2-b-Prompt-A-high-end-1.png" alt="Sentinel X AI Unit Close-up" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
                </div>
-               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 mt-8 transition-transform hover:-translate-y-2">
-                  <img src="https://i.ibb.co/Qj8CH51g/seedream-5-0-lite-a-Prompt-A-photoreali.jpg" alt="Sentinel X Packaging" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 mt-8 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl group">
+                  <img src="https://i.ibb.co/Qj8CH51g/seedream-5-0-lite-a-Prompt-A-photoreali.jpg" alt="Sentinel X Packaging" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
                </div>
-               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 -mt-8 transition-transform hover:-translate-y-2">
-                  <img src="https://i.ibb.co/W4pj7w1y/gpt-image-1-5-high-fidelity-b-Prompt-A-high-end.png" alt="Sensor Lens Detail" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 -mt-8 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl group">
+                  <img src="https://i.ibb.co/W4pj7w1y/gpt-image-1-5-high-fidelity-b-Prompt-A-high-end.png" alt="Sensor Lens Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
                </div>
-               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 transition-transform hover:-translate-y-2">
-                  <img src="https://i.ibb.co/Zzvc5wfT/gemini-3-1-flash-image-preview-nano-banana-2-a-Create-a-pristine-u.png" alt="Astra-Guard Bundle" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+               <div className="rounded-apple-card overflow-hidden shadow-premium aspect-square bg-gray-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl group">
+                  <img src="https://i.ibb.co/Zzvc5wfT/gemini-3-1-flash-image-preview-nano-banana-2-a-Create-a-pristine-u.png" alt="Astra-Guard Bundle" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
                </div>
             </div>
           </div>
