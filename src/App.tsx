@@ -251,9 +251,9 @@ const Hero = () => {
           >
             <div className="relative rounded-[3.5rem] overflow-hidden shadow-[0_60px_120px_-30px_rgba(0,0,0,0.25)] bg-white aspect-[4/5] md:aspect-square group lg:rotate-3 hover:rotate-0 transition-transform duration-1000">
               <img 
-                src="https://images.unsplash.com/photo-1544027993-37dbfe43542a?q=80&w=2000&auto=format&fit=crop" 
-                alt="Contented senior woman safely driving" 
-                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[2000ms]"
+                src="https://i.ibb.co/TMpfjJPS/gpt-image-1-5-high-fidelity-b-A-photorealistic-4-K.png" 
+                alt="Free and independent senior woman driving with Astra-Guard protection" 
+                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[3000ms] ease-out"
                 referrerPolicy="no-referrer"
               />
               
@@ -273,13 +273,24 @@ const Hero = () => {
 
               {/* Founder Badge */}
               <div className="absolute top-10 right-10">
-                <div className="w-24 h-24 bg-white/10 backdrop-blur-2xl rounded-full border border-white/30 flex items-center justify-center p-2 group-hover:rotate-12 transition-transform duration-700">
-                   <div className="w-full h-full border-2 border-dashed border-white/40 rounded-full flex flex-col items-center justify-center text-center">
-                      <span className="text-[8px] font-black uppercase tracking-tighter text-white/60 leading-none">Collector</span>
-                      <span className="text-3xl font-display font-black text-white leading-none">01</span>
-                      <span className="text-[8px] font-black uppercase tracking-widest text-white/60 leading-none">Batch</span>
+                <motion.div 
+                  initial={{ rotate: -15, scale: 0.9 }}
+                  animate={{ rotate: 15, scale: 1 }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    repeatType: "reverse", 
+                    duration: 4,
+                    ease: "easeInOut" 
+                  }}
+                  className="w-28 h-28 bg-brand-dark/20 backdrop-blur-3xl rounded-full border border-white/30 flex items-center justify-center p-2 shadow-2xl overflow-hidden group/badge"
+                >
+                   <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 via-transparent to-brand-cyan/20 animate-spin-slow" />
+                   <div className="w-full h-full border-2 border-brand-primary/40 rounded-full flex flex-col items-center justify-center text-center relative z-10">
+                      <span className="text-[9px] font-black uppercase tracking-tighter text-white/40 leading-none">Founder</span>
+                      <span className="text-4xl font-display font-black text-white leading-none tracking-tighter">01</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-white/40 leading-none">Batch</span>
                    </div>
-                </div>
+                </motion.div>
               </div>
             </div>
             
@@ -496,18 +507,64 @@ const GuardianOfferSection = () => {
           >
             Limited Founder Invitation
           </motion.div>
-          <div className="space-y-4">
+          <div className="space-y-8">
             <h2 className="text-5xl md:text-8xl font-display font-medium tracking-tighter text-brand-dark leading-[0.9]">
               The Guardian <br /> <span className="text-brand-primary italic">Founder's Bundle.</span>
             </h2>
-            <p className="text-brand-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
-              We stacked <span className="text-brand-dark font-medium underline decoration-brand-primary decoration-4 underline-offset-8">$2,380+ in real value</span> into Batch 01. This is the only time these bonuses will ever be bundled.
-            </p>
+            
+            <div className="flex flex-col items-center pt-4">
+              <p className="text-brand-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light mb-10">
+                This is the only time these bonuses will ever be bundled. We stacked:
+              </p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative group cursor-default"
+              >
+                {/* Background Glow */}
+                <div className="absolute -inset-10 bg-brand-primary/10 blur-[80px] rounded-full group-hover:bg-brand-primary/20 transition-all duration-1000 animate-pulse" />
+                
+                <div className="relative bg-white/40 backdrop-blur-xl border-2 border-brand-primary/10 rounded-[2.5rem] px-16 py-10 shadow-[0_50px_100px_-20px_rgba(37,99,235,0.15)] overflow-hidden">
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-8 h-[1px] bg-brand-primary/30" />
+                      <span className="text-[11px] font-black uppercase tracking-[0.5em] text-brand-primary/70">Total Guardian Valuation</span>
+                      <div className="w-8 h-[1px] bg-brand-primary/30" />
+                    </div>
+                    
+                    <div className="flex items-baseline gap-1">
+                      <motion.span 
+                        animate={{ 
+                          scale: [1, 1.02, 1],
+                        }}
+                        transition={{ 
+                          repeat: Infinity, 
+                          duration: 4,
+                          ease: "easeInOut" 
+                        }}
+                        className="text-7xl md:text-9xl font-display font-black text-brand-dark tracking-tighter"
+                      >
+                        $2,380<span className="text-brand-primary">+</span>
+                      </motion.span>
+                    </div>
+
+                    <div className="mt-4 px-6 py-2 bg-brand-primary text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-lg shadow-brand-primary/20">
+                      Founder Batch 01 Pricing Applied
+                    </div>
+                  </div>
+                  
+                  {/* Glass Shimmer */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms]" />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Bento Grid Offer Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           
           {/* Main Product Card */}
           <motion.div 
@@ -531,6 +588,19 @@ const GuardianOfferSection = () => {
                 <p className="text-brand-gray text-lg max-w-sm font-medium leading-relaxed">
                   Surgical 8K road-facing sensor with <span className="text-brand-dark">Exclusive Laser-Etched Founder ID</span> and Obsidian stealth finish.
                 </p>
+                <ul className="space-y-2 pt-2">
+                  {[
+                    "8K Neural Optical Engine",
+                    "Arctic-Grade Supercapacitors",
+                    "Founder-Only Stealth Finish",
+                    "Lifetime Hardware Priority"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-xs text-brand-gray/60 font-bold uppercase tracking-wider">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-primary/40" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
               
               <div className="mt-auto pt-10 flex flex-wrap gap-4">
@@ -625,7 +695,7 @@ const GuardianOfferSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="md:col-span-6 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-[3rem] p-8 md:p-12 text-white relative overflow-hidden group flex flex-col min-h-[300px]"
+            className="md:col-span-6 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-[3rem] p-8 md:p-12 text-white relative overflow-hidden group flex flex-col min-h-[250px]"
           >
              <div className="relative z-10 flex flex-col h-full">
                <div className="space-y-6">
@@ -677,7 +747,7 @@ const GuardianOfferSection = () => {
             <div className="absolute -top-6 left-1/2 -translate-x-1/2">
               <div className="bg-brand-dark text-white px-10 py-4 rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-2xl flex items-center gap-3">
                 <ShieldCheck size={16} className="text-brand-primary" />
-                The Iron-Clad Sovereignty Guarantee
+                The Iron-Clad Independence Guarantee
               </div>
             </div>
             
@@ -923,7 +993,7 @@ const ComparisonSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-blue-50 text-brand-primary text-[10px] font-black uppercase tracking-[0.4em]"
           >
-            The Sovereignty Report
+            The Privacy & Security Report
           </motion.div>
           
           <h2 className="text-5xl md:text-8xl font-display font-medium tracking-tighter text-brand-dark leading-[0.9]">
@@ -1064,7 +1134,7 @@ const TheDifferenceOfCare = () => {
       }
     },
     {
-      title: "Data Sovereignty",
+      title: "Data Security",
       icon: Lock,
       generic: {
         label: "Cloud-First Storage",
@@ -1556,7 +1626,7 @@ const Footer = () => {
       title: "Privacy & Data Architecture",
       body: (
         <>
-          <p className="font-bold text-brand-dark">Built for Personal Privacy, Designed for Canadian Sovereignty.</p>
+          <p className="font-bold text-brand-dark">Built for Personal Privacy, Designed for Canadian Independence.</p>
           <p>At Astrateq, we believe your driving data is yours and yours alone. Our AI automotive safety systems are engineered with a "Privacy First" architecture that aligns with ISED Canada standards and PIPEDA requirements.</p>
           
           <h4 className="text-brand-dark font-bold mt-6 text-lg">1. On-Device AI Processing (Edge Computing)</h4>
