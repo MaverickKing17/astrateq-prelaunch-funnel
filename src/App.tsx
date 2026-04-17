@@ -474,55 +474,58 @@ const GuardianOfferSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-brand-primary/5 text-brand-primary px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-sm ring-1 ring-brand-primary/10"
+            className="inline-flex items-center gap-2 bg-brand-primary/10 text-brand-primary px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-sm ring-1 ring-brand-primary/20"
           >
-            Exclusive Founder Offer
+            Limited Founder Invitation
           </motion.div>
           <div className="space-y-4">
             <h2 className="text-5xl md:text-8xl font-display font-medium tracking-tighter text-brand-dark leading-[0.9]">
               The Guardian <br /> <span className="text-brand-primary italic">Founder's Bundle.</span>
             </h2>
             <p className="text-brand-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
-              We stacked <span className="text-brand-dark font-medium underline decoration-brand-primary decoration-4 underline-offset-8">$950+ in value</span> into a single reservation. This isn't just a dashcam; it's a legacy of safety.
+              We stacked <span className="text-brand-dark font-medium underline decoration-brand-primary decoration-4 underline-offset-8">$2,380+ in real value</span> into Batch 01. This is the only time these bonuses will ever be bundled.
             </p>
           </div>
         </div>
 
         {/* Bento Grid Offer Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 grid-rows-none md:grid-rows-2 gap-6 h-full md:h-[700px]">
+        <div className="grid grid-cols-1 md:grid-cols-6 grid-rows-none md:grid-rows-3 lg:grid-rows-2 gap-6 h-full md:h-[900px] lg:h-[750px]">
           
           {/* Main Product Card */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 md:row-span-2 bg-[#F8F9FF] rounded-[3rem] p-12 relative overflow-hidden group border border-blue-50"
+            className="md:col-span-3 md:row-span-2 bg-[#F8F9FF] rounded-[3rem] p-12 relative overflow-hidden group border-2 border-brand-primary/5 hover:border-brand-primary/20 transition-all duration-700"
           >
             <div className="absolute top-0 right-0 p-8">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl shadow-brand-primary/5 text-brand-primary">
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl shadow-brand-primary/5 text-brand-primary group-hover:rotate-6 transition-transform">
                 <Crown size={32} />
               </div>
             </div>
             
             <div className="h-full flex flex-col justify-between relative z-10">
-              <div className="space-y-6">
-                <span className="text-brand-primary text-xs font-black uppercase tracking-[0.3em]">Core Unit</span>
-                <h3 className="text-4xl md:text-6xl font-display font-bold text-brand-dark leading-none tracking-tight">Sentinel X <br /> 8K Architecture</h3>
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 bg-brand-primary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-brand-primary/20">
+                  Core Asset 01
+                </div>
+                <h3 className="text-4xl md:text-6xl font-display font-bold text-brand-dark leading-none tracking-tight">Sentinel X <br /> <span className="opacity-40">Founder Edition</span></h3>
                 <p className="text-brand-gray text-lg max-w-sm font-medium leading-relaxed">
-                  The world's first surgical 8K road-facing sensor with local AI Neural processing.
+                  Surgical 8K road-facing sensor with <span className="text-brand-dark">Exclusive Laser-Etched Founder ID</span> and Obsidian stealth finish.
                 </p>
               </div>
               
-              <div className="pt-12">
-                <div className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full shadow-lg shadow-brand-primary/5">
+              <div className="pt-12 flex flex-wrap gap-4">
+                <div className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full shadow-lg shadow-brand-primary/5 border border-brand-primary/5">
                   <Gem size={18} className="text-brand-primary" />
                   <span className="text-brand-dark font-bold text-sm leading-none">MSRP: $699</span>
                 </div>
+                <div className="inline-flex items-center gap-2 bg-blue-50/50 px-5 py-2.5 rounded-full border border-brand-primary/10">
+                  <ShieldCheck size={16} className="text-brand-primary" />
+                  <span className="text-brand-primary font-black text-[10px] uppercase tracking-wider">Industrial Spec</span>
+                </div>
               </div>
             </div>
-            
-            {/* Visual Flare */}
-            <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-brand-primary/10 rounded-full blur-[100px] group-hover:bg-brand-primary/20 transition-all duration-1000" />
           </motion.div>
 
           {/* Bonus 1: Lifetime Software */}
@@ -530,97 +533,165 @@ const GuardianOfferSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 bg-brand-dark rounded-[3rem] p-10 relative overflow-hidden group"
+            className="md:col-span-3 bg-brand-dark rounded-[3rem] p-10 relative overflow-hidden group border border-white/5"
           >
             <div className="h-full flex flex-col justify-between relative z-10">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Sparkles size={20} className="text-brand-primary" />
-                  <span className="text-brand-primary text-[10px] font-black uppercase tracking-[0.3em]">Bonus 01 — Lifetime</span>
+                  <span className="text-brand-primary text-[10px] font-black uppercase tracking-[0.3em]">Founders Lifetime Access</span>
                 </div>
-                <h4 className="text-3xl font-display font-bold text-white leading-tight">Neural AI Updates <br /> <span className="text-brand-primary/80 underline decoration-brand-primary/40 underline-offset-4">Free Forever.</span></h4>
-                <p className="text-gray-400 text-sm max-w-[200px] leading-relaxed">
-                  Founder Batch only. Never pay a subscription for new AI detection features.
+                <h4 className="text-3xl font-display font-bold text-white leading-tight">Neural AI Updates <br /> <span className="text-brand-primary underline decoration-brand-primary/40 underline-offset-4 decoration-2">Free Forever.</span></h4>
+                <p className="text-gray-400 text-sm max-w-[280px] leading-relaxed">
+                  Avoid the "Subscription Trap." Proactive AI road-scanning features stay free for your unit's life.
                 </p>
               </div>
               
               <div className="flex items-center justify-between">
-                <span className="text-white/20 font-black text-4xl italic">FREE</span>
-                <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white text-[10px] uppercase font-bold tracking-widest">Value: $499</div>
+                <span className="text-white/20 font-black text-5xl italic tracking-tighter">FREE</span>
+                <div className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white text-[10px] uppercase font-bold tracking-[0.2em] shadow-inner">Value: $1,200 (10yrs)</div>
               </div>
             </div>
+            {/* Visual Flare */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/10 blur-[80px] pointer-events-none" />
           </motion.div>
 
-          {/* Bonus 2: Warranty */}
+          {/* Bonus 2: Install Kit (The "Solve Next Problem") */}
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="md:col-span-2 bg-white border border-brand-border rounded-[3rem] p-10 relative overflow-hidden group hover:border-brand-primary transition-colors"
+            className="md:col-span-2 bg-[#F0F2FF] rounded-[3rem] p-10 relative overflow-hidden group border border-brand-primary/5"
           >
             <div className="h-full flex flex-col justify-between relative z-10">
               <div className="space-y-4">
-                <Shield size={24} className="text-brand-primary" />
-                <h4 className="text-xl font-bold text-brand-dark font-display leading-tight">3-Year Arctic <br /> Warrior Warranty</h4>
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-primary shadow-sm mb-4">
+                  <Car size={24} />
+                </div>
+                <h4 className="text-xl font-bold text-brand-dark font-display leading-tight">Universal <br /> Stealth Install Kit</h4>
+                <p className="text-brand-gray text-xs font-medium">No messy wires. Hardwire & invisible trim-routing toolkit included.</p>
               </div>
-              <div className="pt-6">
-                <span className="text-brand-primary font-black text-2xl">FREE</span>
-                <div className="text-brand-gray text-[10px] font-bold uppercase tracking-widest mt-1 italic">Value: $250</div>
+              <div className="pt-6 flex items-end justify-between">
+                <div>
+                  <span className="text-brand-primary font-black text-2xl uppercase italic">Gift</span>
+                  <div className="text-brand-gray text-[10px] font-bold uppercase tracking-widest mt-1">Value: $150</div>
+                </div>
+                <Truck className="text-brand-primary/20 -mb-2" size={40} />
               </div>
             </div>
           </motion.div>
 
-          {/* Small Urgency Card */}
+          {/* Bonus 3: Arctic Warranty */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="md:col-span-1 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-[3rem] p-8 flex flex-col items-center justify-center text-center text-white"
+            className="md:col-span-1 bg-white border-2 border-brand-primary/20 rounded-[3rem] p-8 relative overflow-hidden group hover:border-brand-primary transition-all duration-500 shadow-sm"
           >
-             <Gift size={32} className="mb-4 animate-bounce" />
-             <div className="text-xs font-black uppercase tracking-widest mb-1">Join The</div>
-             <div className="text-4xl font-display font-black leading-none">500</div>
-             <div className="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-80">Founder Batch</div>
+            <div className="h-full flex flex-col justify-between relative z-10">
+              <div className="space-y-4">
+                <Shield size={24} className="text-brand-primary group-hover:scale-110 transition-transform" />
+                <h4 className="text-sm font-bold text-brand-dark font-display leading-tight">3-YR Arctic Warrior <br /> Protection</h4>
+              </div>
+              <div className="pt-4">
+                <div className="text-brand-primary font-black text-xl italic tracking-tighter leading-none">FREE</div>
+                <div className="text-brand-gray text-[9px] font-bold uppercase tracking-widest mt-1 opacity-60">Value: $280</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Final Scarcity/Offer Card */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="md:col-span-3 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-[3rem] p-12 text-white relative overflow-hidden group"
+          >
+             <div className="h-full flex flex-col justify-between relative z-10">
+               <div className="space-y-6">
+                 <div className="flex items-center gap-4">
+                   <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
+                     <Star size={24} fill="white" />
+                   </div>
+                   <div className="text-xs font-black uppercase tracking-[0.4em] text-white/80">Batch 01 Availability</div>
+                 </div>
+                 
+                 <div className="space-y-2">
+                   <div className="text-6xl font-display font-black leading-none tracking-tighter">18 <span className="text-xl font-bold uppercase opacity-60 tracking-widest">Left</span></div>
+                   <p className="font-bold text-white/90 text-lg">Spots remaining in the Founder Batch.</p>
+                 </div>
+               </div>
+
+               <div className="pt-8">
+                 <div className="w-full bg-white/20 rounded-full h-3 mb-3 overflow-hidden border border-white/10 p-0.5">
+                   <motion.div 
+                    initial={{ width: "0%" }}
+                    whileInView={{ width: "96.4%" }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
+                    className="h-full bg-white rounded-full relative"
+                   >
+                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+                   </motion.div>
+                 </div>
+                 <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.2em]">
+                   <span>482 Secured</span>
+                   <span className="text-white/70 italic">Closing Soon</span>
+                 </div>
+               </div>
+             </div>
+             {/* Background Decoration */}
+             <Gift className="absolute -bottom-10 -right-10 text-white opacity-10 group-hover:rotate-12 transition-transform duration-700" size={200} />
           </motion.div>
 
         </div>
 
-        {/* Hormozi Final Close / Risk Reversal */}
-        <div className="mt-24 max-w-4xl mx-auto">
+        {/* Hormozi Risk Reversal - The "Stupid if you don't" Close */}
+        <div className="mt-28 max-w-4xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-brand-bg/50 backdrop-blur-sm border-2 border-dashed border-brand-primary/30 rounded-[3rem] p-12 text-center relative"
+            className="bg-brand-bg/60 backdrop-blur-xl border-4 border-dashed border-brand-primary/20 rounded-[4rem] p-16 text-center relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px] pointer-events-none" />
+            
             <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-              <div className="bg-brand-primary text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-xl">The Grand Slam Guarantee</div>
+              <div className="bg-brand-dark text-white px-10 py-4 rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-2xl flex items-center gap-3">
+                <ShieldCheck size={16} className="text-brand-primary" />
+                The Iron-Clad Sovereignty Guarantee
+              </div>
             </div>
             
-            <div className="space-y-8">
-              <h5 className="text-4xl md:text-5xl font-display font-bold text-brand-dark tracking-tight leading-tight pt-4">You'd Have to <span className="text-brand-primary">Be Crazy</span> to Say No.</h5>
-              <div className="grid md:grid-cols-3 gap-8 text-left py-6">
-                <div className="flex gap-4">
-                  <CheckCircle2 className="text-brand-primary shrink-0" size={20} />
-                  <p className="text-sm text-brand-gray leading-relaxed"><span className="text-brand-dark font-bold">100% Refundable.</span> Change your mind? Get your $25 back in seconds. Zero friction.</p>
+            <div className="space-y-10">
+              <h5 className="text-5xl md:text-6xl font-display font-bold text-brand-dark tracking-tight leading-none pt-6">The Only <span className="text-brand-primary underline decoration-brand-primary/20 underline-offset-[12px]">Risk-Free</span> Way to 8K.</h5>
+              
+              <div className="grid md:grid-cols-2 gap-10 text-left py-4">
+                <div className="bg-white/50 p-6 rounded-3xl border border-white/50">
+                  <p className="text-base text-brand-gray leading-relaxed">
+                    <span className="text-brand-dark font-black uppercase text-sm block mb-2 tracking-widest">01 — Full Refund</span>
+                    Is your $25 safe? Yes. You can withdraw from the Founder Queue at any moment before mass-production with one click. <span className="font-bold text-brand-dark">Zero friction.</span>
+                  </p>
                 </div>
-                <div className="flex gap-4">
-                  <CheckCircle2 className="text-brand-primary shrink-0" size={20} />
-                  <p className="text-sm text-brand-gray leading-relaxed"><span className="text-brand-dark font-bold">Price Protection.</span> Your reservation locks in the special Founder's Price forever.</p>
-                </div>
-                <div className="flex gap-4">
-                  <CheckCircle2 className="text-brand-primary shrink-0" size={20} />
-                  <p className="text-sm text-brand-gray leading-relaxed"><span className="text-brand-dark font-bold">VIP Priority.</span> You move to the front of the line for the 2026 limited shipment.</p>
+                <div className="bg-white/50 p-6 rounded-3xl border border-white/50">
+                  <p className="text-base text-brand-gray leading-relaxed">
+                    <span className="text-brand-dark font-black uppercase text-sm block mb-2 tracking-widest">02 — Price Anchor</span>
+                    Mass production MSRP will be $849+. As a Founder, you are <span className="font-bold text-green-600 underline decoration-green-100 decoration-4">legally locked in</span> at the $699 Batch 01 rate.
+                  </p>
                 </div>
               </div>
               
-              <div className="pt-8">
-                <a href="#reserve" className="inline-flex items-center gap-4 bg-brand-primary text-white px-14 py-6 rounded-full font-black text-xl hover:scale-105 hover:shadow-[0_25px_60px_rgba(37,99,235,0.4)] active:scale-95 transition-all group shadow-2xl">
-                  Accept The Founder's Gift <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+              <div className="pt-10 flex flex-col items-center gap-6">
+                <a href="#reserve" className="relative inline-flex items-center gap-5 bg-brand-primary text-white px-16 py-8 rounded-full font-black text-2xl hover:scale-105 hover:shadow-[0_25px_80px_rgba(37,99,235,0.5)] active:scale-95 transition-all group shadow-2xl overflow-hidden">
+                  <span className="relative z-10 flex items-center gap-4">Claim My Founder Bundle <ChevronRight size={28} /></span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </a>
-                <p className="mt-6 text-brand-gray text-[11px] font-black uppercase tracking-[0.3em] opacity-60">Offer expires when the 500th spot is taken.</p>
+                <div className="flex items-center gap-3 opacity-60">
+                  <Check size={14} className="text-brand-primary" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] font-display">100% Safe Stripe® Encryption</span>
+                </div>
               </div>
             </div>
           </motion.div>
