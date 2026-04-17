@@ -827,26 +827,25 @@ const ComparisonSection = () => {
     <section className="py-32 relative overflow-hidden bg-white" id="comparison">
       {/* Visual Background Flourish */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-primary/20 to-transparent" />
-      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-brand-primary/10 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[120px] translate-x-1/4 translate-y-1/4 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-brand-primary to-brand-cyan text-white text-[11px] font-bold uppercase tracking-[0.3em] shadow-xl shadow-brand-primary/20"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-blue-50 text-brand-primary text-[10px] font-black uppercase tracking-[0.4em]"
           >
-            <Zap size={14} className="animate-pulse" /> 8K ENGINEERING BENCHMARK
+            The Sovereignty Report
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-brand-dark leading-[1.1]">
-            Canadian Safety, <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-cyan to-brand-primary animate-gradient">Redefined for 2025.</span>
+          <h2 className="text-5xl md:text-8xl font-display font-medium tracking-tighter text-brand-dark leading-[0.9]">
+            The New Standard in <br />
+            <span className="text-brand-primary italic">Automotive Integrity.</span>
           </h2>
           
-          <p className="text-brand-gray text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Standard dash cams are built for mass markets. We built the Sentinel X for the <span className="font-bold text-brand-dark italic">Canadian Reality</span>—extreme winters, zero subscriptions, and surgical 8K clarity.
+          <p className="text-brand-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+            Standard dash cams are mass-market compromises. We built the <span className="text-brand-dark font-medium underline decoration-brand-primary decoration-4 underline-offset-8">Sentinel X</span> for the Canadian Reality.
           </p>
         </div>
 
@@ -854,61 +853,56 @@ const ComparisonSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/40 backdrop-blur-xl rounded-[48px] border border-white/60 shadow-[0_64px_128px_-32px_rgba(0,0,0,0.1)] overflow-hidden"
+          className="bg-white rounded-[4rem] border border-gray-100 shadow-[0_80px_160px_-40px_rgba(0,0,0,0.08)] overflow-hidden"
         >
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[900px]">
+            <table className="w-full text-left border-collapse min-w-[1000px]">
               <thead>
-                <tr className="bg-gray-50/50">
-                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/60 w-1/3">The Specification</th>
-                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-gray/60 w-1/3 text-center">Mass Market</th>
-                  <th className="p-10 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-primary w-1/3 text-center relative bg-brand-primary/[0.04]">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-2 bg-brand-primary text-white text-[9px] font-black rounded-b-xl shadow-lg shadow-brand-primary/20 whitespace-nowrap tracking-[0.2em]">
-                      THE ASTRATEQ STANDARD
-                    </div>
-                    SENTINEL X
+                <tr className="bg-gray-50/30">
+                  <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 w-[35%]">Feature Logic</th>
+                  <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 w-[30%] text-center border-x border-gray-50/50">Market Status Quo</th>
+                  <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-white w-[35%] text-center bg-brand-dark relative">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-brand-primary" />
+                    Sentinel X Standard
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-gray-50">
                 {rows.map((row, i) => (
                   <motion.tr 
                     key={i} 
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className="group hover:bg-white transition-all duration-300"
+                    className="group"
                   >
-                    <td className="p-10">
-                      <div className="flex gap-6 items-start">
-                        <div className="w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500 shrink-0">
-                          <row.icon size={22} />
+                    <td className="p-12 transition-colors group-hover:bg-gray-50/30">
+                      <div className="flex gap-8 items-start">
+                        <div className="w-14 h-14 rounded-2xl bg-[#F8F9FF] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-700 shrink-0 shadow-sm">
+                          <row.icon size={26} />
                         </div>
                         <div className="space-y-2">
-                          <p className="font-bold text-xl text-brand-dark tracking-tight">{row.label}</p>
-                          <p className="text-xs text-brand-gray tracking-wide leading-relaxed font-medium max-w-[280px]">{row.detail}</p>
+                          <p className="font-bold text-2xl text-brand-dark tracking-tight font-display">{row.label}</p>
+                          <p className="text-sm text-brand-gray/80 tracking-wide font-medium leading-relaxed max-w-[320px]">{row.detail}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="p-10 text-center">
-                      <div className="inline-flex flex-col items-center gap-2">
-                        <span className="text-sm font-bold text-gray-400/80 uppercase tracking-widest">{row.generic}</span>
-                        <div className="flex gap-1">
-                           {[1,2,3].map(d => <div key={d} className="w-1 h-1 rounded-full bg-gray-200" />)}
+                    <td className="p-12 text-center border-x border-gray-50 group-hover:bg-gray-50/30 transition-colors">
+                      <div className="inline-flex flex-col items-center gap-3 grayscale opacity-40 group-hover:opacity-60 transition-all">
+                        <span className="text-sm font-black text-gray-500 uppercase tracking-widest leading-none">{row.generic}</span>
+                        <div className="flex gap-1.5 grayscale">
+                           {[1,2,3].map(d => <div key={d} className="w-1.5 h-1.5 rounded-full bg-gray-200" />)}
                         </div>
                       </div>
                     </td>
-                    <td className="p-10 text-center relative bg-brand-primary/[0.04] group-hover:bg-brand-primary/[0.07] transition-all">
-                      <div className="flex flex-col items-center gap-4 relative z-10">
-                        <motion.div 
-                          whileHover={{ scale: 1.1, rotate: 360 }}
-                          className="w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-brand-primary border border-brand-primary/10"
-                        >
-                          <CheckCircle2 size={28} />
-                        </motion.div>
+                    <td className="p-12 text-center bg-brand-dark/95 relative group-hover:bg-brand-dark transition-colors">
+                      <div className="flex flex-col items-center gap-6 relative z-10">
+                        <div className="w-16 h-16 rounded-[1.5rem] bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 backdrop-blur-md group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.3)] transition-all duration-700">
+                          <CheckCircle2 size={32} />
+                        </div>
                         <div className="space-y-1">
-                          <span className="font-black text-brand-primary text-lg tracking-tight uppercase">{row.astrateq}</span>
-                          <div className="h-1 w-12 bg-brand-primary/20 rounded-full mx-auto" />
+                          <span className="font-black text-white text-xl tracking-tight uppercase block">{row.astrateq}</span>
+                          <div className="h-1.5 w-16 bg-brand-primary rounded-full mx-auto" />
                         </div>
                       </div>
                     </td>
@@ -918,24 +912,28 @@ const ComparisonSection = () => {
             </table>
           </div>
           
-          <div className="p-12 bg-brand-dark text-white relative overflow-hidden">
-            {/* Dark Mode Glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/20 blur-[80px] -translate-y-1/2 translate-x-1/2" />
+          {/* Hormozi High-Conversion Close */}
+          <div className="p-16 bg-white border-t-2 border-dashed border-gray-100 relative overflow-hidden">
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px]" />
             
             <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-              <div className="flex items-center gap-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-3xl flex items-center justify-center text-white shadow-2xl relative group">
-                  <ShieldCheck size={40} className="group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-0 rounded-3xl animate-pulse ring-4 ring-brand-primary/20" />
+              <div className="flex items-start gap-10">
+                <div className="w-24 h-24 bg-brand-primary rounded-[2.5rem] flex items-center justify-center text-white shadow-[0_25px_50px_-12px_rgba(37,99,235,0.3)] hover:rotate-6 transition-transform group">
+                  <ShieldCheck size={48} />
                 </div>
-                <div className="space-y-2 text-center md:text-left">
-                  <h4 className="text-2xl font-bold tracking-tight">The $25 Risk-Free Priority Queue</h4>
-                  <p className="text-white/60 font-medium max-w-md">Secure Batch 01 Pricing ($199 vs $249 MSRP). 100% refundable via Stripe at any time.</p>
+                <div className="space-y-3">
+                  <div className="inline-block px-4 py-1.5 bg-green-50 text-green-600 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">Exclusive Lockdown Price</div>
+                  <h4 className="text-4xl font-display font-medium text-brand-dark leading-none tracking-tight">Lock in <span className="text-brand-primary">$50 Savings</span> Now.</h4>
+                  <p className="text-brand-gray font-medium max-w-md text-lg">Secure Batch 01 pricing for only $25. Your deposit is 100% refundable. You literally have nothing to lose.</p>
                 </div>
               </div>
-              <a href="#reserve" className="px-14 py-6 bg-white text-brand-dark rounded-full font-black text-lg hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,255,255,0.2)] transition-all flex items-center gap-4 group">
-                Reserve My 8K Sentinel <ChevronRight className="group-hover:translate-x-1.5 transition-transform" size={24} />
-              </a>
+              
+              <div className="flex flex-col items-center gap-4">
+                <a href="#reserve" className="px-16 py-8 bg-brand-dark text-white rounded-full font-black text-2xl hover:bg-brand-primary hover:shadow-[0_25px_60px_rgba(37,99,235,0.4)] active:scale-95 transition-all flex items-center gap-4 group shadow-2xl">
+                  Secure My $50 Credit <ChevronRight className="group-hover:translate-x-2 transition-transform" size={28} />
+                </a>
+                <p className="text-brand-gray text-[10px] font-bold uppercase tracking-[0.2em]">Priority Shipping Guaranteed for Batch 01</p>
+              </div>
             </div>
           </div>
         </motion.div>
