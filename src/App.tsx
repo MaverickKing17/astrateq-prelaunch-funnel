@@ -187,7 +187,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute bottom-full left-0 mb-6 z-20 w-[340px] p-8 bg-brand-dark text-white rounded-[2rem] shadow-[0_40px_100px_rgba(0,0,0,0.3)] border border-white/10"
+                        className="absolute bottom-full left-0 mb-6 z-20 w-[340px] p-8 bg-white text-brand-dark rounded-[2rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-brand-border"
                       >
                         <div className="space-y-5">
                           <div className="flex justify-between items-start">
@@ -195,15 +195,15 @@ const Hero = () => {
                               <Sparkles size={16} className="text-brand-primary" />
                               <span className="text-brand-primary text-[10px] font-black uppercase tracking-widest leading-none">Smart Valuation</span>
                             </div>
-                            <button onClick={closeTooltip} className="text-white/20 hover:text-white transition-colors">
+                            <button onClick={closeTooltip} className="text-brand-gray hover:text-brand-dark transition-colors">
                               <X size={20} />
                             </button>
                           </div>
                           
                           <div className="space-y-2">
-                            <h4 className="font-display font-medium text-white text-lg">Why $2,380 in Value?</h4>
-                            <p className="text-xs text-white/60 leading-relaxed">
-                              Founders lock in <span className="text-white font-bold">Lifetime AI Neural Updates ($1,200)</span>, a 3-YR Arctic Warranty, and the Stealth Install Kit for free. Your $25 deposit secures the entire $849 stack for only $699.
+                            <h4 className="font-display font-medium text-brand-dark text-lg">Why $2,380 in Value?</h4>
+                            <p className="text-xs text-brand-gray leading-relaxed">
+                              Founders lock in <span className="text-brand-dark font-bold">Lifetime AI Neural Updates ($1,200)</span>, a 3-YR Arctic Warranty, and the Stealth Install Kit for free. Your $25 deposit secures the entire $849 stack for only $699.
                             </p>
                           </div>
 
@@ -214,12 +214,12 @@ const Hero = () => {
                             Claim The Bundle
                           </button>
                         </div>
-                        <div className="absolute top-full left-14 w-4 h-4 bg-brand-dark border-r border-b border-white/10 rotate-45 -translate-y-2" />
+                        <div className="absolute top-full left-14 w-4 h-4 bg-white border-r border-b border-brand-border rotate-45 -translate-y-2" />
                       </motion.div>
                     )}
                   </AnimatePresence>
 
-                  <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-dark text-white text-xl font-bold px-12 py-7 rounded-full hover:bg-brand-primary hover:shadow-[0_25px_60px_-10px_rgba(37,99,235,0.5)] active:scale-[0.98] transition-all shadow-2xl relative group overflow-hidden">
+                  <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-primary text-white text-xl font-bold px-12 py-7 rounded-full hover:shadow-[0_25px_60px_-10px_rgba(0,113,227,0.5)] active:scale-[0.98] transition-all shadow-xl relative group overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <span className="relative z-10 flex items-center gap-4">Reserve My Founder Bundle <ChevronRight size={24} /></span>
                   </a>
@@ -621,7 +621,7 @@ const GuardianOfferSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 bg-brand-dark rounded-[3rem] p-8 md:p-10 relative overflow-hidden group border border-white/5 flex flex-col min-h-[300px]"
+            className="md:col-span-3 bg-[#F8F9FF] rounded-[3rem] p-8 md:p-10 relative overflow-hidden group border border-brand-primary/10 flex flex-col min-h-[300px] shadow-sm"
           >
             <div className="relative z-10 flex flex-col h-full">
               <div className="space-y-4">
@@ -629,18 +629,18 @@ const GuardianOfferSection = () => {
                   <Sparkles size={20} className="text-brand-primary" />
                   <span className="text-brand-primary text-[10px] font-black uppercase tracking-[0.3em]">Founders Lifetime Access</span>
                 </div>
-                <h4 className="text-3xl font-display font-bold text-white leading-tight">Neural AI Updates <br /> <span className="text-brand-primary underline decoration-brand-primary/40 underline-offset-4 decoration-2">Free Forever.</span></h4>
-                <p className="text-gray-400 text-sm md:text-base max-w-[320px] leading-relaxed">
+                <h4 className="text-3xl font-display font-bold text-brand-dark leading-tight">Neural AI Updates <br /> <span className="text-brand-primary underline decoration-brand-primary/40 underline-offset-4 decoration-2">Free Forever.</span></h4>
+                <p className="text-brand-gray text-sm md:text-base max-w-[320px] leading-relaxed">
                   Avoid the "Subscription Trap." Proactive AI road-scanning features stay free for your unit's life.
                 </p>
               </div>
               
               <div className="mt-auto pt-8 flex items-center justify-between">
-                <span className="text-white/20 font-black text-4xl md:text-5xl italic tracking-tighter">FREE</span>
-                <div className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white text-[10px] uppercase font-bold tracking-[0.2em] shadow-inner">Value: $1,200 (10yrs)</div>
+                <span className="text-brand-primary/20 font-black text-4xl md:text-5xl italic tracking-tighter">FREE</span>
+                <div className="px-5 py-2 rounded-full bg-white border border-brand-primary/10 text-brand-dark text-[10px] uppercase font-bold tracking-[0.2em] shadow-sm">Value: $1,200 (10yrs)</div>
               </div>
             </div>
-            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/10 blur-[80px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/5 blur-[80px] pointer-events-none" />
           </motion.div>
 
           {/* Bonus 2: Install Kit (The "Solve Next Problem") */}
@@ -745,7 +745,7 @@ const GuardianOfferSection = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full blur-[80px] pointer-events-none" />
             
             <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-              <div className="bg-brand-dark text-white px-10 py-4 rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-2xl flex items-center gap-3">
+              <div className="bg-white text-brand-dark border-2 border-brand-primary/10 px-10 py-4 rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-xl flex items-center gap-3">
                 <ShieldCheck size={16} className="text-brand-primary" />
                 The Iron-Clad Independence Guarantee
               </div>
@@ -1018,7 +1018,7 @@ const ComparisonSection = () => {
                 <tr className="bg-gray-50/30">
                   <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 w-[35%]">Feature Logic</th>
                   <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 w-[30%] text-center border-x border-gray-50/50">Market Status Quo</th>
-                  <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-white w-[35%] text-center bg-brand-dark relative">
+                  <th className="p-12 text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary w-[35%] text-center bg-brand-primary/5 relative">
                     <div className="absolute top-0 left-0 w-full h-1 bg-brand-primary" />
                     Sentinel X Standard
                   </th>
@@ -1052,13 +1052,13 @@ const ComparisonSection = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="p-12 text-center bg-brand-dark/95 relative group-hover:bg-brand-dark transition-colors">
+                    <td className="p-12 text-center bg-brand-primary/[0.02] relative group-hover:bg-brand-primary/5 transition-colors">
                       <div className="flex flex-col items-center gap-6 relative z-10">
                         <div className="w-16 h-16 rounded-[1.5rem] bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 backdrop-blur-md group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.3)] transition-all duration-700">
                           <CheckCircle2 size={32} />
                         </div>
                         <div className="space-y-1">
-                          <span className="font-black text-white text-xl tracking-tight uppercase block">{row.astrateq}</span>
+                          <span className="font-black text-brand-dark text-xl tracking-tight uppercase block">{row.astrateq}</span>
                           <div className="h-1.5 w-16 bg-brand-primary rounded-full mx-auto" />
                         </div>
                       </div>
@@ -1086,7 +1086,7 @@ const ComparisonSection = () => {
               </div>
               
               <div className="flex flex-col items-center gap-4">
-                <a href="#reserve" className="px-16 py-8 bg-brand-dark text-white rounded-full font-black text-2xl hover:bg-brand-primary hover:shadow-[0_25px_60px_rgba(37,99,235,0.4)] active:scale-95 transition-all flex items-center gap-4 group shadow-2xl">
+                <a href="#reserve" className="px-16 py-8 bg-brand-primary text-white rounded-full font-black text-2xl hover:shadow-[0_25px_60px_rgba(37,99,235,0.4)] active:scale-95 transition-all flex items-center gap-4 group shadow-xl">
                   Secure My $50 Credit <ChevronRight className="group-hover:translate-x-2 transition-transform" size={28} />
                 </a>
                 <p className="text-brand-gray text-[10px] font-bold uppercase tracking-[0.2em]">Priority Shipping Guaranteed for Batch 01</p>
@@ -1321,8 +1321,8 @@ const CountdownTimer = () => {
 
   const TimerUnit = ({ value, label }: { value: number, label: string }) => (
     <div className="flex flex-col items-center">
-      <div className="bg-brand-dark text-white w-12 h-14 md:w-16 md:h-20 rounded-xl flex items-center justify-center text-xl md:text-3xl font-bold shadow-2xl relative overflow-hidden group">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+      <div className="bg-white text-brand-dark w-12 h-14 md:w-16 md:h-20 rounded-xl border border-brand-border flex items-center justify-center text-xl md:text-3xl font-bold shadow-premium relative overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.03] to-transparent pointer-events-none" />
         <motion.span 
           key={value}
           initial={{ y: 20, opacity: 0 }}
@@ -1714,16 +1714,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-24 border-t border-white/5 bg-brand-dark relative overflow-hidden">
+    <footer className="py-24 border-t border-brand-border bg-white relative overflow-hidden">
       {/* Decorative background pulse */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-primary/[0.02] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="space-y-6 max-w-sm">
             <div className="flex items-center gap-2 mb-6">
-              <div className="bg-white p-2 rounded-xl">
+              <div className="bg-brand-primary/5 p-2 rounded-xl border border-brand-primary/10">
                 <img 
                   src="https://i.ibb.co/NdYZ7r7Z/Gemini-Generated-Image-pta8i9pta8i9pta8.png" 
                   alt="SafeGuard Sentinel" 
@@ -1732,7 +1732,7 @@ const Footer = () => {
                 />
               </div>
             </div>
-            <p className="text-[15px] text-white/60 leading-relaxed font-medium">
+            <p className="text-[15px] text-brand-gray leading-relaxed font-medium">
               Revolutionizing road safety through advanced, on-device AI. Designed and tested in Toronto to withstand the unique challenges of Canadian road conditions.
             </p>
             <div className="flex gap-4 pt-4">
@@ -1742,7 +1742,7 @@ const Footer = () => {
                 { icon: <Instagram size={18} />, label: "Instagram" },
                 { icon: <Youtube size={18} />, label: "YouTube" }
               ].map((social, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-brand-primary hover:text-white hover:border-brand-primary hover:-translate-y-1 transition-all shadow-premium">
+                <a key={i} href="#" className="w-10 h-10 rounded-full bg-brand-bg border border-brand-border flex items-center justify-center text-brand-gray hover:bg-brand-primary hover:text-white hover:border-brand-primary hover:-translate-y-1 transition-all shadow-sm">
                   {social.icon}
                 </a>
               ))}
@@ -1751,43 +1751,43 @@ const Footer = () => {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-16 md:gap-24">
             <div className="space-y-6">
-              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-white flex items-center gap-2">
-                <div className="w-1 h-4 bg-brand-primary rounded-full shadow-[0_0_10px_rgba(0,113,227,0.5)]" />
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-brand-dark flex items-center gap-2">
+                <div className="w-1 h-4 bg-brand-primary rounded-full shadow-[0_0_10px_rgba(0,113,227,0.3)]" />
                 Legal
               </h5>
               <ul className="space-y-3 text-sm font-medium">
-                <li><button onClick={() => setModalContent(legalContent.privacy)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><FileText size={14} className="group-hover:scale-110 transition-transform" /> Privacy Policy</button></li>
-                <li><button onClick={() => setModalContent(legalContent.terms)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><Info size={14} className="group-hover:scale-110 transition-transform" /> Terms of Service</button></li>
-                <li><button onClick={() => setModalContent(legalContent.refund)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><Heart size={14} className="group-hover:scale-110 transition-transform" /> Refund Policy</button></li>
+                <li><button onClick={() => setModalContent(legalContent.privacy)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors group"><FileText size={14} className="group-hover:scale-110 transition-transform" /> Privacy Policy</button></li>
+                <li><button onClick={() => setModalContent(legalContent.terms)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors group"><Info size={14} className="group-hover:scale-110 transition-transform" /> Terms of Service</button></li>
+                <li><button onClick={() => setModalContent(legalContent.refund)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors group"><Heart size={14} className="group-hover:scale-110 transition-transform" /> Refund Policy</button></li>
               </ul>
             </div>
             
             <div className="space-y-6">
-              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-white flex items-center gap-2">
-                <div className="w-1 h-4 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-brand-dark flex items-center gap-2">
+                <div className="w-1 h-4 bg-brand-primary/40 rounded-full" />
                 Support
               </h5>
               <ul className="space-y-3 text-sm font-medium">
-                <li><button onClick={() => setModalContent(legalContent.contact)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><MessageCircle size={14} className="group-hover:scale-110 transition-transform" /> Contact Us</button></li>
-                <li><button onClick={() => setModalContent(legalContent.shipping)} className="text-white/50 hover:text-brand-primary flex items-center gap-2 transition-colors group"><Truck size={14} className="group-hover:scale-110 transition-transform" /> Shipping FAQ</button></li>
+                <li><button onClick={() => setModalContent(legalContent.contact)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors group"><MessageCircle size={14} className="group-hover:scale-110 transition-transform" /> Contact Us</button></li>
+                <li><button onClick={() => setModalContent(legalContent.shipping)} className="text-brand-gray hover:text-brand-primary flex items-center gap-2 transition-colors group"><Truck size={14} className="group-hover:scale-110 transition-transform" /> Shipping FAQ</button></li>
               </ul>
             </div>
 
             <div className="space-y-6 col-span-2 sm:col-span-1">
-              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-white flex items-center gap-2">
-                <div className="w-1 h-4 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+              <h5 className="font-bold text-[12px] uppercase tracking-[0.2em] text-brand-dark flex items-center gap-2">
+                <div className="w-1 h-4 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.3)]" />
                 Status
               </h5>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl shadow-2xl relative group overflow-hidden">
-                <div className="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex items-center gap-3 text-sm text-green-400 font-bold mb-2">
+              <div className="bg-brand-bg border border-brand-border p-5 rounded-2xl shadow-sm relative group overflow-hidden">
+                <div className="absolute inset-0 bg-green-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center gap-3 text-sm text-green-600 font-bold mb-2">
                   <div className="relative">
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping absolute inset-0" />
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500 relative" />
                   </div>
                   <span>Pre-Launch Live</span>
                 </div>
-                <p className="text-[11px] text-white/50 font-medium leading-relaxed">
+                <p className="text-[11px] text-brand-gray font-medium leading-relaxed">
                   Now accepting priority reservations for the inaugural Batch 01 production run.
                 </p>
               </div>
@@ -1795,14 +1795,14 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[13px] text-white/40 font-medium">
+        <div className="pt-12 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[13px] text-brand-gray/60 font-medium">
             © 2026 Astrateq Gadgets. Built with integrity in Toronto.
           </p>
-          <div className="flex items-center gap-8 text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
-            <span className="flex items-center gap-2 hover:text-white/60 transition-colors"><ShieldCheck size={14} className="text-brand-primary" /> Stripe Verified</span>
-            <span className="flex items-center gap-2 hover:text-white/60 transition-colors"><Globe size={14} className="text-brand-primary" /> ISED Canada</span>
-            <span className="flex items-center gap-2 hover:text-white/60 transition-colors"><Lock size={14} className="text-brand-primary" /> PIPEDA Compliant</span>
+          <div className="flex items-center gap-8 text-[10px] font-bold text-brand-gray/40 uppercase tracking-[0.3em]">
+            <span className="flex items-center gap-2 hover:text-brand-gray/60 transition-colors"><ShieldCheck size={14} className="text-brand-primary" /> Stripe Verified</span>
+            <span className="flex items-center gap-2 hover:text-brand-gray/60 transition-colors"><Globe size={14} className="text-brand-primary" /> ISED Canada</span>
+            <span className="flex items-center gap-2 hover:text-brand-gray/60 transition-colors"><Lock size={14} className="text-brand-primary" /> PIPEDA Compliant</span>
           </div>
         </div>
       </div>
