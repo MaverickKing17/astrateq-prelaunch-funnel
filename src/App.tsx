@@ -9,6 +9,8 @@ import {
   Zap, 
   Lock, 
   Snowflake, 
+  AlertTriangle,
+  History,
   ChevronRight, 
   CheckCircle2, 
   Plus,
@@ -35,6 +37,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [language, setLanguage] = useState<'EN' | 'FR'>('EN');
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-brand-border">
@@ -51,8 +54,18 @@ const Navbar = () => {
           
           <div className="hidden md:flex items-center gap-8">
             <div className="flex bg-gray-100 rounded-full p-1 text-xs font-bold">
-              <button className="px-3 py-1 bg-white rounded-full shadow-sm text-brand-dark">EN</button>
-              <button className="px-3 py-1 text-gray-400">FR</button>
+              <button 
+                onClick={() => setLanguage('EN')}
+                className={`px-3 py-1 rounded-full transition-all ${language === 'EN' ? 'bg-white shadow-sm text-brand-dark' : 'text-gray-400 hover:text-gray-600'}`}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => setLanguage('FR')}
+                className={`px-3 py-1 rounded-full transition-all ${language === 'FR' ? 'bg-white shadow-sm text-brand-dark' : 'text-gray-400 hover:text-gray-600'}`}
+              >
+                FR
+              </button>
             </div>
             <nav className="flex items-center gap-8 font-display text-sm text-brand-gray">
               <a href="#valuation" className="hover:text-brand-primary transition-colors">Engineering</a>
@@ -79,9 +92,28 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-b border-gray-100 overflow-hidden"
           >
-            <div className="px-4 py-6 space-y-4">
-              <a href="#contact" className="block text-lg font-medium text-gray-900">Contact</a>
-              <a href="#reserve" className="block w-full text-center bg-brand-primary text-white py-4 rounded-xl font-bold">Reserve My Family's Spot</a>
+            <div className="px-4 py-6 space-y-6">
+              <div className="flex bg-gray-100 rounded-xl p-1 text-sm font-bold w-fit">
+                <button 
+                  onClick={() => setLanguage('EN')}
+                  className={`px-6 py-2 rounded-lg transition-all ${language === 'EN' ? 'bg-white shadow-sm text-brand-dark' : 'text-gray-400'}`}
+                >
+                  EN
+                </button>
+                <button 
+                  onClick={() => setLanguage('FR')}
+                  className={`px-6 py-2 rounded-lg transition-all ${language === 'FR' ? 'bg-white shadow-sm text-brand-dark' : 'text-gray-400'}`}
+                >
+                  FR
+                </button>
+              </div>
+              <div className="space-y-4 pt-4 border-t border-gray-50">
+                <a href="#valuation" onClick={() => setIsOpen(false)} className="block text-lg font-medium text-gray-900">Engineering</a>
+                <a href="#comparison" onClick={() => setIsOpen(false)} className="block text-lg font-medium text-gray-900">Reliability</a>
+                <a href="#box" onClick={() => setIsOpen(false)} className="block text-lg font-medium text-gray-900">Safety Standards</a>
+                <a href="#contact" onClick={() => setIsOpen(false)} className="block text-lg font-medium text-gray-900">Support</a>
+              </div>
+              <a href="#reserve" onClick={() => setIsOpen(false)} className="block w-full text-center bg-brand-primary text-white py-4 rounded-xl font-bold">Reserve My Family's Spot</a>
             </div>
           </motion.div>
         )}
@@ -91,6 +123,22 @@ const Navbar = () => {
 };
 
 const Hero = () => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    const hasSeenTooltip = localStorage.getItem('astrateq_onboarding_seen');
+    if (!hasSeenTooltip) {
+      // Small delay for better UX
+      const timer = setTimeout(() => setShowTooltip(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closeTooltip = () => {
+    setShowTooltip(false);
+    localStorage.setItem('astrateq_onboarding_seen', 'true');
+  };
+
   return (
     <section className="pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-[#fbfbfd]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,9 +166,54 @@ const Hero = () => {
             
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row items-center gap-4">
-                <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-primary text-white text-lg font-bold px-10 py-5 rounded-full hover:bg-brand-primary/95 hover:shadow-2xl hover:shadow-brand-primary/20 active:scale-[0.98] transition-all shadow-xl">
-                  Reserve My Family’s Spot — $25 Fully Refundable
-                </a>
+                <div className="relative w-full sm:w-auto">
+                  <AnimatePresence>
+                    {showTooltip && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        className="absolute bottom-full left-0 mb-5 z-20 w-80 p-6 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-blue-50"
+                      >
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-start">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" />
+                              <span className="text-brand-primary text-[10px] font-black uppercase tracking-widest leading-none">Onboarding</span>
+                            </div>
+                            <button 
+                              onClick={closeTooltip}
+                              className="text-brand-gray/40 hover:text-brand-dark transition-colors"
+                            >
+                              <X size={16} />
+                            </button>
+                          </div>
+                          
+                          <div className="space-y-1.5">
+                            <h4 className="font-display font-bold text-brand-dark text-base tracking-tight italic">"The quiet peace of mind..."</h4>
+                            <p className="text-xs text-brand-gray leading-relaxed">
+                              Protecting your family's independence with Canadian-engineered intelligence. Our reservation system ensures you're first in line for Batch 01—with <span className="text-brand-primary font-bold">100% refundable safety</span>.
+                            </p>
+                          </div>
+
+                          <button 
+                            onClick={closeTooltip}
+                            className="w-full py-2 bg-gray-50 hover:bg-brand-primary/5 text-brand-primary text-[11px] font-bold uppercase tracking-widest rounded-lg transition-colors border border-brand-primary/10"
+                          >
+                            Got it, thank you
+                          </button>
+                        </div>
+                        
+                        {/* Tooltip Arrow */}
+                        <div className="absolute top-full left-12 w-4 h-4 bg-white border-r border-b border-blue-50 rotate-45 -translate-y-2" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <a href="#reserve" className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-primary text-white text-lg font-bold px-10 py-5 rounded-full hover:bg-brand-primary/95 hover:shadow-2xl hover:shadow-brand-primary/20 active:scale-[0.98] transition-all shadow-xl">
+                    Reserve My Family’s Spot — $25 Fully Refundable
+                  </a>
+                </div>
               </div>
               
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-brand-gray font-medium pl-1">
@@ -705,109 +798,161 @@ const ComparisonSection = () => {
   );
 };
 
-const DirectDuelSection = () => {
-  const duels = [
+const TheDifferenceOfCare = () => {
+  const comparisons = [
     {
-      title: "Visual Intelligence",
+      title: "Vision Under Stress",
       icon: Zap,
       generic: {
-        label: "Standard 4K/1080p",
-        desc: "Loses details in motion blur. Grainy at night.",
-        status: "Reactive"
+        label: "Market 4K/1080p",
+        desc: "Motion blur and sensor lag lose critical data at high speeds.",
+        badge: "Reactive Tech",
+        icon: History
       },
       sentinel: {
-        label: "Surgical 8K NPU",
-        desc: "Dedicated AI architecture reads plates in active motion.",
-        status: "Proactive"
+        label: "Surgical 8K Intelligence",
+        desc: "AI NPU captures every plate, person, and detail in active motion.",
+        badge: "Proactive Guard",
+        icon: ShieldCheck
       }
     },
     {
-      title: "Thermal Reliability",
+      title: "Canadian Resilience",
       icon: Snowflake,
       generic: {
-        label: "Market Grade Plastic",
-        desc: "Failed mounts and sensor lag in deep Canadian winter.",
-        status: "Fragile"
+        label: "Standard Plastic Build",
+        desc: "Components can become brittle or fail in deep Canadian winters.",
+        badge: "Fragile Build",
+        icon: AlertTriangle
       },
       sentinel: {
         label: "Arctic-Spec Alloy",
-        desc: "Bessemer-shroud tested to hold focus at -30°C.",
-        status: "Resilient"
+        desc: "Tested to hold high-precision focus even at Calgary-cold -30°C.",
+        badge: "Canadian Resilient",
+        icon: CheckCircle2
       }
     },
     {
       title: "Data Sovereignty",
       icon: Lock,
       generic: {
-        label: "Cloud-First Portals",
-        desc: "Requires monthly fees. Your private clips stored on servers.",
-        status: "Exposed"
+        label: "Cloud-First Storage",
+        desc: "Requires monthly fees. Your private clips stored on external servers.",
+        badge: "Monthly Fees",
+        icon: History
       },
       sentinel: {
         label: "100% Local Guard",
-        desc: "Zero fees. Military-grade encryption stays on device.",
-        status: "Fortified"
+        desc: "Zero fees. Military-grade encryption stays safely on your device.",
+        badge: "Private & Free",
+        icon: ShieldCheck
       }
     }
   ];
 
   return (
-    <section className="py-32 bg-brand-bg relative overflow-hidden" id="duel">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="py-32 bg-[#FAFBFF] relative overflow-hidden" id="duel">
+      {/* Decorative Technical Grid */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03]">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="text-center mb-20 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Direct <span className="text-brand-primary">Duel.</span></h2>
-          <p className="text-brand-gray text-lg max-w-2xl mx-auto">When seconds matter, the engineering gap becomes a safety boundary. See how Sentinel X stacks up against the mass market.</p>
+        <div className="text-center mb-28 space-y-8">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-blue-50 text-brand-primary px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-sm"
+          >
+            The Integrity Gap
+          </motion.div>
+          <div className="space-y-4">
+            <h2 className="text-5xl md:text-7xl font-display font-medium tracking-tight text-brand-dark leading-none">
+              The <span className="text-brand-primary relative">Difference<span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-primary/10 rounded-full" /></span> of Care.
+            </h2>
+            <p className="text-brand-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+              Most dashcams record what happened. <span className="font-medium text-brand-dark underline decoration-brand-primary/30 underline-offset-4">Sentinel X</span> was engineered to protect the people who once protected you.
+            </p>
+          </div>
         </div>
 
-        <div className="space-y-8">
-          {duels.map((duel, i) => (
+        <div className="space-y-16">
+          {comparisons.map((item, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "circOut" }}
               className="grid lg:grid-cols-[1fr_auto_1fr] items-center gap-8 lg:gap-0"
             >
-              {/* Generic Card */}
-              <div className="bg-white/50 border border-brand-border p-10 rounded-3xl lg:rounded-r-none relative group opacity-60 hover:opacity-100 transition-opacity">
-                 <div className="absolute top-0 left-0 px-4 py-1 bg-gray-200 text-gray-500 text-[10px] font-bold uppercase rounded-br-xl">Standard market</div>
-                 <div className="space-y-4">
-                   <h4 className="text-2xl font-bold text-gray-400">{duel.generic.label}</h4>
-                   <p className="text-brand-gray text-sm leading-relaxed">{duel.generic.desc}</p>
-                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold uppercase tracking-widest italic">{duel.generic.status}</div>
+              <div className="bg-white/40 backdrop-blur-xl border border-gray-100 p-12 rounded-[3rem] lg:rounded-r-none relative group grayscale opacity-50 hover:opacity-90 hover:grayscale-0 transition-all duration-700 shadow-sm border-r-0">
+                 <div className="absolute top-0 left-0 px-8 py-3 bg-gray-50 text-gray-400 text-[10px] font-black uppercase tracking-[0.3em] rounded-br-[2rem]">Standard Tech</div>
+                 <div className="space-y-8">
+                   <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300">
+                     <item.generic.icon size={24} />
+                   </div>
+                   <div className="space-y-4">
+                     <h4 className="text-2xl font-bold text-gray-400 font-display transition-colors group-hover:text-gray-600">{item.generic.label}</h4>
+                     <p className="text-brand-gray text-sm leading-relaxed max-w-[280px]">{item.generic.desc}</p>
+                     <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gray-50 text-gray-400 text-[10px] font-black uppercase tracking-widest italic border border-gray-100/50">{item.generic.badge}</div>
+                   </div>
                  </div>
               </div>
 
-              {/* VS Divider */}
-              <div className="flex flex-col items-center justify-center z-20">
-                <div className="w-16 h-16 bg-white border-2 border-brand-primary/20 rounded-full flex items-center justify-center shadow-xl mb-4 group">
-                  <duel.icon size={28} className="text-brand-primary group-hover:rotate-12 transition-transform" />
+              <div className="flex flex-col items-center justify-center z-20 relative px-6 lg:px-0">
+                <div className="relative group">
+                  <div className="absolute -inset-4 bg-brand-primary/10 rounded-full blur-xl group-hover:bg-brand-primary/20 transition-all duration-700 animate-pulse" />
+                  <div className="w-20 h-20 bg-white border-4 border-brand-primary/5 rounded-3xl flex items-center justify-center shadow-2xl relative z-10 rotate-3 group-hover:rotate-0 transition-all duration-500">
+                    <item.icon size={32} className="text-brand-primary" />
+                  </div>
                 </div>
-                <div className="h-full w-px bg-gradient-to-b from-transparent via-brand-border to-transparent hidden lg:block" />
+                <div className="h-40 w-px bg-gradient-to-b from-transparent via-brand-primary/20 to-transparent hidden lg:block mt-6" />
               </div>
 
-              {/* Sentinel Card */}
-              <div className="bg-white p-10 rounded-3xl lg:rounded-l-none border-2 border-brand-primary shadow-2xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 px-4 py-1 bg-brand-primary text-white text-[10px] font-bold uppercase rounded-bl-xl shadow-lg">Sentinel X Edge</div>
-                 <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-brand-primary/5 rounded-full blur-[40px]" />
+              <div className="bg-white border-[3px] border-brand-primary/10 p-12 rounded-[3.5rem] lg:rounded-l-none relative shadow-[0_45px_100px_-20px_rgba(37,99,235,0.18)] z-10 group overflow-hidden hover:border-brand-primary/40 transition-all duration-700">
+                 <div className="absolute top-0 right-0 px-8 py-3 bg-brand-primary text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-bl-[2rem] shadow-xl shadow-brand-primary/20 transition-transform group-hover:translate-x-1">SENTINEL X</div>
                  
-                 <div className="space-y-4 relative z-10">
-                   <h4 className="text-2xl font-bold text-brand-dark group-hover:text-brand-primary transition-colors">{duel.sentinel.label}</h4>
-                   <p className="text-brand-dark font-medium text-sm leading-relaxed">{duel.sentinel.desc}</p>
-                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-widest">{duel.sentinel.status}</div>
+                 <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-primary/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-brand-primary/10 transition-colors" />
+
+                 <div className="space-y-8 relative">
+                   <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-primary shadow-sm group-hover:scale-110 transition-transform duration-500">
+                     <item.sentinel.icon size={28} />
+                   </div>
+                   <div className="space-y-5">
+                     <h4 className="text-3xl font-bold text-brand-dark font-display leading-tight">{item.sentinel.label}</h4>
+                     <p className="text-brand-gray-dark text-base leading-relaxed font-medium opacity-80">{item.sentinel.desc}</p>
+                     <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-brand-primary/30 transform group-hover:translate-y-[-2px] transition-transform">
+                       <CheckCircle2 size={16} />
+                       {item.sentinel.badge}
+                     </div>
+                   </div>
                  </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-20 text-center">
-           <a href="#reserve" className="inline-flex items-center gap-3 bg-brand-dark text-white px-12 py-5 rounded-full font-bold hover:scale-105 transition-all shadow-2xl group">
-             I've Seen Enough — Secure My Spot <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-32 text-center"
+        >
+           <a href="#reserve" className="relative inline-flex items-center gap-4 bg-brand-primary text-white px-16 py-7 rounded-full font-black text-xl hover:shadow-[0_25px_60px_-10px_rgba(37,99,235,0.5)] active:scale-95 transition-all group overflow-hidden">
+             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+             Choose Peace of Mind <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform" />
            </a>
-        </div>
+           <p className="mt-8 text-brand-gray text-sm font-medium tracking-wide">Join 4,200+ Canadian families prioritizing safety.</p>
+        </motion.div>
       </div>
     </section>
   );
@@ -1547,7 +1692,7 @@ export default function App() {
       <ValuationZone />
       <CompatibilityChecker />
       <ComparisonSection />
-      <DirectDuelSection />
+      <TheDifferenceOfCare />
       <Testimonials />
       <section className="py-24" id="box">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
