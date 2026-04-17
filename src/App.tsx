@@ -489,33 +489,33 @@ const GuardianOfferSection = () => {
         </div>
 
         {/* Bento Grid Offer Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 grid-rows-none md:grid-rows-3 lg:grid-rows-2 gap-6 h-full md:h-[900px] lg:h-[750px]">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-fr">
           
           {/* Main Product Card */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 md:row-span-2 bg-[#F8F9FF] rounded-[3rem] p-12 relative overflow-hidden group border-2 border-brand-primary/5 hover:border-brand-primary/20 transition-all duration-700"
+            className="md:col-span-3 md:row-span-2 bg-[#F8F9FF] rounded-[3rem] p-8 md:p-12 relative overflow-hidden group border-2 border-brand-primary/5 hover:border-brand-primary/20 transition-all duration-700 flex flex-col min-h-[450px]"
           >
-            <div className="absolute top-0 right-0 p-8">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl shadow-brand-primary/5 text-brand-primary group-hover:rotate-6 transition-transform">
+            <div className="absolute top-0 right-0 p-6 md:p-8">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl shadow-brand-primary/5 text-brand-primary group-hover:rotate-6 transition-transform">
                 <Crown size={32} />
               </div>
             </div>
             
-            <div className="h-full flex flex-col justify-between relative z-10">
-              <div className="space-y-8">
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="space-y-6 md:space-y-8">
                 <div className="inline-flex items-center gap-2 bg-brand-primary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-brand-primary/20">
                   Core Asset 01
                 </div>
-                <h3 className="text-4xl md:text-6xl font-display font-bold text-brand-dark leading-none tracking-tight">Sentinel X <br /> <span className="opacity-40">Founder Edition</span></h3>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-dark leading-none tracking-tight">Sentinel X <br /> <span className="opacity-40">Founder Edition</span></h3>
                 <p className="text-brand-gray text-lg max-w-sm font-medium leading-relaxed">
                   Surgical 8K road-facing sensor with <span className="text-brand-dark">Exclusive Laser-Etched Founder ID</span> and Obsidian stealth finish.
                 </p>
               </div>
               
-              <div className="pt-12 flex flex-wrap gap-4">
+              <div className="mt-auto pt-10 flex flex-wrap gap-4">
                 <div className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full shadow-lg shadow-brand-primary/5 border border-brand-primary/5">
                   <Gem size={18} className="text-brand-primary" />
                   <span className="text-brand-dark font-bold text-sm leading-none">MSRP: $699</span>
@@ -533,26 +533,25 @@ const GuardianOfferSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 bg-brand-dark rounded-[3rem] p-10 relative overflow-hidden group border border-white/5"
+            className="md:col-span-3 bg-brand-dark rounded-[3rem] p-8 md:p-10 relative overflow-hidden group border border-white/5 flex flex-col min-h-[300px]"
           >
-            <div className="h-full flex flex-col justify-between relative z-10">
+            <div className="relative z-10 flex flex-col h-full">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Sparkles size={20} className="text-brand-primary" />
                   <span className="text-brand-primary text-[10px] font-black uppercase tracking-[0.3em]">Founders Lifetime Access</span>
                 </div>
                 <h4 className="text-3xl font-display font-bold text-white leading-tight">Neural AI Updates <br /> <span className="text-brand-primary underline decoration-brand-primary/40 underline-offset-4 decoration-2">Free Forever.</span></h4>
-                <p className="text-gray-400 text-sm max-w-[280px] leading-relaxed">
+                <p className="text-gray-400 text-sm md:text-base max-w-[320px] leading-relaxed">
                   Avoid the "Subscription Trap." Proactive AI road-scanning features stay free for your unit's life.
                 </p>
               </div>
               
-              <div className="flex items-center justify-between">
-                <span className="text-white/20 font-black text-5xl italic tracking-tighter">FREE</span>
+              <div className="mt-auto pt-8 flex items-center justify-between">
+                <span className="text-white/20 font-black text-4xl md:text-5xl italic tracking-tighter">FREE</span>
                 <div className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white text-[10px] uppercase font-bold tracking-[0.2em] shadow-inner">Value: $1,200 (10yrs)</div>
               </div>
             </div>
-            {/* Visual Flare */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/10 blur-[80px] pointer-events-none" />
           </motion.div>
 
@@ -562,22 +561,22 @@ const GuardianOfferSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="md:col-span-2 bg-[#F0F2FF] rounded-[3rem] p-10 relative overflow-hidden group border border-brand-primary/5"
+            className="md:col-span-3 lg:col-span-2 bg-[#F0F2FF] rounded-[3rem] p-8 md:p-10 relative overflow-hidden group border border-brand-primary/5 flex flex-col min-h-[250px]"
           >
-            <div className="h-full flex flex-col justify-between relative z-10">
+            <div className="relative z-10 flex flex-col h-full">
               <div className="space-y-4">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-primary shadow-sm mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl flex items-center justify-center text-brand-primary shadow-sm mb-2">
                   <Car size={24} />
                 </div>
-                <h4 className="text-xl font-bold text-brand-dark font-display leading-tight">Universal <br /> Stealth Install Kit</h4>
-                <p className="text-brand-gray text-xs font-medium">No messy wires. Hardwire & invisible trim-routing toolkit included.</p>
+                <h4 className="text-xl md:text-2xl font-bold text-brand-dark font-display leading-tight">Universal <br /> Stealth Install Kit</h4>
+                <p className="text-brand-gray text-xs md:text-sm font-medium leading-relaxed">No messy wires. Hardwire & invisible trim-routing toolkit included.</p>
               </div>
-              <div className="pt-6 flex items-end justify-between">
+              <div className="mt-auto pt-6 flex items-end justify-between">
                 <div>
-                  <span className="text-brand-primary font-black text-2xl uppercase italic">Gift</span>
+                  <span className="text-brand-primary font-black text-2xl uppercase italic leading-none">Gift</span>
                   <div className="text-brand-gray text-[10px] font-bold uppercase tracking-widest mt-1">Value: $150</div>
                 </div>
-                <Truck className="text-brand-primary/20 -mb-2" size={40} />
+                <Truck className="text-brand-primary/20" size={40} />
               </div>
             </div>
           </motion.div>
@@ -588,14 +587,14 @@ const GuardianOfferSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="md:col-span-1 bg-white border-2 border-brand-primary/20 rounded-[3rem] p-8 relative overflow-hidden group hover:border-brand-primary transition-all duration-500 shadow-sm"
+            className="md:col-span-3 lg:col-span-1 bg-white border-2 border-brand-primary/20 rounded-[3rem] p-8 relative overflow-hidden group hover:border-brand-primary transition-all duration-500 shadow-sm flex flex-col min-h-[250px]"
           >
-            <div className="h-full flex flex-col justify-between relative z-10">
+            <div className="relative z-10 flex flex-col h-full">
               <div className="space-y-4">
                 <Shield size={24} className="text-brand-primary group-hover:scale-110 transition-transform" />
-                <h4 className="text-sm font-bold text-brand-dark font-display leading-tight">3-YR Arctic Warrior <br /> Protection</h4>
+                <h4 className="text-sm md:text-base font-bold text-brand-dark font-display leading-tight uppercase tracking-tight">3-YR Arctic Warrior <br /> Protection</h4>
               </div>
-              <div className="pt-4">
+              <div className="mt-auto pt-4">
                 <div className="text-brand-primary font-black text-xl italic tracking-tighter leading-none">FREE</div>
                 <div className="text-brand-gray text-[9px] font-bold uppercase tracking-widest mt-1 opacity-60">Value: $280</div>
               </div>
@@ -608,24 +607,24 @@ const GuardianOfferSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="md:col-span-3 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-[3rem] p-12 text-white relative overflow-hidden group"
+            className="md:col-span-6 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-cyan rounded-[3rem] p-8 md:p-12 text-white relative overflow-hidden group flex flex-col min-h-[300px]"
           >
-             <div className="h-full flex flex-col justify-between relative z-10">
+             <div className="relative z-10 flex flex-col h-full">
                <div className="space-y-6">
                  <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
+                   <div className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
                      <Star size={24} fill="white" />
                    </div>
-                   <div className="text-xs font-black uppercase tracking-[0.4em] text-white/80">Batch 01 Availability</div>
+                   <div className="text-[10px] font-black uppercase tracking-[0.4em] text-white/80">Batch 01 Availability</div>
                  </div>
                  
-                 <div className="space-y-2">
-                   <div className="text-6xl font-display font-black leading-none tracking-tighter">18 <span className="text-xl font-bold uppercase opacity-60 tracking-widest">Left</span></div>
-                   <p className="font-bold text-white/90 text-lg">Spots remaining in the Founder Batch.</p>
+                 <div className="space-y-1">
+                   <div className="text-5xl md:text-6xl font-display font-black leading-none tracking-tighter">18 <span className="text-xl font-bold uppercase opacity-60 tracking-widest">Left</span></div>
+                   <p className="font-bold text-white/90 text-sm md:text-lg">Spots remaining in the Founder Batch.</p>
                  </div>
                </div>
 
-               <div className="pt-8">
+               <div className="mt-auto pt-10">
                  <div className="w-full bg-white/20 rounded-full h-3 mb-3 overflow-hidden border border-white/10 p-0.5">
                    <motion.div 
                     initial={{ width: "0%" }}
@@ -642,8 +641,7 @@ const GuardianOfferSection = () => {
                  </div>
                </div>
              </div>
-             {/* Background Decoration */}
-             <Gift className="absolute -bottom-10 -right-10 text-white opacity-10 group-hover:rotate-12 transition-transform duration-700" size={200} />
+             <Gift className="absolute -bottom-10 -right-10 text-white opacity-10 group-hover:rotate-12 transition-transform duration-700 pointer-events-none" size={200} />
           </motion.div>
 
         </div>
